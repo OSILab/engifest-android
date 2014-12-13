@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pre-dex-items>
+
+    <item
+        dex="/Users/naman/AndroidStudioProjects/Engifest/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.0-2fb59fff2f628ad10627c380aa053ab37cf7a1ff.jar"
+        jar="/Users/naman/AndroidStudioProjects/Engifest/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/libs/internal_impl-21.0.0.jar"
+        jumboMode="false"
+        revision="21.0.1"
+        sha1="1609e6d42d0480b0f4188e2c29f75388fa12a8f0"/>
+    <item
+        dex="/Users/naman/AndroidStudioProjects/Engifest/app/build/intermediates/pre-dexed/debug/library-2.4.0-baa82a14110d71bbabaf486be6fb560bebc25537.jar"
+        jar="/Users/naman/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
+        jumboMode="false"
+        revision="21.0.1"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb"/>
+    <item
+        dex="/Users/naman/AndroidStudioProjects/Engifest/app/build/intermediates/pre-dexed/debug/classes-ef8d9adf0060dbfd3ff3f8064b3cf637e3c21a44.jar"
+        jar="/Users/naman/AndroidStudioProjects/Engifest/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/21.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.0.1"
+        sha1="7d2525cba8ed61fff102977caed964fc22061e34"/>
+    <item
+        dex="/Users/naman/AndroidStudioProjects/Engifest/app/build/intermediates/pre-dexed/debug/classes-055a48a7512cf492cfef7518f6c4bd0e2cd2af58.jar"
+        jar="/Users/naman/AndroidStudioProjects/Engifest/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/21.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.0.1"
+        sha1="efeda77c808750cb670ee9c48d8a1835d89dbcb2"/>
+    <item
+        dex="/Users/naman/AndroidStudioProjects/Engifest/app/build/intermediates/pre-dexed/debug/classes-1d36519c6e07e1f4b096df368cfabbcb0752a253.jar"
+        jar="/Users/naman/AndroidStudioProjects/Engifest/app/build/intermediates/exploded-aar/com.astuetz/pagerslidingtabstrip/1.0.1/classes.jar"
+        jumboMode="false"
+        revision="21.0.1"
+        sha1="7912610ed96381c25c36d986eba422731b9641b6"/>
+    <item
+        dex="/Users/naman/AndroidStudioProjects/Engifest/app/build/intermediates/pre-dexed/debug/kenburnsview-1.0.5-060e03dcf68283eb1246a00ea2ec089581d8c66b.jar"
+        jar="/Users/naman/.gradle/caches/modules-2/files-2.1/com.flaviofaria/kenburnsview/1.0.5/58cecc918f04423f77dd1853c40c72fb3fb1c71a/kenburnsview-1.0.5.jar"
+        jumboMode="false"
+        revision="21.0.1"
+        sha1="58cecc918f04423f77dd1853c40c72fb3fb1c71a"/>
+    <item
+        dex="/Users/naman/AndroidStudioProjects/Engifest/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.0-ee576f91b45a6538d4156fc6e674b6f65034f74e.jar"
+        jar="/Applications/Android Studio.app/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.0/support-annotations-21.0.0.jar"
+        jumboMode="false"
+        revision="21.0.1"
+        sha1="1a578b9607b36266c63d43a4fa0ab5664dbe911e"/>
+    <item
+        dex="/Users/naman/AndroidStudioProjects/Engifest/app/build/intermediates/pre-dexed/debug/classes-e04c12c3f4bf80dbb67a2206307d81c22da2eccc.jar"
+        jar="/Users/naman/AndroidStudioProjects/Engifest/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.0.1"
+        sha1="686344a780033e4ba22b926cd225f8d4941247e6"/>
+    <item
+        dex="/Users/naman/AndroidStudioProjects/Engifest/app/build/intermediates/pre-dexed/debug/classes-99883be76ace594ecef88388636fe75b6d485182.jar"
+        jar="/Users/naman/AndroidStudioProjects/Engifest/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.0.1"
+        sha1="95fd37732ec852e99f07eeb516a3650172f1d136"/>
+
+</pre-dex-items>
