@@ -18,10 +18,10 @@ import android.text.SpannableString;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.flaviofaria.kenburnsview.KenBurnsView;
@@ -119,22 +119,7 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
         // nothing
     }
 
-    public int getScrollY(AbsListView view) {
-        View c = view.getChildAt(0);
-        if (c == null) {
-            return 0;
-        }
 
-        int firstVisiblePosition = view.getFirstVisiblePosition();
-        int top = c.getTop();
-
-        int headerHeight = 0;
-        if (firstVisiblePosition >= 1) {
-            headerHeight = mHeaderHeight;
-        }
-
-        return -top + firstVisiblePosition * c.getHeight() + headerHeight;
-    }
 
     public static float clamp(float value, float max, float min) {
         return Math.max(Math.min(value, min), max);
