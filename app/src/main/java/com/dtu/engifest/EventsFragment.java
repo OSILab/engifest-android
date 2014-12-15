@@ -1,6 +1,8 @@
 package com.dtu.engifest;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
@@ -21,6 +23,14 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
     TextView eventTitle;
     TextView eventShortDescription;
     TextView eventDescription;
+    TextView textCall;
+    TextView textSendEmail;
+    TextView textContact;
+    TextView textEmail;
+    TextView textNumber;
+
+
+
     ImageView eventImage;
     private int mPosition;
     private CardView cardView;
@@ -52,6 +62,34 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
         eventDescription =(TextView) v.findViewById(R.id.eventDescription);
         eventShortDescription = (TextView) v.findViewById(R.id.eventShortDescription);
         eventTitle = (TextView) v.findViewById(R.id.eventTitle);
+        textCall =(TextView) v.findViewById(R.id.textCall);
+        textContact = (TextView) v.findViewById(R.id.textContact);
+        textEmail = (TextView) v.findViewById(R.id.textEmail);
+        textNumber =(TextView) v.findViewById(R.id.textNumber);
+        textSendEmail = (TextView) v.findViewById(R.id.textSendEmail);
+
+        textCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String phoneNumber = textNumber.getText().toString();
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                callIntent.setData(Uri.parse("tel:"+phoneNumber));
+                startActivity(callIntent);
+            }
+        });
+
+        textSendEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String email = textEmail.getText().toString();
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+                emailIntent.setType("text/plain");
+                emailIntent.setData(Uri.parse("mailto:"+email));
+                emailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(emailIntent);
+            }
+        });
+
         eventImage =(ImageView) v.findViewById(R.id.eventImage);
         cardView =(CardView) v.findViewById(R.id.cardView);
         cardView.setPadding(30,30,30,30);
