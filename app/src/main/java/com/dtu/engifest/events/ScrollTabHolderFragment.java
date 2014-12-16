@@ -1,7 +1,9 @@
-package com.dtu.engifest;
+package com.dtu.engifest.events;
 
 import android.support.v4.app.Fragment;
 import android.widget.ScrollView;
+
+import com.dtu.engifest.events.ScrollTabHolder;
 
 public abstract class ScrollTabHolderFragment extends Fragment implements ScrollTabHolder {
 

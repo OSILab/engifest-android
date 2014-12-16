@@ -1,4 +1,4 @@
-package com.dtu.engifest;
+package com.dtu.engifest.events;
 
 
 import android.content.Intent;
@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import com.dtu.engifest.R;
 
 public class EventsFragment extends ScrollTabHolderFragment implements NotifyingScrollView.OnScrollChangedListener {
 

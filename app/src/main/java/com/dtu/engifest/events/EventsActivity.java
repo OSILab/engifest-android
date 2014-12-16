@@ -1,4 +1,4 @@
-package com.dtu.engifest;
+package com.dtu.engifest.events;
 
 
 
@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 
 import com.astuetz.PagerSlidingTabStrip;
+import com.dtu.engifest.R;
 import com.flaviofaria.kenburnsview.KenBurnsView;
 import com.nineoldandroids.view.ViewHelper;
 
@@ -60,7 +61,7 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
         mHeaderHeight = getResources().getDimensionPixelSize(R.dimen.header_height);
         mMinHeaderTranslation = -mMinHeaderHeight + getActionBarHeight();
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_events);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

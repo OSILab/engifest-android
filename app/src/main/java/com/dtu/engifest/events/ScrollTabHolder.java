@@ -1,4 +1,4 @@
-package com.dtu.engifest;
+package com.dtu.engifest.events;
 
 
 import android.widget.ScrollView;
