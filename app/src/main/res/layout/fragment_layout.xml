@@ -1,0 +1,45 @@
+
+
+<com.dtu.engifest.DashboardLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1"
+    android:background="@color/pink_transparent" >
+
+    <Button
+        android:id="@+id/btn_news_feed"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/newsfeed"
+        android:text="News Feed" />
+
+    <Button
+        android:id="@+id/btn_events"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/events"
+        android:text="Events" />
+
+    <Button
+        android:id="@+id/btn_about"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/about"
+        android:text="About" />
+
+    <Button
+        android:id="@+id/btn_gallery"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/gallery"
+        android:text="Gallery" />
+
+    <Button
+        android:id="@+id/btn_sponsors"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/sponsors"
+        android:text="Sponsors" />
+
+    <Button
+        android:id="@+id/btn_contactus"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/contact"
+        android:text="Contact Us" />
+
+</com.dtu.engifest.DashboardLayout>
