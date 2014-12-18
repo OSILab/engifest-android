@@ -1,5 +1,6 @@
 package com.dtu.engifest;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -17,7 +18,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.dtu.engifest.about.AboutActivity;
 import com.dtu.engifest.fragments.HomeFragment;
+import com.dtu.engifest.fragments.ScheduleFragment;
 
 import java.util.ArrayList;
 
@@ -132,7 +135,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        ;
+
 
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
@@ -169,19 +172,22 @@ public class MainActivity extends ActionBarActivity {
                 fragment = new HomeFragment();
                 break;
             case 1:
-                fragment = new HomeFragment();
+                fragment = new ScheduleFragment();
                 break;
             case 2:
                 fragment = new HomeFragment();
                 break;
             case 3:
-                fragment = new HomeFragment();
+                Intent intentAbout = new Intent(getApplication(),AboutActivity.class);
+                startActivity(intentAbout);
                 break;
             case 4:
-                fragment = new HomeFragment();
+
+                Intent intentFeedback = new Intent(getApplication(),FeedbackActivity.class);
+                startActivity(intentFeedback);
                 break;
             case 5:
-                fragment = new HomeFragment();
+
                 break;
             case 6:
                 fragment = new HomeFragment();

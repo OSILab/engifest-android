@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:r="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.dtu.engifest.about.SvgAnimator"
+    android:orientation="vertical"
+    android:background="#009688"
+    android:layout_width="match_parent">
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+    <com.dtu.engifest.about.SvgAnimator
+        android:id="@+id/oat"
+
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+
+
+        r:phase="1.0"
+        r:duration="2000"
+        r:fadeFactor="10.0"
+        r:waitRadius="25dp"
+        r:arrowLength="16dp"
+        r:arrowHeight="18dp"
+        r:strokeWidth="2.0"
+        r:strokeColor="#ffffffff" />
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:id="@+id/aboutDtuLayout"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:background="@drawable/dtu">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@color/pink_transparent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:text="About the University"
+                    android:textStyle="bold"
+                    android:paddingLeft="15dp"
+                    android:textColor="#ffffff"
+                    android:textSize="30sp"/>
+
+
+            </LinearLayout>
+            </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:clickable="true"
+        android:id="@+id/aboutEngifestLayout"
+        android:layout_height="230dp"
+        android:orientation="vertical"
+        android:background="@drawable/photo1">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/purple_transparent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="About Engifest"
+                android:textStyle="bold"
+                android:paddingLeft="15dp"
+                android:textColor="#ffffff"
+                android:textSize="30sp"/>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+
+
+
+
+</LinearLayout>
+
+
+
+
+
+
+        </ScrollView>

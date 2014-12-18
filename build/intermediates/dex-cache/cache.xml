@@ -14,6 +14,24 @@
         revision="21.0.1"
         sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb"/>
     <item
+        dex="/Users/naman/Github/Engifest/Engifest_Events/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.0-4a5e41140fcadd5cc3ace438f2e53f8c883f0d67.jar"
+        jar="/Users/naman/Github/Engifest/Engifest_Events/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/libs/internal_impl-21.0.0.jar"
+        jumboMode="false"
+        revision="21.0.1"
+        sha1="1609e6d42d0480b0f4188e2c29f75388fa12a8f0"/>
+    <item
+        dex="/Users/naman/Github/Engifest/Engifest_Events/app/build/intermediates/pre-dexed/debug/androidsvg-1.2.0-14ba293af6d2a138632cc15361f5bbefc4f85af6.jar"
+        jar="/Users/naman/Github/Engifest/Engifest_Events/app/libs/androidsvg-1.2.0.jar"
+        jumboMode="false"
+        revision="21.0.1"
+        sha1="0b8e2b5de0473fdac58cbfb4bc1ef751b09125c4"/>
+    <item
+        dex="/Users/naman/Github/Engifest/Engifest_Events/app/build/intermediates/pre-dexed/debug/classes-af41c917d92fbec729511a430e888d77f96e0027.jar"
+        jar="/Users/naman/Github/Engifest/Engifest_Events/app/build/intermediates/exploded-aar/com.astuetz/pagerslidingtabstrip/1.0.1/classes.jar"
+        jumboMode="false"
+        revision="21.0.1"
+        sha1="7912610ed96381c25c36d986eba422731b9641b6"/>
+    <item
         dex="/Users/naman/AndroidStudioProjects/Engifest/app/build/intermediates/pre-dexed/debug/classes-ef8d9adf0060dbfd3ff3f8064b3cf637e3c21a44.jar"
         jar="/Users/naman/AndroidStudioProjects/Engifest/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/21.0.0/classes.jar"
         jumboMode="false"
@@ -31,6 +49,12 @@
         jumboMode="false"
         revision="21.0.1"
         sha1="7912610ed96381c25c36d986eba422731b9641b6"/>
+    <item
+        dex="/Users/naman/Github/Engifest/Engifest_Events/app/build/intermediates/pre-dexed/debug/classes-f501357014cfb6ae648c1273274d35ffff8308af.jar"
+        jar="/Users/naman/Github/Engifest/Engifest_Events/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.0.1"
+        sha1="95fd37732ec852e99f07eeb516a3650172f1d136"/>
     <item
         dex="/Users/naman/AndroidStudioProjects/Engifest/app/build/intermediates/pre-dexed/debug/kenburnsview-1.0.5-060e03dcf68283eb1246a00ea2ec089581d8c66b.jar"
         jar="/Users/naman/.gradle/caches/modules-2/files-2.1/com.flaviofaria/kenburnsview/1.0.5/58cecc918f04423f77dd1853c40c72fb3fb1c71a/kenburnsview-1.0.5.jar"
@@ -50,10 +74,28 @@
         revision="21.0.1"
         sha1="686344a780033e4ba22b926cd225f8d4941247e6"/>
     <item
+        dex="/Users/naman/Github/Engifest/Engifest_Events/app/build/intermediates/pre-dexed/debug/classes-283c8c239e59a89d1e4ecef6cd03304dfd3b2ed5.jar"
+        jar="/Users/naman/Github/Engifest/Engifest_Events/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/21.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.0.1"
+        sha1="7d2525cba8ed61fff102977caed964fc22061e34"/>
+    <item
+        dex="/Users/naman/Github/Engifest/Engifest_Events/app/build/intermediates/pre-dexed/debug/classes-66dd5495f577b93cb4c6f4d84cc2a4a6d0840d65.jar"
+        jar="/Users/naman/Github/Engifest/Engifest_Events/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.0.1"
+        sha1="686344a780033e4ba22b926cd225f8d4941247e6"/>
+    <item
         dex="/Users/naman/AndroidStudioProjects/Engifest/app/build/intermediates/pre-dexed/debug/classes-99883be76ace594ecef88388636fe75b6d485182.jar"
         jar="/Users/naman/AndroidStudioProjects/Engifest/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/classes.jar"
         jumboMode="false"
         revision="21.0.1"
         sha1="95fd37732ec852e99f07eeb516a3650172f1d136"/>
+    <item
+        dex="/Users/naman/Github/Engifest/Engifest_Events/app/build/intermediates/pre-dexed/debug/classes-b9d873f08232d50b065ba5b9a388d237e4ad3636.jar"
+        jar="/Users/naman/Github/Engifest/Engifest_Events/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/21.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.0.1"
+        sha1="efeda77c808750cb670ee9c48d8a1835d89dbcb2"/>
 
 </pre-dex-items>

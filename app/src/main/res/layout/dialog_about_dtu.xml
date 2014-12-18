@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pink_transparent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="A pioneer in technical education and research. Delhi TeChnological University (formerly Delhi College of Engineering) has marched from strength to strength throughout its illustrious history spanning 72 glorious years. The institution is spread across a sprawling 164 acre campus adjoining Rohini, Delhi, and boasts of world class infrastructure and state-of-the-art technology. Home to over 8300 students, the college campus is.truly a melting pot of cultures from across the length 'a-nil breadth of lndia and has also become a coveted destination for students from abroad. Encouraging thais growth, DTU is a hub of vibrant cultural activities and boasts of several cultural and literary societies. it has also forayed into Man-agement education with the establishment of Delhi School of Management in 2009, thus spreading its ever-wid-ening horizons in the field of knowledge and excellence.
+"
+
+        android:textColor="#ffffff"
+        android:padding="10dp"
+        android:textSize="17sp" />
+
+</LinearLayout>
