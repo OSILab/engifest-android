@@ -20,6 +20,7 @@ import android.widget.ListView;
 
 import com.dtu.engifest.about.AboutActivity;
 import com.dtu.engifest.fragments.HomeFragment;
+import com.dtu.engifest.fragments.MapsFragment;
 import com.dtu.engifest.fragments.ScheduleFragment;
 
 import java.util.ArrayList;
@@ -175,7 +176,7 @@ public class MainActivity extends ActionBarActivity {
                 fragment = new ScheduleFragment();
                 break;
             case 2:
-                fragment = new HomeFragment();
+                fragment = new MapsFragment();
                 break;
             case 3:
                 Intent intentAbout = new Intent(getApplication(),AboutActivity.class);

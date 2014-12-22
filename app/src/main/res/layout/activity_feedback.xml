@@ -117,7 +117,7 @@
 
 
             <EditText
-                android:id="@+id/session_feedback_comments"
+                android:id="@+id/feedback"
                 android:minLines="1"
                 android:paddingTop="10dp"
                 android:hint="Tell us!"
