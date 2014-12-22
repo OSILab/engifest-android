@@ -6,6 +6,7 @@ import android.annotation.TargetApi;
 import android.graphics.RectF;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -27,6 +28,8 @@ import com.astuetz.PagerSlidingTabStrip;
 import com.dtu.engifest.R;
 import com.flaviofaria.kenburnsview.KenBurnsView;
 import com.nineoldandroids.view.ViewHelper;
+
+import java.util.Random;
 
 public class EventsActivity extends ActionBarActivity implements ScrollTabHolder, ViewPager.OnPageChangeListener {
 
@@ -51,6 +54,8 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
     private SpannableString mSpannableString;
     private AlphaForegroundColorSpan mAlphaForegroundColorSpan;
 
+    int[] photos={R.drawable.photo6, R.drawable.switchthefunkup,R.drawable.photo2,R.drawable.photo3,R.drawable.photo4,R.drawable.photo5};
+    KenBurnsView imageView;
 
 
     @Override
@@ -62,13 +67,13 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
         mMinHeaderTranslation = -mMinHeaderHeight + getActionBarHeight();
 
         setContentView(R.layout.activity_events);
-
+        imageView =(KenBurnsView) findViewById(R.id.header_picture);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         icon = (ImageView) findViewById(R.id.icon);
         title = (TextView) findViewById(R.id.title);
         mSpannableString = new SpannableString(getString(R.string.actionbar_title));
-        mHeaderPicture = (KenBurnsView) findViewById(R.id.header_picture);
+
         mHeaderLogo = (ImageView) findViewById(R.id.header_logo);
         mHeader = findViewById(R.id.header);
         mPagerSlidingTabStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
@@ -83,6 +88,25 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
         ViewHelper.setAlpha(getActionBarIconView(), 0f);
 
         getSupportActionBar().setBackgroundDrawable(null);
+
+        final Handler handler = new Handler();
+        Runnable runnable = new Runnable() {
+            int i=0;
+            public void run() {
+                // change images randomly
+                Random ran=new Random();
+                int i=ran.nextInt(photos.length);
+                //set image resources
+                imageView.setImageResource(photos[i]);
+                i++;
+                if(i>photos.length-1)
+                {
+                    i=0;
+                }
+                handler.postDelayed(this, 7000);  //for interval...
+            }
+        };
+        handler.postDelayed(runnable, 7000); //for initial delay..
     }
 
     @Override

@@ -34,10 +34,12 @@
 
 
                 <LinearLayout
+                    android:id="@+id/layout1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:background="#424242">
+
+                    >
 
                     <TextView
                         android:layout_width="match_parent"
@@ -80,7 +82,7 @@
                     android:id="@+id/eventDescription"
                     android:textColor="#000000"
                     android:padding="10dp"
-                    android:textSize="21sp" />
+                    android:textSize="17sp" />
 
             </LinearLayout>
 
@@ -104,6 +106,7 @@
 
 
                 <LinearLayout
+                    android:id="@+id/layout2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
