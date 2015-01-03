@@ -7,17 +7,30 @@
     <item name="colorPrimary">@android:color/holo_blue_light</item>
     <item name="colorPrimaryDark">@android:color/holo_blue_dark</item>
         <item name="windowActionBar">false</item>
+
+
     <item name="colorAccent">#009688</item>
 
 </style>
 
     <style name="AppThemeNoToolbar" parent="@style/Theme.AppCompat.Light">
 
-        <item name="android:homeAsUpIndicator">@drawable/ic_back_dark</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_back</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
         <item name="colorPrimary">@android:color/holo_blue_light</item>
+        <item name="actionBarStyle">@style/LightActionBar</item>
         <item name="colorPrimaryDark">@android:color/holo_blue_dark</item>
         <item name="colorAccent">#009688</item>
+
+    </style>
+    <style name="LightActionBar" parent="@style/Widget.AppCompat.ActionBar.Solid">
+
+        <item name="titleTextStyle">@style/whiteTitle</item>
+
+    </style>
+    <style name="whiteTitle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+
+       <item name="android:textColor">#ffffff</item>
 
     </style>
 
