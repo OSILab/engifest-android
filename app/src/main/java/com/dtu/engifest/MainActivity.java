@@ -12,9 +12,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -76,6 +78,10 @@ public class MainActivity extends ActionBarActivity {
 
 
         mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
+        LayoutInflater inflater = getLayoutInflater();
+        final ViewGroup header = (ViewGroup) inflater.inflate(R.layout.header,
+                mDrawerList, false);
+        mDrawerList.addHeaderView(header,null,false);
 
 
         adapter = new NavDrawerListAdapter(getApplicationContext(),
@@ -106,7 +112,7 @@ public class MainActivity extends ActionBarActivity {
 
         if (savedInstanceState == null) {
 
-            displayView(0);
+            displayView(1);
         }
     }
 
@@ -173,24 +179,27 @@ public class MainActivity extends ActionBarActivity {
                 fragment = new HomeFragment();
                 break;
             case 1:
-                fragment = new ScheduleFragment();
+                fragment = new HomeFragment();
                 break;
             case 2:
-                fragment = new MapsFragment();
+                fragment = new ScheduleFragment();
                 break;
             case 3:
+                fragment = new MapsFragment();
+                break;
+            case 4:
                 Intent intentAbout = new Intent(getApplication(),AboutActivity.class);
                 startActivity(intentAbout);
                 break;
-            case 4:
+            case 5:
 
                 Intent intentFeedback = new Intent(getApplication(),FeedbackActivity.class);
                 startActivity(intentFeedback);
                 break;
-            case 5:
+            case 6:
 
                 break;
-            case 6:
+            case 7:
                 fragment = new HomeFragment();
                 break;
 

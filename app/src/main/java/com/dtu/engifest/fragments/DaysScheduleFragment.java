@@ -29,6 +29,7 @@ public class DaysScheduleFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         final View v = inflater.inflate(R.layout.fragment_schedule_days, container, false);
+        
         mPosition = getArguments().getInt(ARG_POSITION);
         card1 =(CardView) v.findViewById(R.id.cardSchedule1);
         card2 =(CardView)  v.findViewById(R.id.cardSchedule2);

@@ -10,7 +10,7 @@
 
     <string-array name="nav_drawer_items">
 
-        <item >Engifest</item>
+        <item >Home</item>
         <item >Schedule</item>
         <item >Reach Us</item>
         <item >About</item>
