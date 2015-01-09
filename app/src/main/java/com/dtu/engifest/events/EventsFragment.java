@@ -16,12 +16,24 @@ import android.widget.TextView;
 
 import com.dtu.engifest.R;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+
 public class EventsFragment extends ScrollTabHolderFragment implements NotifyingScrollView.OnScrollChangedListener {
 
     private static final String ARG_POSITION = "position";
 
 
     private NotifyingScrollView mScrollView;
+    private String title ;
+    private String description ;
+    private String subdescription ;
+    private String contact ;
+    private String number ;
+    private String email ;
 
     TextView eventTitle;
     TextView eventShortDescription;
@@ -39,6 +51,33 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
     ImageView eventImage;
     private int mPosition;
     private CardView cardView;
+
+
+
+    public String loadJSONFromAsset() {
+        String json = null;
+        try {
+
+            InputStream is = getActivity().getAssets().open("events.json");
+
+            int size = is.available();
+
+            byte[] buffer = new byte[size];
+
+            is.read(buffer);
+
+            is.close();
+
+            json = new String(buffer, "UTF-8");
+
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
+
+    }
 
     public static Fragment newInstance(int position) {
         EventsFragment f = new EventsFragment();
@@ -101,11 +140,29 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
         cardView.setPadding(30,30,30,30);
 
         if (mPosition==0){
+
+            try{
+                JSONObject obj = new JSONObject(loadJSONFromAsset());
+
+                JSONObject anusthhan  = obj.getJSONObject("anusthaan");
+                
+                title = anusthhan.getString("title");
+                description = anusthhan.getString("description");
+                subdescription = anusthhan.getString("subtitle");
+                contact = anusthhan.getString("contactname");
+                number = anusthhan.getString("contactnumber");
+                email = anusthhan.getString("contactemail");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }            
             layout1.setBackgroundColor(getResources().getColor(R.color.pink_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.pink_transparent));
-            eventDescription.setText("Dance in India comprises of varied styles of dances.Classical Indian dance manages to evoke a rasa by invoking a particular bhava (emotion).Classical dancer acts out a story alost exclusively through gestures.Folk dances are numerous in number and styles,and vary according to the local tradition of the respective state,ethnic or geographic regions.\nAnusthaan houses two categories:\n1.Solo\n2.Group");
-            eventTitle.setText("Anushthaan");
-            eventShortDescription.setText("Classical and Folk dance competition");
+            eventDescription.setText(description);
+            eventTitle.setText(title);
+            eventShortDescription.setText(subdescription);
+            textContact.setText(contact);
+            textNumber.setText(number);
+            textEmail.setText(email);
             eventImage.setImageResource(R.drawable.anusthaan);}
         if (mPosition==1) {
             layout1.setBackgroundColor(getResources().getColor(R.color.green_transparent));
