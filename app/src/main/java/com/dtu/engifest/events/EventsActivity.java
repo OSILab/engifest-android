@@ -3,7 +3,9 @@ package com.dtu.engifest.events;
 
 
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.graphics.RectF;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,6 +18,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -23,13 +26,25 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-
 import com.astuetz.PagerSlidingTabStrip;
 import com.dtu.engifest.R;
+import com.dtu.engifest.util.NetworkUtil;
 import com.flaviofaria.kenburnsview.KenBurnsView;
 import com.nineoldandroids.view.ViewHelper;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.Random;
+
+import fr.castorflex.android.smoothprogressbar.SmoothProgressBar;
 
 public class EventsActivity extends ActionBarActivity implements ScrollTabHolder, ViewPager.OnPageChangeListener {
 
@@ -54,9 +69,11 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
     private SpannableString mSpannableString;
     private AlphaForegroundColorSpan mAlphaForegroundColorSpan;
 
+
     int[] photos={R.drawable.photo6, R.drawable.switchthefunkup,R.drawable.photo2,R.drawable.photo3,R.drawable.photo4,R.drawable.photo5};
     KenBurnsView imageView;
 
+    private ReadFromJSON mReadFromJSON;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +84,15 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
         mMinHeaderTranslation = -mMinHeaderHeight + getActionBarHeight();
 
         setContentView(R.layout.activity_events);
+
+        if(NetworkUtil.isNetworkConnected(this)){
+        updateView();
+        }
+        else {
+            SmoothProgressBar progressBar =(SmoothProgressBar) findViewById(R.id.google_now);
+            progressBar.setVisibility(View.GONE);
+        }
+        
         imageView =(KenBurnsView) findViewById(R.id.header_picture);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -109,6 +135,68 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
         handler.postDelayed(runnable, 7000); //for initial delay..
     }
 
+    public void updateView() {
+        mReadFromJSON = new ReadFromJSON();
+        mReadFromJSON.execute();
+    }
+    private class ReadFromJSON extends AsyncTask<Void, Void, String> {
+        private Context context;
+
+        @Override
+        protected String doInBackground(Void... v){
+
+            try {
+                HttpClient httpclient = new DefaultHttpClient();
+                HttpResponse response = httpclient.execute(new HttpGet("http://engifesttest.comlu.com/events"));
+                HttpEntity entity = response.getEntity();
+                String result = EntityUtils.toString(entity);
+                return result;
+            } catch (Exception e) {
+
+                Log.d("[GET REQUEST]", "Network exception", e);
+                return null;
+            }
+        }
+        protected void onPostExecute(String r) {
+
+            File cacheFile = new File(getFilesDir(), "events.json");
+
+            BufferedWriter bw = null;
+            try {
+                if (!cacheFile.exists()) {
+                    cacheFile.createNewFile();
+                }
+
+                FileWriter fw = new FileWriter(cacheFile.getAbsoluteFile());
+                bw = new BufferedWriter(fw);
+                
+                if (r!=null) {
+                    bw.write(r);
+                }
+
+                SmoothProgressBar progressBar = (SmoothProgressBar) findViewById(R.id.google_now);
+                progressBar.setVisibility(View.GONE);
+
+
+
+
+            } catch (Exception e){
+                e.printStackTrace();
+                
+            } finally {
+                try {
+                    bw.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+
+            }
+
+        }
+    }
+    
+    
     @Override
     public void onPageScrollStateChanged(int arg0) {
         // nothing

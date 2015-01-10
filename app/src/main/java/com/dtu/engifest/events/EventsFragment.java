@@ -15,12 +15,17 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.dtu.engifest.R;
+import com.dtu.engifest.util.NetworkUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
+
+import fr.castorflex.android.smoothprogressbar.SmoothProgressBar;
 
 public class EventsFragment extends ScrollTabHolderFragment implements NotifyingScrollView.OnScrollChangedListener {
 
@@ -45,38 +50,34 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
     TextView textNumber;
     LinearLayout layout1;
     LinearLayout layout2;
-
-
+    View v;
+    SmoothProgressBar progressBar;
+    private static String url = "http://engifesttest.comlu.com/events";
 
     ImageView eventImage;
     private int mPosition;
     private CardView cardView;
 
 
-
     public String loadJSONFromAsset() {
-        String json = null;
+
+        String jsonString = "";
         try {
+            String currentLine;
+            File cacheFile = new File(getActivity().getFilesDir(), "events.json");
 
-            InputStream is = getActivity().getAssets().open("events.json");
+            BufferedReader br = new BufferedReader(new FileReader(cacheFile));
+            while ((currentLine = br.readLine()) != null) {
+                jsonString += currentLine + '\n';
+            }
+            br.close();
+            
+        } catch (IOException e) {
+            e.printStackTrace();
 
-            int size = is.available();
-
-            byte[] buffer = new byte[size];
-
-            is.read(buffer);
-
-            is.close();
-
-            json = new String(buffer, "UTF-8");
-
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return null;
         }
-        return json;
 
+            return jsonString;
     }
 
     public static Fragment newInstance(int position) {
@@ -98,7 +99,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.events_fragment, null);
+        v = inflater.inflate(R.layout.events_fragment, null);
 
         mScrollView = (NotifyingScrollView) v.findViewById(R.id.scrollview);
         mScrollView.setOnScrollChangedListener(this);
@@ -138,23 +139,32 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
         eventImage =(ImageView) v.findViewById(R.id.eventImage);
         cardView =(CardView) v.findViewById(R.id.cardView);
         cardView.setPadding(30,30,30,30);
+        
+        if (NetworkUtil.isNetworkConnected(getActivity())){
+            ImageView errorcloud = (ImageView) v.findViewById(R.id.errorcloud);
+            TextView errortext = (TextView) v.findViewById(R.id.errortext);
+            errorcloud.setVisibility(View.GONE);
+            errortext.setVisibility(View.GONE);
+        }
+            
+
+
 
         if (mPosition==0){
-
-            try{
+            try {
                 JSONObject obj = new JSONObject(loadJSONFromAsset());
-
                 JSONObject anusthhan  = obj.getJSONObject("anusthaan");
-                
+
                 title = anusthhan.getString("title");
                 description = anusthhan.getString("description");
                 subdescription = anusthhan.getString("subtitle");
                 contact = anusthhan.getString("contactname");
                 number = anusthhan.getString("contactnumber");
                 email = anusthhan.getString("contactemail");
+
             } catch (JSONException e) {
                 e.printStackTrace();
-            }            
+            }
             layout1.setBackgroundColor(getResources().getColor(R.color.pink_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.pink_transparent));
             eventDescription.setText(description);
@@ -163,96 +173,260 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-            eventImage.setImageResource(R.drawable.anusthaan);}
+            eventImage.setImageResource(R.drawable.anusthaan);
+           }
         if (mPosition==1) {
+            try {
+                JSONObject obj = new JSONObject(loadJSONFromAsset());
+                JSONObject spandan  = obj.getJSONObject("spandan");
+
+                title = spandan.getString("title");
+                description = spandan.getString("description");
+                subdescription = spandan.getString("subtitle");
+                contact = spandan.getString("contactname");
+                number = spandan.getString("contactnumber");
+                email = spandan.getString("contactemail");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             layout1.setBackgroundColor(getResources().getColor(R.color.green_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.green_transparent));
-            eventDescription.setText("Dance is the hidden language of soul.Dance is performed in many cultures as a form of emotional expression,social interaction or exercise,in a spritual or performance setting,and is sometimes used to express ideas or tell a story.\nSpandan is a western dance competition and houses three categories.\n1.Solo\n2.Duet\n3.Group");
-            eventTitle.setText("Spandan");
-            eventShortDescription.setText("The Western dance competition");
+            eventDescription.setText(description);
+            eventTitle.setText(title);
+            eventShortDescription.setText(subdescription);
+            textContact.setText(contact);
+            textNumber.setText(number);
+            textEmail.setText(email);
             eventImage.setImageResource(R.drawable.spandan);
+
 
         }
         if (mPosition==2) {
+            try {
+                JSONObject obj = new JSONObject(loadJSONFromAsset());
+                JSONObject natya  = obj.getJSONObject("natya");
+
+                title = natya.getString("title");
+                description = natya.getString("description");
+                subdescription = natya.getString("subtitle");
+                contact = natya.getString("contactname");
+                number = natya.getString("contactnumber");
+                email = natya.getString("contactemail");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             layout1.setBackgroundColor(getResources().getColor(R.color.red_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.red_transparent));
-            eventDescription.setText("Natya represents theatre and theatrically is a powerful tool.Theatre is a collaborative form of fine art that uses live performers to represent the experience of a real or imagined event before a live audience in a specific place.The right combination of Lights,Camera and most importantly Action.Various genres are Comedy, Farce, Satirical, Tragedy and historical. ");
-            eventTitle.setText("Natya");
-            eventShortDescription.setText("The stage play competition");
+            eventDescription.setText(description);
+            eventTitle.setText(title);
+            eventShortDescription.setText(subdescription);
+            textContact.setText(contact);
+            textNumber.setText(number);
+            textEmail.setText(email);
             eventImage.setImageResource(R.drawable.natya);
+
 
         }
         if (mPosition==3) {
+            try {
+                JSONObject obj = new JSONObject(loadJSONFromAsset());
+                JSONObject nukkad  = obj.getJSONObject("nukkad");
+
+                title = nukkad.getString("title");
+                description = nukkad.getString("description");
+                subdescription = nukkad.getString("subtitle");
+                contact = nukkad.getString("contactname");
+                number = nukkad.getString("contactnumber");
+                email = nukkad.getString("contactemail");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             layout1.setBackgroundColor(getResources().getColor(R.color.blue_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.blue_transparent));
-            eventDescription.setText("Nukkad represents Street Theatre. It is a form of theatrical performance and presentation in outdoor public spaces without a specific paying audience. Street theatre is arguably the oldest form of theatre in existence: most mainstream entertainment mediums can be traced back to origins in street performing, including religious passion plays and many other forms. Nukkad makes an effort for upliftment of society by spreading awareness and propagating the morals and ideals that society is in need of. Besides being an art of acting and drama, the street theatre is all about changes one can create in the society. ");
-            eventTitle.setText("Nukkad");
-            eventShortDescription.setText("The street play competition");
+            eventDescription.setText(description);
+            eventTitle.setText(title);
+            eventShortDescription.setText(subdescription);
+            textContact.setText(contact);
+            textNumber.setText(number);
+            textEmail.setText(email);
             eventImage.setImageResource(R.drawable.nukkad);
 
         }
         if (mPosition==4) {
+            try {
+                JSONObject obj = new JSONObject(loadJSONFromAsset());
+                JSONObject arpeggio  = obj.getJSONObject("arpeggio");
+
+                title = arpeggio.getString("title");
+                description = arpeggio.getString("description");
+                subdescription = arpeggio.getString("subtitle");
+                contact = arpeggio.getString("contactname");
+                number = arpeggio.getString("contactnumber");
+                email = arpeggio.getString("contactemail");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             layout1.setBackgroundColor(getResources().getColor(R.color.pink_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.pink_transparent));
-            eventDescription.setText("B.O.B brings together rock lovers from all over the country for an electrifying experience, Ncourtesy some of the most talented amateur rock bands in the land. It is a live music competition joined by bands from all over the country. It is open to bands of all music genres. With a combination of adrenaline charged performances, the event is a hot favorite amongst youngsters.");
-            eventTitle.setText("Arpeggio");
-            eventShortDescription.setText("Battle of Bands");
+            eventDescription.setText(description);
+            eventTitle.setText(title);
+            eventShortDescription.setText(subdescription);
+            textContact.setText(contact);
+            textNumber.setText(number);
+            textEmail.setText(email);
             eventImage.setImageResource(R.drawable.arpeggio);
+
 
         }
         if (mPosition==5) {
+            try {
+                JSONObject obj = new JSONObject(loadJSONFromAsset());
+                JSONObject soundtrack  = obj.getJSONObject("soundtrack");
+
+                title = soundtrack.getString("title");
+                description = soundtrack.getString("description");
+                subdescription = soundtrack.getString("subtitle");
+                contact = soundtrack.getString("contactname");
+                number = soundtrack.getString("contactnumber");
+                email = soundtrack.getString("contactemail");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             layout1.setBackgroundColor(getResources().getColor(R.color.purple_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.purple_transparent));
-            eventDescription.setText("\"Music is a world within itself, with a language we all understand.\" — Stevie Wonder \n\nNo festival is complete without music. Soundtrack is the vocal music competition & it houses three categories:\n1. Indian Vocals (Solo)\n2. Western Vocals (Solo)\n3. Instrumentals (Solo) ");
-            eventTitle.setText("Soundtrack");
-            eventShortDescription.setText("The Music competition");
+            eventDescription.setText(description);
+            eventTitle.setText(title);
+            eventShortDescription.setText(subdescription);
+            textContact.setText(contact);
+            textNumber.setText(number);
+            textEmail.setText(email);
             eventImage.setImageResource(R.drawable.soundtrack);
 
+
         }
+
         if (mPosition==6) {
+            try {
+                JSONObject obj = new JSONObject(loadJSONFromAsset());
+                JSONObject switchthefunkup  = obj.getJSONObject("switchthefunkup");
+
+                title = switchthefunkup.getString("title");
+                description = switchthefunkup.getString("description");
+                subdescription = switchthefunkup.getString("subtitle");
+                contact = switchthefunkup.getString("contactname");
+                number = switchthefunkup.getString("contactnumber");
+                email = switchthefunkup.getString("contactemail");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             layout1.setBackgroundColor(getResources().getColor(R.color.green_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.green_transparent));
-            eventDescription.setText("Switch The Funk Up is Street Dance. It refers to refers to dance styles—regardless of country of origin—that evolved outside of dance studios in any available open space such as streets, dance parties, block parties, parks, school yards etc. There are five categories in STFU:\n1. One on One Popping Battle\n2. One on One Breaking Battle\n3. Two on Two All Styles Battle\n4. Crew on Crew All Styles Battle\n5. Group Street Dance Showdown ");
-            eventTitle.setText("Switch the funk up");
-            eventShortDescription.setText("The dance competition");
+            eventDescription.setText(description);
+            eventTitle.setText(title);
+            eventShortDescription.setText(subdescription);
+            textContact.setText(contact);
+            textNumber.setText(number);
+            textEmail.setText(email);
             eventImage.setImageResource(R.drawable.switchthefunkup);
 
-        }
-        if (mPosition==7) {
-            layout1.setBackgroundColor(getResources().getColor(R.color.red_transparent));
-            layout2.setBackgroundColor(getResources().getColor(R.color.red_transparent));
-            eventDescription.setText("Star Power- in its most tangible form. Bringing the Engifest to a spectacular end is Livewire. Famed personalities such as Mohit Chauhan, Hard Kaur, Harbhajan Mann, Surat Jagan, Judy D and Shibani Kashgap have graced the event, giving us an evening of star-studd splendour. It is the most antici-pated event of the fest, attracting huge crowds and addi g a generous splash of glamour. ");
-            eventTitle.setText("Livewire");
-            eventShortDescription.setText("The Star Night");
-            eventImage.setImageResource(R.drawable.livewire);
 
         }
+
+        if (mPosition==7) {
+            try {
+                JSONObject obj = new JSONObject(loadJSONFromAsset());
+                JSONObject livewire  = obj.getJSONObject("livewire");
+
+                title = livewire.getString("title");
+                description = livewire.getString("description");
+                subdescription = livewire.getString("subtitle");
+                contact = livewire.getString("contactname");
+                number = livewire.getString("contactnumber");
+                email = livewire.getString("contactemail");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            layout1.setBackgroundColor(getResources().getColor(R.color.red_transparent));
+            layout2.setBackgroundColor(getResources().getColor(R.color.red_transparent));
+            eventDescription.setText(description);
+            eventTitle.setText(title);
+            eventShortDescription.setText(subdescription);
+            textContact.setText(contact);
+            textNumber.setText(number);
+            textEmail.setText(email);
+            eventImage.setImageResource(R.drawable.livewire);
+
+
+        }
+
         if (mPosition==8) {
+            try {
+                JSONObject obj = new JSONObject(loadJSONFromAsset());
+                JSONObject paridhan  = obj.getJSONObject("paridhan");
+
+                title = paridhan.getString("title");
+                description = paridhan.getString("description");
+                subdescription = paridhan.getString("subtitle");
+                contact = paridhan.getString("contactname");
+                number = paridhan.getString("contactnumber");
+                email = paridhan.getString("contactemail");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             layout1.setBackgroundColor(getResources().getColor(R.color.pink_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.pink_transparent));
-            eventDescription.setText("The finest exposition showcasing the sartorial skills of budding designers across colleges, Pandhan creates new benchmarks and places the Delhi youth firmly in their rightful place as inhabitants of the fashion capital of India. The event continues to grow remarkably in stature, seeing ever-increasing participation and attendance, giving a tremendous platform for brand promotion. ");
-            eventTitle.setText("Paridhan");
-            eventShortDescription.setText("The Fashion Parade");
+            eventDescription.setText(description);
+            eventTitle.setText(title);
+            eventShortDescription.setText(subdescription);
+            textContact.setText(contact);
+            textNumber.setText(number);
+            textEmail.setText(email);
             eventImage.setImageResource(R.drawable.fashionp);
+
 
         }
 
         if (mPosition==9) {
+            try {
+                JSONObject obj = new JSONObject(loadJSONFromAsset());
+                JSONObject sahitya  = obj.getJSONObject("sahitya");
+
+                title = sahitya.getString("title");
+                description = sahitya.getString("description");
+                subdescription = sahitya.getString("subtitle");
+                contact = sahitya.getString("contactname");
+                number = sahitya.getString("contactnumber");
+                email = sahitya.getString("contactemail");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             layout1.setBackgroundColor(getResources().getColor(R.color.blue_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.blue_transparent));
-            eventDescription.setText("Words are a lens to focus one's mind... And this is what these competitions are all about! Parliamentary debate brings together strong debaters from all over the country for a very competitive experience. It provides a stage to showcase not only your speaking and debating skills but also time management and teamwork skills. Creative writing competitions let writers dance above the surface of the world and let their thoughts lift them into creativity that is not hampered by opinion. Mixed bag is a two-stage competition, with the prelims consisting of Word Games and Extempore and the final round being an extremely random buzzer round! interactive sessions with Brilliant minds like Pratyush Pushkar,Devapriya Roy and Ravinder Singh have been conducted in the past, and we will continue to conduct such events! We may surprise you with none other than the great Ruskin Bond and Chetan Bhagat! ");
-            eventTitle.setText("Sahitya");
-            eventShortDescription.setText("The literary competitions");
+            eventDescription.setText(description);
+            eventTitle.setText(title);
+            eventShortDescription.setText(subdescription);
+            textContact.setText(contact);
+            textNumber.setText(number);
+            textEmail.setText(email);
             eventImage.setImageResource(R.drawable.sahitya);
 
+
         }
-
-
 
 
 
         return v;
     }
+
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {

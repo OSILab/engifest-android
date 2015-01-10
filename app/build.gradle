@@ -28,4 +28,5 @@ dependencies {
     compile 'com.jpardogo.materialtabstrip:library:1.0.6'
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.google.android.gms:play-services:6.5.+'
+    compile 'com.github.castorflex.smoothprogressbar:library:1.0.0'
 }

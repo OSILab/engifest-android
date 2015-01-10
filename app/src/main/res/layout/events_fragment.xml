@@ -11,10 +11,12 @@
         android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/header_height"
             />
+
 
         <android.support.v7.widget.CardView
             android:layout_height="wrap_content"
@@ -69,7 +71,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom|center_horizontal"
                             android:scaleType="center"
-                            android:src="@drawable/photo1" />
+                             />
 
                     </FrameLayout>
 
@@ -171,7 +173,7 @@
                     android:layout_height="wrap_content"
                     android:text="Call"
                     android:id="@+id/textCall"
-                    android:textColor="#fea016"
+                    android:textColor="#FF4081"
                     android:padding="15dp"
                     android:textSize="20sp" />
                 <TextView
@@ -179,7 +181,7 @@
                     android:layout_height="wrap_content"
                     android:text="Send Email"
                     android:id="@+id/textSendEmail"
-                    android:textColor="#fea016"
+                    android:textColor="#FF4081"
                     android:padding="15dp"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -187,6 +189,23 @@
 
         </android.support.v7.widget.CardView>
 
+        
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/errorcloud"
+            android:src="@drawable/error_view_cloud"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingTop="10dp"
+            android:id="@+id/errortext"
+            android:text="No Internet Connection"
+            android:textSize="20sp"
+            android:paddingBottom="15dp"
+            android:textColor="#CC000000"/>
 
 
     </LinearLayout>
