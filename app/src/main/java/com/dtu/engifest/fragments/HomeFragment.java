@@ -13,6 +13,7 @@ import com.dtu.engifest.FeedbackActivity;
 import com.dtu.engifest.R;
 import com.dtu.engifest.about.AboutActivity;
 import com.dtu.engifest.events.EventsActivity;
+import com.dtu.engifest.gallery.GalleryActivity;
 import com.flaviofaria.kenburnsview.KenBurnsView;
 
 import java.util.Random;
@@ -89,7 +90,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 startActivity(k);
                 break;
             case R.id.btn_gallery:
-
+            Intent l =new Intent(getActivity(), GalleryActivity.class);
+                startActivity(l);
                 break;
             case R.id.btn_sponsors:
 

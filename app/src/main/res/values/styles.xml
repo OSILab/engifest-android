@@ -8,31 +8,22 @@
     <item name="colorPrimaryDark">@android:color/holo_blue_dark</item>
         <item name="windowActionBar">false</item>
 
-
+        
     <item name="colorAccent">#009688</item>
 
 </style>
 
-    <style name="AppThemeNoToolbar" parent="@style/Theme.AppCompat.Light">
+    <style name="AppThemeNoToolbar" parent="@style/Theme.AppCompat.Light.DarkActionBar">
 
         <item name="android:homeAsUpIndicator">@drawable/ic_back</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
         <item name="colorPrimary">@android:color/holo_blue_light</item>
-        <item name="actionBarStyle">@style/LightActionBar</item>
+
         <item name="colorPrimaryDark">@android:color/holo_blue_dark</item>
         <item name="colorAccent">#009688</item>
 
     </style>
-    <style name="LightActionBar" parent="@style/Widget.AppCompat.ActionBar.Solid">
 
-        <item name="titleTextStyle">@style/whiteTitle</item>
-
-    </style>
-    <style name="whiteTitle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
-
-       <item name="android:textColor">#ffffff</item>
-
-    </style>
 
 <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
 <item name="spinBars">true</item>
@@ -105,5 +96,7 @@
         <item name="spb_progressiveStart_activated">true</item>
         <item name="spb_generate_background_with_colors">false</item>
     </style>
+
+    <style name="ProgressBarStyle" parent="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
 
 </resources>

@@ -113,6 +113,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
         textEmail = (TextView) v.findViewById(R.id.textEmail);
         textNumber =(TextView) v.findViewById(R.id.textNumber);
         textSendEmail = (TextView) v.findViewById(R.id.textSendEmail);
+        
+
 
         textCall.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -52,6 +52,22 @@
             android:label="@string/app_name" >
 
         </activity>
+        <activity
+            android:name=".gallery.GalleryActivity"
+            android:theme="@style/AppThemeNoToolbar"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Gallery"
+            android:parentActivityName=".MainActivity">
+
+        </activity>
+        <activity
+            android:name=".gallery.DetailImage"
+            android:theme="@style/AppThemeNoToolbar"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="Gallery"
+            android:parentActivityName=".gallery.GalleryActivity">
+
+        </activity>
 
         <activity
             android:name=".about.AboutActivity"

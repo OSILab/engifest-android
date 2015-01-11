@@ -1,9 +1,17 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    android:orientation="vertical">
+
+
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scroll_view"
     android:orientation="vertical"
+    android:layout_marginBottom="48dp"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:orientation="vertical"
@@ -130,31 +138,34 @@
                 android:scrollbars="vertical" />
         </LinearLayout>
 
-        <!-- Submit button -->
-
-        <FrameLayout android:id="@+id/submit_feedback_button"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:background="#1976D2"
-
-
-            android:clickable="true"
-            android:focusable="true"
-           >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingRight="20dp"
-                android:drawableLeft="@drawable/ic_submit_feedback"
-                android:drawablePadding="8dp"
-                android:gravity="center_vertical"
-                android:layout_gravity="center"
-
-                android:textAllCaps="true"
-                android:textColor="#fff"
-                android:textSize="14sp"
-                android:text="Submit Feedback" />
-        </FrameLayout>
+       
     </LinearLayout>
 </ScrollView>
+    <!-- Submit button -->
+
+    <FrameLayout android:id="@+id/submit_feedback_button"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#1976D2"
+        android:layout_gravity="bottom"
+           android:layout_alignParentBottom="true"
+
+        android:clickable="true"
+        android:focusable="true"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="20dp"
+            android:drawableLeft="@drawable/ic_submit_feedback"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            android:layout_gravity="center"
+
+            android:textAllCaps="true"
+            android:textColor="#fff"
+            android:textSize="14sp"
+            android:text="Submit Feedback" />
+    </FrameLayout>
+</RelativeLayout>

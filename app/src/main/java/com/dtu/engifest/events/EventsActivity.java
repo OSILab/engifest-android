@@ -159,40 +159,49 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
         }
         protected void onPostExecute(String r) {
 
-            File cacheFile = new File(getFilesDir(), "events.json");
-
-            BufferedWriter bw = null;
-            try {
-                if (!cacheFile.exists()) {
-                    cacheFile.createNewFile();
-                }
-
-                FileWriter fw = new FileWriter(cacheFile.getAbsoluteFile());
-                bw = new BufferedWriter(fw);
-                
-                if (r!=null) {
-                    bw.write(r);
-                }
-
-                SmoothProgressBar progressBar = (SmoothProgressBar) findViewById(R.id.google_now);
-                progressBar.setVisibility(View.GONE);
+            
 
 
 
 
-            } catch (Exception e){
-                e.printStackTrace();
-                
-            } finally {
+                File cacheFile = new File(getFilesDir(), "events.json");
+
+                BufferedWriter bw = null;
+
+
                 try {
-                    bw.close();
+                    if (!cacheFile.exists()) {
+                        cacheFile.createNewFile();
+                    }
+
+                    FileWriter fw = new FileWriter(cacheFile.getAbsoluteFile());
+                    bw = new BufferedWriter(fw);
+
+
+                            bw.write(r);
+
+                   
+
+
+
+                    SmoothProgressBar progressBar = (SmoothProgressBar) findViewById(R.id.google_now);
+                    progressBar.setVisibility(View.GONE);
+
+
                 } catch (Exception e) {
                     e.printStackTrace();
 
+
+                } finally {
+                    try {
+                        bw.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+
+                    }
+
                 }
-
-            }
-
+            
         }
     }
     
