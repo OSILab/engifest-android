@@ -3,8 +3,13 @@ package com.dtu.engifest.gallery;
 /**
  * Created by naman on 11/01/15.
  */
-public final class Images {
+public final class Images  {
 
+
+
+
+    
+    
     public static final String[] IMAGES = new String[] {
 
             "http://apod.nasa.gov/apod/image/1209/shuttlelax_confer_960.jpg",
