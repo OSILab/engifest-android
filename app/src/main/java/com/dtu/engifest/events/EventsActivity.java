@@ -180,7 +180,7 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
 
                             bw.write(r);
 
-                   
+
 
 
 

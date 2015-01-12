@@ -27,7 +27,6 @@ public class MapsFragment extends Fragment {
 
 
         final View v = inflater.inflate(R.layout.fragment_maps, container, false);
-        getActivity().setTitle("Reach Us");
 
         mMap = ((SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map)).getMap();
 

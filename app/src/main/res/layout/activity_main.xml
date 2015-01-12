@@ -27,8 +27,68 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <!--DRAWER -->
+    <LinearLayout
+        android:id="@+id/drawer_view"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="start">
 
+        <!-- Header Start -->
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFfafafa" >
 
+            <ImageView
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/photo1" />
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_alignBottom="@+id/header"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="12dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/ic_header_logo" />
+
+            <TextView
+                android:id="@+id/myTextView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/logo"
+                android:layout_toRightOf="@+id/logo"
+                android:text="Engifest 2015"
+                android:textColor="#fffafafa"
+                android:textSize="17.0sp"
+                />
+
+            <TextView
+                android:id="@+id/myTextView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/myTextView1"
+                android:layout_marginTop="3dp"
+                android:layout_toRightOf="@+id/logo"
+                android:text="DTU"
+                android:textColor="#ffe5e5e5"
+                android:textSize="14.0sp"
+                />
+
+        </RelativeLayout>
+        
+        <!-- Header End -->
+        
     <ListView
         android:id="@+id/list_slidermenu"
         android:layout_width="300dp"
@@ -39,7 +99,7 @@
         android:dividerHeight="1dp"
         android:listSelector="@drawable/list_selector"
         android:background="@color/list_background"/>
-
+    </LinearLayout>
 </android.support.v4.widget.DrawerLayout>
 
 </RelativeLayout>

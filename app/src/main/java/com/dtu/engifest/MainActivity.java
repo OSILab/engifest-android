@@ -12,12 +12,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.dtu.engifest.about.AboutActivity;
@@ -33,6 +32,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends ActionBarActivity {
 	private DrawerLayout mDrawerLayout;
+    private LinearLayout mLiearLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
 	private CharSequence mDrawerTitle;
@@ -71,6 +71,7 @@ public class MainActivity extends ActionBarActivity {
                 .obtainTypedArray(R.array.nav_drawer_icons);
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mLiearLayout = (LinearLayout) findViewById(R.id.drawer_view);
         mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
 
 
@@ -94,10 +95,7 @@ public class MainActivity extends ActionBarActivity {
 
 
         mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
-        LayoutInflater inflater = getLayoutInflater();
-        final ViewGroup header = (ViewGroup) inflater.inflate(R.layout.header,
-                mDrawerList, false);
-        mDrawerList.addHeaderView(header,null,false);
+
 
 
         adapter = new NavDrawerListAdapter(getApplicationContext(),
@@ -128,7 +126,7 @@ public class MainActivity extends ActionBarActivity {
 
         if (savedInstanceState == null) {
 
-            displayView(1);
+            displayView(0);
         }
     }
 
@@ -138,7 +136,7 @@ public class MainActivity extends ActionBarActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, final int position,
                                 long id) {
-            mDrawerLayout.closeDrawer(mDrawerList);
+            mDrawerLayout.closeDrawer(mLiearLayout);
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -181,7 +179,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
 
-        boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
+
 
         return super.onPrepareOptionsMenu(menu);
     }
@@ -195,29 +193,23 @@ public class MainActivity extends ActionBarActivity {
                 fragment = new HomeFragment();
                 break;
             case 1:
-                fragment = new HomeFragment();
-                break;
-            case 2:
                 fragment = new ScheduleFragment();
                 break;
-            case 3:
+            case 2:
                 fragment = new MapsFragment();
                 break;
-            case 4:
+            case 3:
                 Intent intentAbout = new Intent(getApplication(),AboutActivity.class);
                 startActivity(intentAbout);
                 break;
-            case 5:
-
+            case 4:
                 Intent intentFeedback = new Intent(getApplication(),FeedbackActivity.class);
                 startActivity(intentFeedback);
                 break;
-            case 6:
-
-                break;
-            case 7:
+            case 5:
                 fragment = new HomeFragment();
                 break;
+
 
             default:
                 break;

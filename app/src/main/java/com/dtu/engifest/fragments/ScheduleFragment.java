@@ -32,7 +32,6 @@ public class ScheduleFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View v = inflater.inflate(R.layout.fragment_schedule_viewpager, container, false);
-        getActivity().setTitle("Schedule");
         mPagerSlidingTabStrip = (PagerSlidingTabStrip) v.findViewById(R.id.tabs);
         mViewPager = (ViewPager) v.findViewById(R.id.pager);
         mViewPager.setOffscreenPageLimit(4);

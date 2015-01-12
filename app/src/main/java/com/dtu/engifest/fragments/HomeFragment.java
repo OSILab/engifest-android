@@ -34,7 +34,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                              Bundle savedInstanceState) {
 
         final View v = inflater.inflate(R.layout.fragment_home, container, false);
-        getActivity().setTitle("Home");
         imageView =(KenBurnsView) v.findViewById(R.id.kenBurns);
         newsfeed = (Button) v.findViewById(R.id.btn_news_feed);
         events = (Button) v.findViewById(R.id.btn_events);
