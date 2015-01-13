@@ -89,7 +89,7 @@ public class MainActivity extends ActionBarActivity {
 
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
 
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
+
 
         navMenuIcons.recycle();
 
@@ -206,10 +206,6 @@ public class MainActivity extends ActionBarActivity {
                 Intent intentFeedback = new Intent(getApplication(),FeedbackActivity.class);
                 startActivity(intentFeedback);
                 break;
-            case 5:
-                fragment = new HomeFragment();
-                break;
-
 
             default:
                 break;
