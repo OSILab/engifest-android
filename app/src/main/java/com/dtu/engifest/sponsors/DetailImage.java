@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,12 +25,19 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class DetailImage extends ActionBarActivity {
+import java.util.ArrayList;
+
+
+public class DetailImage extends SponsorsActivity {
 
 
 
-    String[] imageUrls = Images.IMAGES;
+
+    
 
     DisplayImageOptions options;
 
@@ -40,9 +46,23 @@ public class DetailImage extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_sponsor_detail);
+
+        try {
+            JSONObject obj = new JSONObject(loadJSONFromAsset());
+            JSONArray images = obj.getJSONArray("images");
+
+            list = new ArrayList<String>();
+            for (int i = 0; i < images.length(); i++) {
+                list.add(images.getString(i));
+            }
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
         pager.setAdapter(new ImageAdapter());
-        pager.setCurrentItem(getIntent().getExtras().getInt(Images.Extra.IMAGE_POSITION, 0));
+        pager.setCurrentItem(getIntent().getExtras().getInt(SponsorsActivity.Extra.IMAGE_POSITION, 0));
         options = new DisplayImageOptions.Builder()
                 .showImageForEmptyUri(R.drawable.ic_empty)
                 .showImageOnFail(R.drawable.ic_error)
@@ -82,7 +102,7 @@ public class DetailImage extends ActionBarActivity {
 
 
     private class ImageAdapter extends PagerAdapter {
-
+        public  String imageUrls[]=list.toArray(new String[list.size()]);
         private LayoutInflater inflater;
 
         ImageAdapter() {

@@ -46,20 +46,26 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import fr.castorflex.android.smoothprogressbar.SmoothProgressBar;
 
 
-public class SponsorsActivity extends ActionBarActivity {
+public  class SponsorsActivity extends ActionBarActivity {
 
 
 
-    String[] imageUrls = Images.IMAGES;
+
     protected AbsListView listView;
     DisplayImageOptions options;
     private ReadFromJSON mReadFromJSON;
+    private ImageAdapter mImageAdapter;
+    public List<String> list;
+    private SmoothProgressBar progressBar;
 
 
+     
     public String loadJSONFromAsset() {
         String jsonString = "";
         try {
@@ -87,30 +93,40 @@ public class SponsorsActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_sponsor);
         listView = (GridView) findViewById(R.id.grid);
+        progressBar =(SmoothProgressBar) findViewById(R.id.google_now);
+        
+      //if network connected, initiate the async task,json will be updated in background
         if (NetworkUtil.isNetworkConnected(this)) {
             updateView();
         }
-        else {
-            try {
-                JSONObject obj = new JSONObject(loadJSONFromAsset());
-                JSONArray images  = obj.getJSONArray("images");
+      //if network not connected, load items from json stored in data
+      //we always tries to load json from data even if theres is network to ensure
+      //that the content is loaded instatnly
+         try {
+             JSONObject obj = new JSONObject(loadJSONFromAsset());
+             JSONArray images = obj.getJSONArray("images");
 
-                for (int i=0;i<images.length();i++){
-                    Images.IMAGES[i]=Images.IMAGES[i].replace(Images.IMAGES[i],images.getString(i));
+             list = new ArrayList<String>();
+             for (int i = 0; i < images.length(); i++) {
+                  list.add(images.getString(i));
                 }
 
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            listView.setAdapter(new ImageAdapter());
 
-            SmoothProgressBar progressBar = (SmoothProgressBar) findViewById(R.id.google_now_sponsors);
-            progressBar.setVisibility(View.GONE);
-            listView.setVisibility(View.VISIBLE);
-
+        //if user opens activity for first time without internet connection then list will be null and we dont want
+        // the adpter to set as it will throw nullpointer on list.size()
+        if (list==null){
+            progressBar.setVisibility(View.VISIBLE);
         }
-
+        else {
+            mImageAdapter = new ImageAdapter();
+            listView.setAdapter(mImageAdapter);
+        
+        }
+        
         listView.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -120,8 +136,8 @@ public class SponsorsActivity extends ActionBarActivity {
 
         options = new DisplayImageOptions.Builder()
                 .showImageOnLoading(R.drawable.ic_stub)
-                .showImageForEmptyUri(R.drawable.ic_empty)
-                .showImageOnFail(R.drawable.ic_error)
+                .showImageForEmptyUri(R.drawable.ic_launcher)
+                .showImageOnFail(R.drawable.error_view_cloud)
                 .cacheInMemory(true)
                 .cacheOnDisk(true)
                 .considerExifParams(true)
@@ -185,7 +201,7 @@ public class SponsorsActivity extends ActionBarActivity {
 
 
         protected void onPostExecute(String r) {
-            Log.d("[GET RESPONSE]", r);
+
 
             File cacheFile = new File(getFilesDir(), "sponsors.json");
 
@@ -215,30 +231,42 @@ public class SponsorsActivity extends ActionBarActivity {
                 }
 
             }
-
+            
+           
             try {
                 JSONObject obj = new JSONObject(loadJSONFromAsset());
                 JSONArray images  = obj.getJSONArray("images");
 
-                for (int i=0;i<images.length();i++){
-                    Images.IMAGES[i]=Images.IMAGES[i].replace(Images.IMAGES[i],images.getString(i));
+                list = new ArrayList<String>();
+                for(int i = 0; i < images.length(); i++){
+                    list.add(images.getString(i));
                 }
 
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            listView.setAdapter(new ImageAdapter());
-            GridView gridView = (GridView) findViewById(R.id.grid);
-            SmoothProgressBar progressBar = (SmoothProgressBar) findViewById(R.id.google_now_sponsors);
+
+          //adapter will be null if list==null, so we set the adpter in that case
+          if (mImageAdapter==null){
+              mImageAdapter = new ImageAdapter();
+              listView.setAdapter(mImageAdapter);
+          }
+           //notifies the adapter that data has changed and to update the views
+            mImageAdapter.notifyDataSetChanged();
+            
             progressBar.setVisibility(View.GONE);
-            gridView.setVisibility(View.VISIBLE);
+
+            
 
 
         }
     }
     public class ImageAdapter extends BaseAdapter {
 
+
+
+        public  String imageUrls[]=list.toArray(new String[list.size()]);
         private LayoutInflater inflater;
 
         ImageAdapter() {
@@ -304,11 +332,14 @@ public class SponsorsActivity extends ActionBarActivity {
     }
     protected void startImagePagerActivity(int position) {
         Intent intent = new Intent(this, DetailImage.class);
-        intent.putExtra(Images.Extra.IMAGE_POSITION, position);
+        intent.putExtra(Extra.IMAGE_POSITION, position);
         startActivity(intent);
     }
     static class ViewHolder {
         ImageView imageView;
         ProgressBar progressBar;
+    }
+    public static class Extra {
+        public static final String IMAGE_POSITION = "com.nostra13.example.universalimageloader.IMAGE_POSITION";
     }
 }
