@@ -4,7 +4,9 @@ import android.graphics.Color;
 import android.os.Parcel;
 import android.text.TextPaint;
 import android.text.style.ForegroundColorSpan;
-
+/**
+ * Created by naman on 14/12/14.
+ */
 public class AlphaForegroundColorSpan extends ForegroundColorSpan {
 
     private float mAlpha;

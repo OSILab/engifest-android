@@ -2,7 +2,9 @@ package com.dtu.engifest.events;
 
 
 import android.widget.ScrollView;
-
+/**
+ * Created by naman on 14/12/14.
+ */
 public interface ScrollTabHolder {
 
 	void adjustScroll(int scrollHeight, int headerTranslationY);

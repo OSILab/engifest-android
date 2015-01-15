@@ -6,23 +6,23 @@
 
 
     <fr.castorflex.android.smoothprogressbar.SmoothProgressBar
-        android:id="@+id/google_now_gallery"
+        android:id="@+id/google_now_sponsors"
         android:layout_gravity="top"
         android:layout_width="match_parent"
         android:layout_marginTop="2dp"
         android:layout_height="4dp"
         style="@style/GNowProgressBar"
         android:indeterminate="true"/>
-    
-<GridView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/grid"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:horizontalSpacing="4dip"
-    android:numColumns="3"
-    android:stretchMode="columnWidth"
-    android:verticalSpacing="4dip"
-    android:visibility="gone"
-    android:padding="4dip" />
+
+    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:horizontalSpacing="4dip"
+        android:numColumns="3"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="4dip"
+        android:visibility="gone"
+        android:padding="4dip" />
 </RelativeLayout>

@@ -13,7 +13,8 @@ import com.dtu.engifest.FeedbackActivity;
 import com.dtu.engifest.R;
 import com.dtu.engifest.about.AboutActivity;
 import com.dtu.engifest.events.EventsActivity;
-import com.dtu.engifest.gallery.GalleryActivity;
+import com.dtu.engifest.newsfeed.NewsFeedActivity;
+import com.dtu.engifest.sponsors.SponsorsActivity;
 import com.flaviofaria.kenburnsview.KenBurnsView;
 
 import java.util.Random;
@@ -78,7 +79,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         // TODO Auto-generated method stub
         switch (v.getId()) {
             case R.id.btn_news_feed:
-
+                Intent o =new Intent(getActivity(), NewsFeedActivity.class);
+                startActivity(o);
                 break;
             case R.id.btn_events:
                 Intent j =new Intent(getActivity(), EventsActivity.class);
@@ -89,11 +91,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 startActivity(k);
                 break;
             case R.id.btn_gallery:
-            Intent l =new Intent(getActivity(), GalleryActivity.class);
-                startActivity(l);
+
                 break;
             case R.id.btn_sponsors:
-
+                Intent l =new Intent(getActivity(), SponsorsActivity.class);
+                startActivity(l);
                 break;
             case R.id.btn_contactus:
                 Intent n =new Intent(getActivity(), FeedbackActivity.class);

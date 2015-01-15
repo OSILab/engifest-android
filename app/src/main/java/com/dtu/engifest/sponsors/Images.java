@@ -1,17 +1,13 @@
-package com.dtu.engifest.gallery;
+package com.dtu.engifest.sponsors;
 
 /**
  * Created by naman on 11/01/15.
  */
-public final class Images  {
+public final class Images {
 
-
-
-
-    
-    
     public static final String[] IMAGES = new String[] {
 
+            //random images , all links will be replaced with links fetched from json
             "http://apod.nasa.gov/apod/image/1209/shuttlelax_confer_960.jpg",
             "https://lh4.googleusercontent.com/--dq8niRp7W4/URquVgmXvgI/AAAAAAAAAbs/-gnuLQfNnBA/s1024/A%252520Song%252520of%252520Ice%252520and%252520Fire.jpg",
             "https://lh5.googleusercontent.com/-7qZeDtRKFKc/URquWZT1gOI/AAAAAAAAAbs/hqWgteyNXsg/s1024/Another%252520Rockaway%252520Sunset.jpg",

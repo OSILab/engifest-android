@@ -46,6 +46,10 @@ import java.util.Random;
 
 import fr.castorflex.android.smoothprogressbar.SmoothProgressBar;
 
+/**
+ * Created by naman on 14/12/14.
+ */
+
 public class EventsActivity extends ActionBarActivity implements ScrollTabHolder, ViewPager.OnPageChangeListener {
 
     private static AccelerateDecelerateInterpolator sSmoothInterpolator = new AccelerateDecelerateInterpolator();
@@ -159,9 +163,6 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
         }
         protected void onPostExecute(String r) {
 
-            
-
-
 
 
                 File cacheFile = new File(getFilesDir(), "events.json");
@@ -179,6 +180,8 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
 
 
                             bw.write(r);
+
+
 
 
 
@@ -328,6 +331,7 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
             }
             return fragment;
         }
+
 
         public SparseArrayCompat<ScrollTabHolder> getScrollTabHolders() {
             return mScrollTabHolders;

@@ -1,4 +1,4 @@
-package com.dtu.engifest.gallery;
+package com.dtu.engifest.sponsors;
 
 /**
  * Created by naman on 11/01/15.
@@ -39,7 +39,7 @@ public class DetailImage extends ActionBarActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setContentView(R.layout.activity_gallery_detail);
+        setContentView(R.layout.activity_sponsor_detail);
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
         pager.setAdapter(new ImageAdapter());
         pager.setCurrentItem(getIntent().getExtras().getInt(Images.Extra.IMAGE_POSITION, 0));

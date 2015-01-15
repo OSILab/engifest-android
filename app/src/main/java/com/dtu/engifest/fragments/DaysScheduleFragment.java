@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 
 import com.dtu.engifest.R;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 /**
  * Created by naman on 17/12/14.
  */
@@ -22,6 +25,30 @@ public class DaysScheduleFragment extends Fragment {
     private CardView card3;
 
 
+    public String loadJSONFromAsset() {
+                String json = null;
+             try {
+
+                              InputStream is = getActivity().getAssets().open("schedule.json");
+
+                               int size = is.available();
+
+                               byte[] buffer = new byte[size];
+
+                               is.read(buffer);
+
+                                is.close();
+
+                                json = new String(buffer, "UTF-8");
+
+
+                                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                        return null;
+                    }
+               return json;
+
+                    }
 
 
     @Override

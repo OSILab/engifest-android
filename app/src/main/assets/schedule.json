@@ -1,0 +1,72 @@
+{
+
+"day1":
+[
+
+        {
+            "event": "Anusthaan",
+            "location": "Classical and Folk dance competition",
+            "time": "Dance in"
+
+        },
+
+            {
+               "event": "Anusthaan",
+                           "location": "Classical and Folk dance competition",
+                           "time": "Dance in"
+            }
+
+
+],
+"day2":
+[
+
+
+        {
+           "event": "Anusthaan",
+                       "location": "Classical and Folk dance competition",
+                       "time": "Dance in"
+        },
+
+            {
+                "event": "Anusthaan",
+                            "location": "Classical and Folk dance competition",
+                            "time": "Dance in"
+            }
+
+],
+"day3":
+[
+
+
+        {"event": "Anusthaan",
+                     "location": "Classical and Folk dance competition",
+                     "time": "Dance in"
+        },
+
+            {
+                "event": "Anusthaan",
+                            "location": "Classical and Folk dance competition",
+                            "time": "Dance in"
+            }
+
+],
+"day4":
+[
+
+
+        {
+           "event": "Anusthaan",
+                       "location": "Classical and Folk dance competition",
+                       "time": "Dance in"
+        },
+
+            {
+               "event": "Anusthaan",
+                           "location": "Classical and Folk dance competition",
+                           "time": "Dance in"
+            }
+
+]
+
+}

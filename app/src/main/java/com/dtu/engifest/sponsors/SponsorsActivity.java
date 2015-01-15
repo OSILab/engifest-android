@@ -1,4 +1,4 @@
-package com.dtu.engifest.gallery;
+package com.dtu.engifest.sponsors;
 
 /**
  * Created by naman on 11/01/15.
@@ -50,7 +50,7 @@ import java.io.IOException;
 import fr.castorflex.android.smoothprogressbar.SmoothProgressBar;
 
 
-public class GalleryActivity extends ActionBarActivity {
+public class SponsorsActivity extends ActionBarActivity {
 
 
 
@@ -64,7 +64,7 @@ public class GalleryActivity extends ActionBarActivity {
         String jsonString = "";
         try {
             String currentLine;
-            File cacheFile = new File(getApplicationContext().getFilesDir(), "images.json");
+            File cacheFile = new File(getApplicationContext().getFilesDir(), "sponsors.json");
 
             BufferedReader br = new BufferedReader(new FileReader(cacheFile));
             while ((currentLine = br.readLine()) != null) {
@@ -85,7 +85,7 @@ public class GalleryActivity extends ActionBarActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setContentView(R.layout.activity_gallery);
+        setContentView(R.layout.activity_sponsor);
         listView = (GridView) findViewById(R.id.grid);
         if (NetworkUtil.isNetworkConnected(this)) {
             updateView();
@@ -105,7 +105,7 @@ public class GalleryActivity extends ActionBarActivity {
             }
             listView.setAdapter(new ImageAdapter());
 
-            SmoothProgressBar progressBar = (SmoothProgressBar) findViewById(R.id.google_now_gallery);
+            SmoothProgressBar progressBar = (SmoothProgressBar) findViewById(R.id.google_now_sponsors);
             progressBar.setVisibility(View.GONE);
             listView.setVisibility(View.VISIBLE);
 
@@ -166,11 +166,11 @@ public class GalleryActivity extends ActionBarActivity {
         @Override
         protected String doInBackground(Void... v) {
 
-            
+
 
             try {
                 HttpClient httpclient = new DefaultHttpClient();
-                HttpResponse response = httpclient.execute(new HttpGet("http://engifesttest.comlu.com/gallery"));
+                HttpResponse response = httpclient.execute(new HttpGet("http://engifesttest.comlu.com/sponsors"));
                 HttpEntity entity = response.getEntity();
                 String result = EntityUtils.toString(entity);
                 return result;
@@ -187,7 +187,7 @@ public class GalleryActivity extends ActionBarActivity {
         protected void onPostExecute(String r) {
             Log.d("[GET RESPONSE]", r);
 
-            File cacheFile = new File(getFilesDir(), "images.json");
+            File cacheFile = new File(getFilesDir(), "sponsors.json");
 
             BufferedWriter bw = null;
 
@@ -215,7 +215,7 @@ public class GalleryActivity extends ActionBarActivity {
                 }
 
             }
-            
+
             try {
                 JSONObject obj = new JSONObject(loadJSONFromAsset());
                 JSONArray images  = obj.getJSONArray("images");
@@ -228,11 +228,11 @@ public class GalleryActivity extends ActionBarActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-                listView.setAdapter(new ImageAdapter());
-                GridView gridView = (GridView) findViewById(R.id.grid);
-                SmoothProgressBar progressBar = (SmoothProgressBar) findViewById(R.id.google_now_gallery);
-                progressBar.setVisibility(View.GONE);
-                gridView.setVisibility(View.VISIBLE);
+            listView.setAdapter(new ImageAdapter());
+            GridView gridView = (GridView) findViewById(R.id.grid);
+            SmoothProgressBar progressBar = (SmoothProgressBar) findViewById(R.id.google_now_sponsors);
+            progressBar.setVisibility(View.GONE);
+            gridView.setVisibility(View.VISIBLE);
 
 
         }

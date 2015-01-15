@@ -27,6 +27,10 @@ import java.io.IOException;
 
 import fr.castorflex.android.smoothprogressbar.SmoothProgressBar;
 
+/**
+ * Created by naman on 14/12/14.
+ */
+
 public class EventsFragment extends ScrollTabHolderFragment implements NotifyingScrollView.OnScrollChangedListener {
 
     private static final String ARG_POSITION = "position";
