@@ -5,22 +5,36 @@ package com.dtu.engifest.fragments;
  */
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
-import com.astuetz.PagerSlidingTabStrip;
+import com.android.volley.Cache;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.dtu.engifest.AppController;
 import com.dtu.engifest.R;
+import com.dtu.engifest.schedule.ScheduleAdapter;
+import com.dtu.engifest.schedule.ScheduleItem;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ScheduleFragment extends Fragment{
 
-    private PagerSlidingTabStrip mPagerSlidingTabStrip;
-    private ViewPager mViewPager;
-    private PagerAdapter mPagerAdapter;
+    private ListView listView;
+    private ScheduleAdapter listAdapter;
+    private List<ScheduleItem> feedItems;
+    private String URL_FEED = "http://engifesttest.comlu.com/schedule";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,66 +45,84 @@ public class ScheduleFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View v = inflater.inflate(R.layout.fragment_schedule_viewpager, container, false);
-        mPagerSlidingTabStrip = (PagerSlidingTabStrip) v.findViewById(R.id.tabs);
-        mViewPager = (ViewPager) v.findViewById(R.id.pager);
-        mViewPager.setOffscreenPageLimit(4);
-        mPagerAdapter = new PagerAdapter(getChildFragmentManager());
-        mViewPager.setAdapter(mPagerAdapter);
-        mPagerSlidingTabStrip.setViewPager(mViewPager);
-        mPagerSlidingTabStrip.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int i, float v, int i2) {
+        final View v = inflater.inflate(R.layout.fragment_schedule, container, false);
 
+        listView = (ListView) v.findViewById(R.id.list);
+
+        feedItems = new ArrayList<ScheduleItem>();
+
+        listAdapter = new ScheduleAdapter(getActivity(), feedItems);
+        listView.setAdapter(listAdapter);
+
+
+        Cache cache = AppController.getInstance().getRequestQueue().getCache();
+        Cache.Entry entry = cache.get(URL_FEED);
+        if (entry != null) {
+            // fetch the data from cache
+            try {
+                String data = new String(entry.data, "UTF-8");
+                try {
+                    parseJsonFeed(new JSONObject(data));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
             }
 
-            @Override
-            public void onPageSelected(int i) {
+        } else {
 
-            }
+            JsonObjectRequest jsonReq = new JsonObjectRequest(Request.Method.GET,
+                    URL_FEED, null, new Response.Listener<JSONObject>() {
 
-            @Override
-            public void onPageScrollStateChanged(int i) {
+                @Override
+                public void onResponse(JSONObject response) {
 
-            }
-        });
+                    if (response != null) {
+                        parseJsonFeed(response);
+                    }
+                }
+            }, new Response.ErrorListener() {
+
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            });
+
+
+            AppController.getInstance().addToRequestQueue(jsonReq);
+        }
 return v;
 
     }
 
+    private void parseJsonFeed(JSONObject response) {
+        try {
+            JSONArray feedArray = response.getJSONArray("schedule");
+
+            for (int i = 0; i < feedArray.length(); i++) {
+                JSONObject feedObj = (JSONObject) feedArray.get(i);
+
+                ScheduleItem item = new ScheduleItem();
+                item.setId(feedObj.getInt("id"));
+                item.setName(feedObj.getString("name"));
+                item.setLocation(feedObj.getString("location"));
+                item.setDate(feedObj.getString("date"));
+                item.setTime(feedObj.getString("time"));
+
+                feedItems.add(item);
+            }
+
+
+            listAdapter.notifyDataSetChanged();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
     }
-    public class PagerAdapter extends FragmentPagerAdapter {
 
-
-        private final String[] TITLES = { "Day 1", "Day 2", "Day 3", "Day 4"};
-
-        public PagerAdapter(FragmentManager fm) {
-            super(fm);
-
-        }
-
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return TITLES[position];
-        }
-
-        @Override
-        public int getCount() {
-            return TITLES.length;
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            Fragment fragment =new DaysScheduleFragment();
-            Bundle b = new Bundle();
-            b.putInt(DaysScheduleFragment.ARG_POSITION, position);
-            fragment.setArguments(b);
-            return fragment;
-        }
-
-    }
 }
