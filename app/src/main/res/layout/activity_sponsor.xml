@@ -11,7 +11,7 @@
         android:layout_marginTop="2dp"
         android:layout_height="4dp"
         style="@style/GNowProgressBar"
-        android:visibility="gone"
+
         android:indeterminate="true"/>
     <GridView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/grid"

@@ -25,19 +25,9 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-
 
 public class DetailImage extends SponsorsActivity {
 
-
-
-
-    
 
     DisplayImageOptions options;
 
@@ -47,24 +37,11 @@ public class DetailImage extends SponsorsActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_sponsor_detail);
 
-        try {
-            JSONObject obj = new JSONObject(loadJSONFromAsset());
-            JSONArray images = obj.getJSONArray("images");
-
-            list = new ArrayList<String>();
-            for (int i = 0; i < images.length(); i++) {
-                list.add(images.getString(i));
-            }
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
         ViewPager pager = (ViewPager) findViewById(R.id.pager);
         pager.setAdapter(new ImageAdapter());
         pager.setCurrentItem(getIntent().getExtras().getInt(SponsorsActivity.Extra.IMAGE_POSITION, 0));
         options = new DisplayImageOptions.Builder()
-                .showImageForEmptyUri(R.drawable.ic_empty)
+                .showImageForEmptyUri(R.drawable.ic_launcher)
                 .showImageOnFail(R.drawable.ic_error)
                 .resetViewBeforeLoading(true)
                 .cacheOnDisk(true)
@@ -102,7 +79,7 @@ public class DetailImage extends SponsorsActivity {
 
 
     private class ImageAdapter extends PagerAdapter {
-        public  String imageUrls[]=list.toArray(new String[list.size()]);
+
         private LayoutInflater inflater;
 
         ImageAdapter() {

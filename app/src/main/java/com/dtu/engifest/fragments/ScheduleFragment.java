@@ -34,7 +34,7 @@ public class ScheduleFragment extends Fragment{
     private ListView listView;
     private ScheduleAdapter listAdapter;
     private List<ScheduleItem> feedItems;
-    private String URL_FEED = "http://engifesttest.comlu.com/schedule";
+    private String URL_SCHEDULE = "http://engifesttest.comlu.com/schedule";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,7 +56,7 @@ public class ScheduleFragment extends Fragment{
 
 
         Cache cache = AppController.getInstance().getRequestQueue().getCache();
-        Cache.Entry entry = cache.get(URL_FEED);
+        Cache.Entry entry = cache.get(URL_SCHEDULE);
         if (entry != null) {
             // fetch the data from cache
             try {
@@ -73,7 +73,7 @@ public class ScheduleFragment extends Fragment{
         } else {
 
             JsonObjectRequest jsonReq = new JsonObjectRequest(Request.Method.GET,
-                    URL_FEED, null, new Response.Listener<JSONObject>() {
+                    URL_SCHEDULE, null, new Response.Listener<JSONObject>() {
 
                 @Override
                 public void onResponse(JSONObject response) {
