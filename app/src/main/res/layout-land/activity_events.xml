@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/photo1"
-          />
+            />
 
         <ImageView
             android:id="@+id/header_logo"
@@ -35,10 +35,18 @@
             android:layout_height="48dip"
             android:layout_gravity="bottom"
             android:textColor="#ffffff"
-
             app:pstsIndicatorColor="#ffffff"
-
+            app:pstsDividerColor="@android:color/transparent"
             android:background="@android:color/transparent" />
+        <fr.castorflex.android.smoothprogressbar.SmoothProgressBar
+            android:id="@+id/google_now"
+            android:layout_gravity="top"
+            android:layout_width="match_parent"
+            android:layout_marginTop="2dp"
+            android:layout_height="4dp"
+            style="@style/GNowProgressBar"
+            android:indeterminate="true"/>
+
     </FrameLayout>
 
     <android.support.v7.widget.Toolbar
@@ -66,4 +74,6 @@
     </android.support.v7.widget.Toolbar>
 
 </FrameLayout>
+
+
 
