@@ -19,6 +19,7 @@ import com.dtu.engifest.AppController;
 import com.dtu.engifest.R;
 import com.dtu.engifest.schedule.ScheduleAdapter;
 import com.dtu.engifest.schedule.ScheduleItem;
+import com.dtu.engifest.util.NetworkUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,12 +29,15 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.castorflex.android.smoothprogressbar.SmoothProgressBar;
+
 
 public class ScheduleFragment extends Fragment{
 
     private ListView listView;
     private ScheduleAdapter listAdapter;
-    private List<ScheduleItem> feedItems;
+    private List<ScheduleItem> feedItems,updatedFeedItems;
+    private SmoothProgressBar progressBar;
     private String URL_SCHEDULE = "http://engifesttest.comlu.com/schedule";
 
     @Override
@@ -48,9 +52,9 @@ public class ScheduleFragment extends Fragment{
         final View v = inflater.inflate(R.layout.fragment_schedule, container, false);
 
         listView = (ListView) v.findViewById(R.id.list);
-
+        progressBar=(SmoothProgressBar) v.findViewById(R.id.google_now);
         feedItems = new ArrayList<ScheduleItem>();
-
+        updatedFeedItems= new ArrayList<ScheduleItem>();
         listAdapter = new ScheduleAdapter(getActivity(), feedItems);
         listView.setAdapter(listAdapter);
 
@@ -70,7 +74,7 @@ public class ScheduleFragment extends Fragment{
                 e.printStackTrace();
             }
 
-        } else {
+        } if (NetworkUtil.isNetworkConnected(getActivity())){
 
             JsonObjectRequest jsonReq = new JsonObjectRequest(Request.Method.GET,
                     URL_SCHEDULE, null, new Response.Listener<JSONObject>() {
@@ -79,7 +83,7 @@ public class ScheduleFragment extends Fragment{
                 public void onResponse(JSONObject response) {
 
                     if (response != null) {
-                        parseJsonFeed(response);
+                        updateJsonFeed(response);
                     }
                 }
             }, new Response.ErrorListener() {
@@ -114,7 +118,32 @@ return v;
                 feedItems.add(item);
             }
 
+            progressBar.setVisibility(View.GONE);
+            listAdapter.notifyDataSetChanged();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    private void updateJsonFeed(JSONObject response) {
+        try {
+            JSONArray feedArray = response.getJSONArray("schedule");
 
+            for (int i = 0; i < feedArray.length(); i++) {
+                JSONObject feedObj = (JSONObject) feedArray.get(i);
+
+                ScheduleItem item = new ScheduleItem();
+                item.setId(feedObj.getInt("id"));
+                item.setName(feedObj.getString("name"));
+                item.setLocation(feedObj.getString("location"));
+                item.setDate(feedObj.getString("date"));
+                item.setTime(feedObj.getString("time"));
+
+                updatedFeedItems.add(item);
+            }
+
+            progressBar.setVisibility(View.GONE);
+            feedItems.clear();
+            feedItems.addAll(updatedFeedItems);
             listAdapter.notifyDataSetChanged();
         } catch (JSONException e) {
             e.printStackTrace();

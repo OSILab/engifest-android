@@ -27,6 +27,7 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.dtu.engifest.AppController;
 import com.dtu.engifest.R;
+import com.dtu.engifest.util.NetworkUtil;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
@@ -49,7 +50,7 @@ public  class SponsorsActivity extends ActionBarActivity {
     protected AbsListView listView;
     DisplayImageOptions options;
     private ImageAdapter mImageAdapter;
-    public String imageUrls[];
+    public String imageUrls[],updatedImageUrls[];
     private SmoothProgressBar progressBar;
     private String URL_SPONSORS = "http://engifesttest.comlu.com/sponsors";
 
@@ -62,6 +63,7 @@ public  class SponsorsActivity extends ActionBarActivity {
         setContentView(R.layout.activity_sponsor);
         listView = (GridView) findViewById(R.id.grid);
         progressBar =(SmoothProgressBar) findViewById(R.id.google_now);
+
 
         Cache cache = AppController.getInstance().getRequestQueue().getCache();
         Cache.Entry entry = cache.get(URL_SPONSORS);
@@ -78,7 +80,7 @@ public  class SponsorsActivity extends ActionBarActivity {
                 e.printStackTrace();
             }
 
-        } else {
+        } if (NetworkUtil.isNetworkConnected(this)){
 
             JsonObjectRequest jsonReq = new JsonObjectRequest(Request.Method.GET,
                     URL_SPONSORS, null, new Response.Listener<JSONObject>() {
@@ -87,7 +89,7 @@ public  class SponsorsActivity extends ActionBarActivity {
                 public void onResponse(JSONObject response) {
                     VolleyLog.d(TAG, "Response: " + response.toString());
                     if (response != null) {
-                        parseJsonFeed(response);
+                        updateJsonFeed(response);
                     }
                 }
             }, new Response.ErrorListener() {
@@ -135,6 +137,29 @@ public  class SponsorsActivity extends ActionBarActivity {
             mImageAdapter = new ImageAdapter();
             listView.setAdapter(mImageAdapter);
             progressBar.setVisibility(View.GONE);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    private void updateJsonFeed(JSONObject response) {
+        try {
+            JSONArray feedArray = response.getJSONArray("images");
+            updatedImageUrls = new String[feedArray.length()];
+            for (int i = 0; i < feedArray.length(); i++) {
+
+                updatedImageUrls[i]=feedArray.getString(i);
+
+            }
+            imageUrls=updatedImageUrls;
+            progressBar.setVisibility(View.GONE);
+
+            //for first time when cache will be null(entry==null),adapter will be null so
+            //we set the adapter here in that case
+            if (mImageAdapter==null){
+                mImageAdapter = new ImageAdapter();
+                listView.setAdapter(mImageAdapter);
+            }
+            mImageAdapter.notifyDataSetChanged();
         } catch (JSONException e) {
             e.printStackTrace();
         }
