@@ -9,7 +9,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.text.Html;
 import android.text.TextUtils;
-import android.text.format.DateUtils;
 import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -80,10 +79,7 @@ public class FeedListAdapter extends BaseAdapter {
         name.setText(item.getName());
 
 
-        CharSequence timeAgo = DateUtils.getRelativeTimeSpanString(
-                Long.parseLong(item.getTimeStamp()),
-                System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS);
-        timestamp.setText(timeAgo);
+        timestamp.setText(item.getTimeStamp());
 
 
         if (!TextUtils.isEmpty(item.getStatus())) {

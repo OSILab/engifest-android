@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
+import android.view.View;
 import android.widget.ListView;
 
 import com.android.volley.Cache;
@@ -21,6 +22,7 @@ import com.dtu.engifest.AppController;
 import com.dtu.engifest.R;
 import com.dtu.engifest.newsfeed.adapter.FeedListAdapter;
 import com.dtu.engifest.newsfeed.data.FeedItem;
+import com.dtu.engifest.util.NetworkUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,11 +32,15 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.castorflex.android.smoothprogressbar.SmoothProgressBar;
+
 public class NewsFeedActivity extends ActionBarActivity {
     private static final String TAG = NewsFeedActivity.class.getSimpleName();
     private ListView listView;
     private FeedListAdapter listAdapter;
-    private List<FeedItem> feedItems;
+    private SmoothProgressBar progressBar;
+    private List<FeedItem> feedItems,updatedFeedItems;
+
     private String URL_FEED = "http://engifesttest.comlu.com/news";
 
     @SuppressLint("NewApi")
@@ -44,9 +50,9 @@ public class NewsFeedActivity extends ActionBarActivity {
         setContentView(R.layout.activity_newsfeed);
 
         listView = (ListView) findViewById(R.id.list);
-
+        progressBar = (SmoothProgressBar) findViewById(R.id.google_now);
         feedItems = new ArrayList<FeedItem>();
-
+        updatedFeedItems = new ArrayList<FeedItem>();
         listAdapter = new FeedListAdapter(this, feedItems);
         listView.setAdapter(listAdapter);
 
@@ -66,7 +72,8 @@ public class NewsFeedActivity extends ActionBarActivity {
                 e.printStackTrace();
             }
 
-        } else {
+        } if (NetworkUtil.isNetworkConnected(this)){
+            progressBar.setVisibility(View.VISIBLE);
 
             JsonObjectRequest jsonReq = new JsonObjectRequest(Method.GET,
                     URL_FEED, null, new Response.Listener<JSONObject>() {
@@ -75,7 +82,7 @@ public class NewsFeedActivity extends ActionBarActivity {
                 public void onResponse(JSONObject response) {
                     VolleyLog.d(TAG, "Response: " + response.toString());
                     if (response != null) {
-                        parseJsonFeed(response);
+                        updateJsonFeed(response);
                     }
                 }
             }, new Response.ErrorListener() {
@@ -120,8 +127,46 @@ public class NewsFeedActivity extends ActionBarActivity {
                 feedItems.add(item);
             }
 
-
+            progressBar.setVisibility(View.GONE);
             listAdapter.notifyDataSetChanged();
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void updateJsonFeed(JSONObject response) {
+        try {
+            JSONArray feedArray = response.getJSONArray("feed");
+
+            for (int i = 0; i < feedArray.length(); i++) {
+                JSONObject feedObj = (JSONObject) feedArray.get(i);
+
+                FeedItem item = new FeedItem();
+                item.setId(feedObj.getInt("id"));
+                item.setName(feedObj.getString("name"));
+
+
+                String image = feedObj.isNull("image") ? null : feedObj
+                        .getString("image");
+                item.setImge(image);
+                item.setStatus(feedObj.getString("status"));
+                item.setProfilePic(feedObj.getString("profilePic"));
+                item.setTimeStamp(feedObj.getString("timeStamp"));
+
+
+                String feedUrl = feedObj.isNull("url") ? null : feedObj
+                        .getString("url");
+                item.setUrl(feedUrl);
+
+                updatedFeedItems.add(item);
+            }
+
+            progressBar.setVisibility(View.GONE);
+            feedItems.clear();
+            feedItems.addAll(updatedFeedItems);
+            listAdapter.notifyDataSetChanged();
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
