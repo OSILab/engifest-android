@@ -14,18 +14,15 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.android.volley.Cache;
+import com.dtu.engifest.AppController;
 import com.dtu.engifest.R;
 import com.dtu.engifest.util.NetworkUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-
-import fr.castorflex.android.smoothprogressbar.SmoothProgressBar;
+import java.io.UnsupportedEncodingException;
 
 /**
  * Created by naman on 14/12/14.
@@ -55,33 +52,31 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
     LinearLayout layout1;
     LinearLayout layout2;
     View v;
-    SmoothProgressBar progressBar;
-    private static String url = "http://engifesttest.comlu.com/events";
+
+
 
     ImageView eventImage;
     private int mPosition;
     private CardView cardView;
-
+    private String URL_EVENTS = "http://engifesttest.comlu.com/events";
 
     public String loadJSONFromAsset() {
 
-        String jsonString = "";
-        try {
-            String currentLine;
-            File cacheFile = new File(getActivity().getFilesDir(), "events.json");
+        String data = "";
+        Cache cache = AppController.getInstance().getRequestQueue().getCache();
+        Cache.Entry entry = cache.get(URL_EVENTS);
+        if (entry != null) {
+            // fetch the data from cache
+            try {
+                 data = new String(entry.data, "UTF-8");
 
-            BufferedReader br = new BufferedReader(new FileReader(cacheFile));
-            while ((currentLine = br.readLine()) != null) {
-                jsonString += currentLine + '\n';
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
             }
-            br.close();
-            
-        } catch (IOException e) {
-            e.printStackTrace();
 
         }
 
-            return jsonString;
+            return data;
     }
 
     public static Fragment newInstance(int position) {
@@ -152,7 +147,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             errorcloud.setVisibility(View.GONE);
             errortext.setVisibility(View.GONE);
         }
-            
+
 
 
 

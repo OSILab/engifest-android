@@ -1,6 +1,5 @@
 package com.dtu.engifest;
 
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -19,7 +18,6 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
-import com.dtu.engifest.about.AboutActivity;
 import com.dtu.engifest.fragments.HomeFragment;
 import com.dtu.engifest.fragments.MapsFragment;
 import com.dtu.engifest.fragments.ScheduleFragment;
@@ -85,9 +83,7 @@ public class MainActivity extends ActionBarActivity {
 
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
 
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
 
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
 
 
 
@@ -198,14 +194,7 @@ public class MainActivity extends ActionBarActivity {
             case 2:
                 fragment = new MapsFragment();
                 break;
-            case 3:
-                Intent intentAbout = new Intent(getApplication(),AboutActivity.class);
-                startActivity(intentAbout);
-                break;
-            case 4:
-                Intent intentFeedback = new Intent(getApplication(),FeedbackActivity.class);
-                startActivity(intentFeedback);
-                break;
+
 
             default:
                 break;

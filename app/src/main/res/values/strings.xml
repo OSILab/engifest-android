@@ -13,8 +13,7 @@
         <item >Home</item>
         <item >Schedule</item>
         <item >Reach Us</item>
-        <item >About</item>
-        <item >Feedback</item>
+
 
 
     </string-array>
@@ -24,8 +23,7 @@
         <item>@drawable/ic_home</item>
         <item>@drawable/ic_schedule</item>
         <item>@drawable/ic_maps</item>
-        <item>@drawable/ic_about</item>
-        <item>@drawable/ic_feedback</item>
+
 
 
     </array>
