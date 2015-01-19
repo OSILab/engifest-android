@@ -2,6 +2,7 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
+    android:background="#303030"
     android:layout_height="match_parent">
 
     <fr.castorflex.android.smoothprogressbar.SmoothProgressBar
@@ -19,10 +20,11 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:horizontalSpacing="6dip"
-        
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
         android:numColumns="2"
         android:stretchMode="columnWidth"
-        android:verticalSpacing="6dip"
+        android:verticalSpacing="15dip"
 
         android:padding="6dip" />
 </RelativeLayout>

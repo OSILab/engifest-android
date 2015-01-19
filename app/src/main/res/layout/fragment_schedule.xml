@@ -13,6 +13,7 @@
 
         android:indeterminate="true"/>
     <ListView
+        android:layoutAnimation="@anim/layout_controller_scale"
         android:id="@+id/list"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

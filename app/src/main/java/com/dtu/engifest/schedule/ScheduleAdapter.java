@@ -8,7 +8,6 @@ package com.dtu.engifest.schedule;
 import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
-import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,10 +72,8 @@ public class ScheduleAdapter extends BaseAdapter {
         name.setText(item.getName());
 
 
-        CharSequence timeAgo = DateUtils.getRelativeTimeSpanString(
-                Long.parseLong(item.getDate()),
-                System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS);
-        date.setText(timeAgo);
+
+        date.setText(item.getDate());
 
 
         if (!TextUtils.isEmpty(item.getLocation())) {

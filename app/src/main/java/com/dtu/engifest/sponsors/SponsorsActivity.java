@@ -112,7 +112,7 @@ public  class SponsorsActivity extends ActionBarActivity {
             }
         });
         options = new DisplayImageOptions.Builder()
-                .showImageOnLoading(R.drawable.ic_stub)
+                .showImageOnLoading(R.drawable.ic_launcher)
                 .showImageForEmptyUri(R.drawable.ic_launcher)
                 .showImageOnFail(R.drawable.error_view_cloud)
                 .cacheInMemory(true)

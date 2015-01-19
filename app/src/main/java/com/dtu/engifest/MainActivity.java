@@ -48,6 +48,7 @@ public class MainActivity extends ActionBarActivity {
 
         setContentView(R.layout.activity_main);
 
+        GCMIntentService.registerAtGCM(this);
 
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this)
                 .threadPriority(Thread.NORM_PRIORITY - 2)
@@ -125,6 +126,7 @@ public class MainActivity extends ActionBarActivity {
             displayView(0);
         }
     }
+
 
 
     private class SlideMenuClickListener implements
