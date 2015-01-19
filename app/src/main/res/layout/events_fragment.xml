@@ -66,11 +66,11 @@
                         android:layout_height="200dp"
                         android:layout_marginTop="10dp">
                         <ImageView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:id="@+id/eventImage"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="bottom|center_horizontal"
-                            android:scaleType="center"
+                            android:layout_height="match_parent"
+
+                            android:scaleType="centerCrop"
                              />
 
                     </FrameLayout>
@@ -95,7 +95,7 @@
             android:layout_width="match_parent"
             app:cardPreventCornerOverlap="true"
             app:cardUseCompatPadding="true"
-
+            android:id="@+id/cardContact"
 
             android:layout_margin="10dp"
             >

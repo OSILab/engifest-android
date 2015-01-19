@@ -36,8 +36,11 @@ import com.dtu.engifest.util.NetworkUtil;
 import com.flaviofaria.kenburnsview.KenBurnsView;
 import com.nineoldandroids.view.ViewHelper;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Random;
 
 import fr.castorflex.android.smoothprogressbar.SmoothProgressBar;
@@ -72,6 +75,8 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
     private static final String TAG = EventsActivity.class.getSimpleName();
     private String URL_EVENTS = "http://engifesttest.comlu.com/events";
 
+    public String events[],updatedEvents[];
+
     int[] photos={R.drawable.photo6, R.drawable.switchthefunkup,R.drawable.photo2,R.drawable.photo3,R.drawable.photo4,R.drawable.photo5};
     KenBurnsView imageView;
     private SmoothProgressBar progressBar;
@@ -99,7 +104,7 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
         mHeader = findViewById(R.id.header);
         mPagerSlidingTabStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
         mViewPager = (ViewPager) findViewById(R.id.pager);
-        mViewPager.setOffscreenPageLimit(4);
+        mViewPager.setOffscreenPageLimit(7);
 
         mPagerSlidingTabStrip.setOnPageChangeListener(this);
         mAlphaForegroundColorSpan = new AlphaForegroundColorSpan(0xffffffff);
@@ -110,12 +115,17 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
         Cache cache = AppController.getInstance().getRequestQueue().getCache();
         Cache.Entry entry = cache.get(URL_EVENTS);
         if (entry != null) {
+            try {
+                String data = new String(entry.data, "UTF-8");
+                try {
+                    parseJsonFeed(new JSONObject(data));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
 
-            mPagerAdapter = new PagerAdapter(getSupportFragmentManager());
-            mPagerAdapter.setTabHolderScrollingContent(this);
-            mViewPager.setAdapter(mPagerAdapter);
-            mPagerSlidingTabStrip.setViewPager(mViewPager);
-            progressBar.setVisibility(View.GONE);
         }
 
         if (NetworkUtil.isNetworkConnected(this)){
@@ -127,7 +137,8 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
                 public void onResponse(JSONObject response) {
                     VolleyLog.d(TAG, "Response: " + response.toString());
                     if (response != null) {
-                        setAdapter(response);
+                        updateJsonFeed(response);
+
                     }
 
                 }
@@ -166,7 +177,51 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
     }
 
 
+    private void parseJsonFeed(JSONObject response) {
+        try {
+            JSONArray eventsArray = response.getJSONArray("events");
+            events = new String[eventsArray.length()];
+            for (int i = 0; i < eventsArray.length(); i++) {
 
+                events[i]=eventsArray.getString(i);
+
+            }
+            mPagerAdapter = new PagerAdapter(getSupportFragmentManager());
+            mPagerAdapter.setTabHolderScrollingContent(this);
+            mViewPager.setAdapter(mPagerAdapter);
+            mPagerSlidingTabStrip.setViewPager(mViewPager);
+            progressBar.setVisibility(View.GONE);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    private void updateJsonFeed(JSONObject response) {
+        try {
+            JSONArray eventsArray = response.getJSONArray("events");
+            updatedEvents= new String[eventsArray.length()];
+            for (int i = 0; i < eventsArray.length(); i++) {
+
+                updatedEvents[i]=eventsArray.getString(i);
+
+            }
+            events=updatedEvents;
+            progressBar.setVisibility(View.GONE);
+
+            if (mPagerAdapter==null){
+                mPagerAdapter = new PagerAdapter(getSupportFragmentManager());
+
+                mPagerAdapter.setTabHolderScrollingContent(this);
+                mViewPager.setAdapter(mPagerAdapter);
+                mPagerSlidingTabStrip.setViewPager(mViewPager);
+            }
+            mPagerAdapter.notifyDataSetChanged();
+            mPagerAdapter.setTabHolderScrollingContent(this);
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
     private void setAdapter(JSONObject response) {
         if (mPagerAdapter==null) {
             mPagerAdapter = new PagerAdapter(getSupportFragmentManager());
@@ -284,12 +339,12 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return TITLES[position];
+            return events[position];
         }
 
         @Override
         public int getCount() {
-            return TITLES.length;
+            return events.length;
         }
 
         @Override

@@ -18,7 +18,9 @@ import com.android.volley.Cache;
 import com.dtu.engifest.AppController;
 import com.dtu.engifest.R;
 import com.dtu.engifest.util.NetworkUtil;
+import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -40,6 +42,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
     private String contact ;
     private String number ;
     private String email ;
+    private String image;
 
     TextView eventTitle;
     TextView eventShortDescription;
@@ -58,6 +61,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
     ImageView eventImage;
     private int mPosition;
     private CardView cardView;
+    private CardView cardContact;
     private String URL_EVENTS = "http://engifesttest.comlu.com/events";
 
     public String loadJSONFromAsset() {
@@ -112,7 +116,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
         textEmail = (TextView) v.findViewById(R.id.textEmail);
         textNumber =(TextView) v.findViewById(R.id.textNumber);
         textSendEmail = (TextView) v.findViewById(R.id.textSendEmail);
-        
+        cardContact = (CardView) v.findViewById(R.id.cardContact);
 
 
         textCall.setOnClickListener(new View.OnClickListener() {
@@ -154,18 +158,24 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
         if (mPosition==0){
             try {
                 JSONObject obj = new JSONObject(loadJSONFromAsset());
-                JSONObject anusthhan  = obj.getJSONObject("anusthaan");
+                JSONArray array  = obj.getJSONArray("content");
+                JSONObject obj2 = array.getJSONObject(0);
 
-                title = anusthhan.getString("title");
-                description = anusthhan.getString("description");
-                subdescription = anusthhan.getString("subtitle");
-                contact = anusthhan.getString("contactname");
-                number = anusthhan.getString("contactnumber");
-                email = anusthhan.getString("contactemail");
+                title = obj2.getString("title");
+                image = obj2.getString("image");
+                description = obj2.getString("description");
+                subdescription = obj2.getString("subtitle");
+                contact = obj2.getString("contactname");
+                number = obj2.getString("contactnumber");
+                email = obj2.getString("contactemail");
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
+            Picasso.with(getActivity())
+                    .load(image)
+                    .into(eventImage);
             layout1.setBackgroundColor(getResources().getColor(R.color.pink_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.pink_transparent));
             eventDescription.setText(description);
@@ -174,23 +184,27 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-            eventImage.setImageResource(R.drawable.anusthaan);
+
            }
         if (mPosition==1) {
             try {
                 JSONObject obj = new JSONObject(loadJSONFromAsset());
-                JSONObject spandan  = obj.getJSONObject("spandan");
-
-                title = spandan.getString("title");
-                description = spandan.getString("description");
-                subdescription = spandan.getString("subtitle");
-                contact = spandan.getString("contactname");
-                number = spandan.getString("contactnumber");
-                email = spandan.getString("contactemail");
+                JSONArray array  = obj.getJSONArray("content");
+                JSONObject obj2 = array.getJSONObject(1);
+                image = obj2.getString("image");
+                title = obj2.getString("title");
+                description = obj2.getString("description");
+                subdescription = obj2.getString("subtitle");
+                contact = obj2.getString("contactname");
+                number = obj2.getString("contactnumber");
+                email = obj2.getString("contactemail");
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            Picasso.with(getActivity())
+                    .load(image)
+                    .into(eventImage);
             layout1.setBackgroundColor(getResources().getColor(R.color.green_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.green_transparent));
             eventDescription.setText(description);
@@ -199,25 +213,29 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-            eventImage.setImageResource(R.drawable.spandan);
+
 
 
         }
         if (mPosition==2) {
             try {
                 JSONObject obj = new JSONObject(loadJSONFromAsset());
-                JSONObject natya  = obj.getJSONObject("natya");
-
-                title = natya.getString("title");
-                description = natya.getString("description");
-                subdescription = natya.getString("subtitle");
-                contact = natya.getString("contactname");
-                number = natya.getString("contactnumber");
-                email = natya.getString("contactemail");
+                JSONArray array  = obj.getJSONArray("content");
+                JSONObject obj2 = array.getJSONObject(2);
+                image = obj2.getString("image");
+                title = obj2.getString("title");
+                description = obj2.getString("description");
+                subdescription = obj2.getString("subtitle");
+                contact = obj2.getString("contactname");
+                number = obj2.getString("contactnumber");
+                email = obj2.getString("contactemail");
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            Picasso.with(getActivity())
+                    .load(image)
+                    .into(eventImage);
             layout1.setBackgroundColor(getResources().getColor(R.color.red_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.red_transparent));
             eventDescription.setText(description);
@@ -226,25 +244,29 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-            eventImage.setImageResource(R.drawable.natya);
+
 
 
         }
         if (mPosition==3) {
             try {
                 JSONObject obj = new JSONObject(loadJSONFromAsset());
-                JSONObject nukkad  = obj.getJSONObject("nukkad");
-
-                title = nukkad.getString("title");
-                description = nukkad.getString("description");
-                subdescription = nukkad.getString("subtitle");
-                contact = nukkad.getString("contactname");
-                number = nukkad.getString("contactnumber");
-                email = nukkad.getString("contactemail");
+                JSONArray array  = obj.getJSONArray("content");
+                JSONObject obj2 = array.getJSONObject(3);
+                image = obj2.getString("image");
+                title = obj2.getString("title");
+                description = obj2.getString("description");
+                subdescription = obj2.getString("subtitle");
+                contact = obj2.getString("contactname");
+                number = obj2.getString("contactnumber");
+                email = obj2.getString("contactemail");
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            Picasso.with(getActivity())
+                    .load(image)
+                    .into(eventImage);
             layout1.setBackgroundColor(getResources().getColor(R.color.blue_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.blue_transparent));
             eventDescription.setText(description);
@@ -253,24 +275,27 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-            eventImage.setImageResource(R.drawable.nukkad);
+
 
         }
         if (mPosition==4) {
             try {
                 JSONObject obj = new JSONObject(loadJSONFromAsset());
-                JSONObject arpeggio  = obj.getJSONObject("arpeggio");
-
-                title = arpeggio.getString("title");
-                description = arpeggio.getString("description");
-                subdescription = arpeggio.getString("subtitle");
-                contact = arpeggio.getString("contactname");
-                number = arpeggio.getString("contactnumber");
-                email = arpeggio.getString("contactemail");
-
+                JSONArray array  = obj.getJSONArray("content");
+                JSONObject obj2 = array.getJSONObject(4);
+                image = obj2.getString("image");
+                title = obj2.getString("title");
+                description = obj2.getString("description");
+                subdescription = obj2.getString("subtitle");
+                contact = obj2.getString("contactname");
+                number = obj2.getString("contactnumber");
+                email = obj2.getString("contactemail");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            Picasso.with(getActivity())
+                    .load(image)
+                    .into(eventImage);
             layout1.setBackgroundColor(getResources().getColor(R.color.pink_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.pink_transparent));
             eventDescription.setText(description);
@@ -279,25 +304,29 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-            eventImage.setImageResource(R.drawable.arpeggio);
+
 
 
         }
         if (mPosition==5) {
             try {
                 JSONObject obj = new JSONObject(loadJSONFromAsset());
-                JSONObject soundtrack  = obj.getJSONObject("soundtrack");
-
-                title = soundtrack.getString("title");
-                description = soundtrack.getString("description");
-                subdescription = soundtrack.getString("subtitle");
-                contact = soundtrack.getString("contactname");
-                number = soundtrack.getString("contactnumber");
-                email = soundtrack.getString("contactemail");
+                JSONArray array  = obj.getJSONArray("content");
+                JSONObject obj2 = array.getJSONObject(5);
+                image = obj2.getString("image");
+                title = obj2.getString("title");
+                description = obj2.getString("description");
+                subdescription = obj2.getString("subtitle");
+                contact = obj2.getString("contactname");
+                number = obj2.getString("contactnumber");
+                email = obj2.getString("contactemail");
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            Picasso.with(getActivity())
+                    .load(image)
+                    .into(eventImage);
             layout1.setBackgroundColor(getResources().getColor(R.color.purple_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.purple_transparent));
             eventDescription.setText(description);
@@ -306,7 +335,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-            eventImage.setImageResource(R.drawable.soundtrack);
+
 
 
         }
@@ -314,18 +343,22 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
         if (mPosition==6) {
             try {
                 JSONObject obj = new JSONObject(loadJSONFromAsset());
-                JSONObject switchthefunkup  = obj.getJSONObject("switchthefunkup");
-
-                title = switchthefunkup.getString("title");
-                description = switchthefunkup.getString("description");
-                subdescription = switchthefunkup.getString("subtitle");
-                contact = switchthefunkup.getString("contactname");
-                number = switchthefunkup.getString("contactnumber");
-                email = switchthefunkup.getString("contactemail");
+                JSONArray array  = obj.getJSONArray("content");
+                JSONObject obj2 = array.getJSONObject(6);
+                image = obj2.getString("image");
+                title = obj2.getString("title");
+                description = obj2.getString("description");
+                subdescription = obj2.getString("subtitle");
+                contact = obj2.getString("contactname");
+                number = obj2.getString("contactnumber");
+                email = obj2.getString("contactemail");
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            Picasso.with(getActivity())
+                    .load(image)
+                    .into(eventImage);
             layout1.setBackgroundColor(getResources().getColor(R.color.green_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.green_transparent));
             eventDescription.setText(description);
@@ -334,7 +367,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-            eventImage.setImageResource(R.drawable.switchthefunkup);
+
 
 
         }
@@ -342,18 +375,21 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
         if (mPosition==7) {
             try {
                 JSONObject obj = new JSONObject(loadJSONFromAsset());
-                JSONObject livewire  = obj.getJSONObject("livewire");
-
-                title = livewire.getString("title");
-                description = livewire.getString("description");
-                subdescription = livewire.getString("subtitle");
-                contact = livewire.getString("contactname");
-                number = livewire.getString("contactnumber");
-                email = livewire.getString("contactemail");
-
+                JSONArray array  = obj.getJSONArray("content");
+                JSONObject obj2 = array.getJSONObject(7);
+                image = obj2.getString("image");
+                title = obj2.getString("title");
+                description = obj2.getString("description");
+                subdescription = obj2.getString("subtitle");
+                contact = obj2.getString("contactname");
+                number = obj2.getString("contactnumber");
+                email = obj2.getString("contactemail");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            Picasso.with(getActivity())
+                    .load(image)
+                    .into(eventImage);
             layout1.setBackgroundColor(getResources().getColor(R.color.red_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.red_transparent));
             eventDescription.setText(description);
@@ -362,7 +398,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-            eventImage.setImageResource(R.drawable.livewire);
+
 
 
         }
@@ -370,18 +406,22 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
         if (mPosition==8) {
             try {
                 JSONObject obj = new JSONObject(loadJSONFromAsset());
-                JSONObject paridhan  = obj.getJSONObject("paridhan");
-
-                title = paridhan.getString("title");
-                description = paridhan.getString("description");
-                subdescription = paridhan.getString("subtitle");
-                contact = paridhan.getString("contactname");
-                number = paridhan.getString("contactnumber");
-                email = paridhan.getString("contactemail");
+                JSONArray array  = obj.getJSONArray("content");
+                JSONObject obj2 = array.getJSONObject(8);
+                image = obj2.getString("image");
+                title = obj2.getString("title");
+                description = obj2.getString("description");
+                subdescription = obj2.getString("subtitle");
+                contact = obj2.getString("contactname");
+                number = obj2.getString("contactnumber");
+                email = obj2.getString("contactemail");
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            Picasso.with(getActivity())
+                    .load(image)
+                    .into(eventImage);
             layout1.setBackgroundColor(getResources().getColor(R.color.pink_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.pink_transparent));
             eventDescription.setText(description);
@@ -390,7 +430,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-            eventImage.setImageResource(R.drawable.fashionp);
+
 
 
         }
@@ -398,18 +438,21 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
         if (mPosition==9) {
             try {
                 JSONObject obj = new JSONObject(loadJSONFromAsset());
-                JSONObject sahitya  = obj.getJSONObject("sahitya");
-
-                title = sahitya.getString("title");
-                description = sahitya.getString("description");
-                subdescription = sahitya.getString("subtitle");
-                contact = sahitya.getString("contactname");
-                number = sahitya.getString("contactnumber");
-                email = sahitya.getString("contactemail");
-
+                JSONArray array  = obj.getJSONArray("content");
+                JSONObject obj2 = array.getJSONObject(9);
+                image = obj2.getString("image");
+                title = obj2.getString("title");
+                description = obj2.getString("description");
+                subdescription = obj2.getString("subtitle");
+                contact = obj2.getString("contactname");
+                number = obj2.getString("contactnumber");
+                email = obj2.getString("contactemail");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            Picasso.with(getActivity())
+                    .load(image)
+                    .into(eventImage);
             layout1.setBackgroundColor(getResources().getColor(R.color.blue_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.blue_transparent));
             eventDescription.setText(description);
@@ -418,13 +461,135 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-            eventImage.setImageResource(R.drawable.sahitya);
+
 
 
         }
 
+        if (mPosition==10) {
+            try {
+                JSONObject obj = new JSONObject(loadJSONFromAsset());
+                JSONArray array  = obj.getJSONArray("content");
+                JSONObject obj2 = array.getJSONObject(10);
+                image = obj2.getString("image");
+                title = obj2.getString("title");
+                description = obj2.getString("description");
+                subdescription = obj2.getString("subtitle");
+                contact = obj2.getString("contactname");
+                number = obj2.getString("contactnumber");
+                email = obj2.getString("contactemail");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            Picasso.with(getActivity())
+                    .load(image)
+                    .into(eventImage);
+            layout1.setBackgroundColor(getResources().getColor(R.color.green_transparent));
+            layout2.setBackgroundColor(getResources().getColor(R.color.green_transparent));
+            eventDescription.setText(description);
+            eventTitle.setText(title);
+            eventShortDescription.setText(subdescription);
+            textContact.setText(contact);
+            textNumber.setText(number);
+            textEmail.setText(email);
 
 
+
+        }
+        if (mPosition==11) {
+            try {
+                JSONObject obj = new JSONObject(loadJSONFromAsset());
+                JSONArray array  = obj.getJSONArray("content");
+                JSONObject obj2 = array.getJSONObject(11);
+                image = obj2.getString("image");
+                title = obj2.getString("title");
+                description = obj2.getString("description");
+                subdescription = obj2.getString("subtitle");
+                contact = obj2.getString("contactname");
+                number = obj2.getString("contactnumber");
+                email = obj2.getString("contactemail");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            Picasso.with(getActivity())
+                    .load(image)
+                    .into(eventImage);
+            layout1.setBackgroundColor(getResources().getColor(R.color.green_transparent));
+            layout2.setBackgroundColor(getResources().getColor(R.color.green_transparent));
+            eventDescription.setText(description);
+            eventTitle.setText(title);
+            eventShortDescription.setText(subdescription);
+            textContact.setText(contact);
+            textNumber.setText(number);
+            textEmail.setText(email);
+
+
+
+        }
+        if (mPosition==12) {
+            try {
+                JSONObject obj = new JSONObject(loadJSONFromAsset());
+                JSONArray array  = obj.getJSONArray("content");
+                JSONObject obj2 = array.getJSONObject(12);
+                image = obj2.getString("image");
+                title = obj2.getString("title");
+                description = obj2.getString("description");
+                subdescription = obj2.getString("subtitle");
+                contact = obj2.getString("contactname");
+                number = obj2.getString("contactnumber");
+                email = obj2.getString("contactemail");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            Picasso.with(getActivity())
+                    .load(image)
+                    .into(eventImage);
+            layout1.setBackgroundColor(getResources().getColor(R.color.green_transparent));
+            layout2.setBackgroundColor(getResources().getColor(R.color.green_transparent));
+            eventDescription.setText(description);
+            eventTitle.setText(title);
+            eventShortDescription.setText(subdescription);
+            textContact.setText(contact);
+            textNumber.setText(number);
+            textEmail.setText(email);
+
+
+
+        }
+        if (mPosition==13) {
+            try {
+                JSONObject obj = new JSONObject(loadJSONFromAsset());
+                JSONArray array  = obj.getJSONArray("content");
+                JSONObject obj2 = array.getJSONObject(13);
+                image = obj2.getString("image");
+                title = obj2.getString("title");
+                description = obj2.getString("description");
+                subdescription = obj2.getString("subtitle");
+                contact = obj2.getString("contactname");
+                number = obj2.getString("contactnumber");
+                email = obj2.getString("contactemail");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            Picasso.with(getActivity())
+                    .load(image)
+                    .into(eventImage);
+            layout1.setBackgroundColor(getResources().getColor(R.color.green_transparent));
+            layout2.setBackgroundColor(getResources().getColor(R.color.green_transparent));
+            eventDescription.setText(description);
+            eventTitle.setText(title);
+            eventShortDescription.setText(subdescription);
+            textContact.setText(contact);
+            textNumber.setText(number);
+            textEmail.setText(email);
+
+
+
+        }
         return v;
     }
 
