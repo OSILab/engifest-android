@@ -17,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.android.volley.Cache;
@@ -52,6 +53,7 @@ public  class SponsorsActivity extends ActionBarActivity {
     private ImageAdapter mImageAdapter;
     public String imageUrls[],updatedImageUrls[];
     private SmoothProgressBar progressBar;
+    private LinearLayout errorLayout;
     private String URL_SPONSORS = "http://engifesttest.comlu.com/sponsors";
 
 
@@ -63,10 +65,10 @@ public  class SponsorsActivity extends ActionBarActivity {
         setContentView(R.layout.activity_sponsor);
         listView = (GridView) findViewById(R.id.grid);
         progressBar =(SmoothProgressBar) findViewById(R.id.google_now);
-
+        errorLayout=(LinearLayout) findViewById(R.id.error);
 
         Cache cache = AppController.getInstance().getRequestQueue().getCache();
-        Cache.Entry entry = cache.get(URL_SPONSORS);
+        final Cache.Entry entry = cache.get(URL_SPONSORS);
         if (entry != null) {
             // fetch the data from cache
             try {
@@ -97,6 +99,9 @@ public  class SponsorsActivity extends ActionBarActivity {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     VolleyLog.d(TAG, "Error: " + error.getMessage());
+                    progressBar.setVisibility(View.GONE);
+                    if (entry==null)
+                        errorLayout.setVisibility(View.VISIBLE);
                 }
             });
 
@@ -104,7 +109,10 @@ public  class SponsorsActivity extends ActionBarActivity {
             AppController.getInstance().addToRequestQueue(jsonReq);
         }
 
-
+        if (entry==null&&!NetworkUtil.isNetworkConnected(this)){
+            progressBar.setVisibility(View.GONE);
+            errorLayout.setVisibility(View.VISIBLE);
+        }
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

@@ -57,14 +57,14 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
     View v;
 
 
-
+    JSONObject obj;
     NetworkImageView eventImage;
     private int mPosition;
     private CardView cardView;
     private CardView cardContact;
     private String URL_EVENTS = "http://engifesttest.comlu.com/events";
 
-    public String loadJSONFromAsset() {
+    public String loadJSONFRomCache() {
 
         String data = "";
         Cache cache = AppController.getInstance().getRequestQueue().getCache();
@@ -82,6 +82,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
 
             return data;
     }
+
 
     public static Fragment newInstance(int position) {
         EventsFragment f = new EventsFragment();
@@ -151,13 +152,15 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             errorcloud.setVisibility(View.GONE);
             errortext.setVisibility(View.GONE);
         }
-
+        Cache cache = AppController.getInstance().getRequestQueue().getCache();
+        Cache.Entry entry = cache.get(URL_EVENTS);
 
 
 
         if (mPosition==0){
             try {
-                JSONObject obj = new JSONObject(loadJSONFromAsset());
+
+                 obj = new JSONObject(loadJSONFRomCache());
                 JSONArray array  = obj.getJSONArray("content");
                 JSONObject obj2 = array.getJSONObject(0);
 
@@ -172,8 +175,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
-            eventImage.setImageUrl(image,AppController.getInstance().getImageLoader());
+            eventImage.setImageUrl(image, AppController.getInstance().getImageLoader());
             layout1.setBackgroundColor(getResources().getColor(R.color.pink_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.pink_transparent));
             eventDescription.setText(description);
@@ -188,7 +190,9 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
            }
         if (mPosition==1) {
             try {
-                JSONObject obj = new JSONObject(loadJSONFromAsset());
+
+                    obj = new JSONObject(loadJSONFRomCache());
+
                 JSONArray array  = obj.getJSONArray("content");
                 JSONObject obj2 = array.getJSONObject(1);
                 image = obj2.getString("image");
@@ -218,7 +222,9 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
         }
         if (mPosition==2) {
             try {
-                JSONObject obj = new JSONObject(loadJSONFromAsset());
+
+                    obj = new JSONObject(loadJSONFRomCache());
+
                 JSONArray array  = obj.getJSONArray("content");
                 JSONObject obj2 = array.getJSONObject(2);
                 image = obj2.getString("image");
@@ -248,7 +254,9 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
         }
         if (mPosition==3) {
             try {
-                JSONObject obj = new JSONObject(loadJSONFromAsset());
+
+                    obj = new JSONObject(loadJSONFRomCache());
+
                 JSONArray array  = obj.getJSONArray("content");
                 JSONObject obj2 = array.getJSONObject(3);
                 image = obj2.getString("image");
@@ -277,7 +285,9 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
         }
         if (mPosition==4) {
             try {
-                JSONObject obj = new JSONObject(loadJSONFromAsset());
+
+                    obj = new JSONObject(loadJSONFRomCache());
+
                 JSONArray array  = obj.getJSONArray("content");
                 JSONObject obj2 = array.getJSONObject(4);
                 image = obj2.getString("image");
@@ -306,7 +316,9 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
         }
         if (mPosition==5) {
             try {
-                JSONObject obj = new JSONObject(loadJSONFromAsset());
+
+                    obj = new JSONObject(loadJSONFRomCache());
+
                 JSONArray array  = obj.getJSONArray("content");
                 JSONObject obj2 = array.getJSONObject(5);
                 image = obj2.getString("image");
@@ -337,7 +349,9 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
 
         if (mPosition==6) {
             try {
-                JSONObject obj = new JSONObject(loadJSONFromAsset());
+
+                    obj = new JSONObject(loadJSONFRomCache());
+
                 JSONArray array  = obj.getJSONArray("content");
                 JSONObject obj2 = array.getJSONObject(6);
                 image = obj2.getString("image");
@@ -368,7 +382,9 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
 
         if (mPosition==7) {
             try {
-                JSONObject obj = new JSONObject(loadJSONFromAsset());
+
+                    obj = new JSONObject(loadJSONFRomCache());
+
                 JSONArray array  = obj.getJSONArray("content");
                 JSONObject obj2 = array.getJSONObject(7);
                 image = obj2.getString("image");
@@ -398,7 +414,9 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
 
         if (mPosition==8) {
             try {
-                JSONObject obj = new JSONObject(loadJSONFromAsset());
+
+                    obj = new JSONObject(loadJSONFRomCache());
+
                 JSONArray array  = obj.getJSONArray("content");
                 JSONObject obj2 = array.getJSONObject(8);
                 image = obj2.getString("image");
@@ -429,7 +447,9 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
 
         if (mPosition==9) {
             try {
-                JSONObject obj = new JSONObject(loadJSONFromAsset());
+
+                    obj = new JSONObject(loadJSONFRomCache());
+
                 JSONArray array  = obj.getJSONArray("content");
                 JSONObject obj2 = array.getJSONObject(9);
                 image = obj2.getString("image");
@@ -459,7 +479,9 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
 
         if (mPosition==10) {
             try {
-                JSONObject obj = new JSONObject(loadJSONFromAsset());
+
+                    obj = new JSONObject(loadJSONFRomCache());
+
                 JSONArray array  = obj.getJSONArray("content");
                 JSONObject obj2 = array.getJSONObject(10);
                 image = obj2.getString("image");
@@ -489,7 +511,9 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
         }
         if (mPosition==11) {
             try {
-                JSONObject obj = new JSONObject(loadJSONFromAsset());
+
+                    obj = new JSONObject(loadJSONFRomCache());
+
                 JSONArray array  = obj.getJSONArray("content");
                 JSONObject obj2 = array.getJSONObject(11);
                 image = obj2.getString("image");
@@ -519,7 +543,9 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
         }
         if (mPosition==12) {
             try {
-                JSONObject obj = new JSONObject(loadJSONFromAsset());
+
+                    obj = new JSONObject(loadJSONFRomCache());
+
                 JSONArray array  = obj.getJSONArray("content");
                 JSONObject obj2 = array.getJSONObject(12);
                 image = obj2.getString("image");
@@ -549,7 +575,9 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
         }
         if (mPosition==13) {
             try {
-                JSONObject obj = new JSONObject(loadJSONFromAsset());
+
+                    obj = new JSONObject(loadJSONFRomCache());
+
                 JSONArray array  = obj.getJSONArray("content");
                 JSONObject obj2 = array.getJSONObject(13);
                 image = obj2.getString("image");

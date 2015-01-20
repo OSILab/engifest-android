@@ -20,6 +20,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -76,6 +77,7 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
     private String URL_EVENTS = "http://engifesttest.comlu.com/events";
 
     public String events[],updatedEvents[];
+    private LinearLayout errorLayout;
 
     int[] photos={R.drawable.photo6, R.drawable.switchthefunkup,R.drawable.photo2,R.drawable.photo3,R.drawable.photo4,R.drawable.photo5};
     KenBurnsView imageView;
@@ -99,7 +101,7 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
         icon = (ImageView) findViewById(R.id.icon);
         title = (TextView) findViewById(R.id.title);
         mSpannableString = new SpannableString(getString(R.string.actionbar_title));
-
+        errorLayout=(LinearLayout) findViewById(R.id.error);
         mHeaderLogo = (ImageView) findViewById(R.id.header_logo);
         mHeader = findViewById(R.id.header);
         mPagerSlidingTabStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
@@ -113,7 +115,7 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
         getSupportActionBar().setBackgroundDrawable(null);
 
         Cache cache = AppController.getInstance().getRequestQueue().getCache();
-        Cache.Entry entry = cache.get(URL_EVENTS);
+        final Cache.Entry entry = cache.get(URL_EVENTS);
         if (entry != null) {
             try {
                 String data = new String(entry.data, "UTF-8");
@@ -147,6 +149,10 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     VolleyLog.d(TAG, "Error: " + error.getMessage());
+                    progressBar.setVisibility(View.GONE);
+                    if (entry==null)
+                    errorLayout.setVisibility(View.VISIBLE);
+
                 }
             });
 
@@ -154,7 +160,11 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
             AppController.getInstance().addToRequestQueue(jsonReq);
 
         }
+        if (entry==null&&!NetworkUtil.isNetworkConnected(this)){
+            progressBar.setVisibility(View.GONE);
+            errorLayout.setVisibility(View.VISIBLE);
 
+        }
 
         final Handler handler = new Handler();
         Runnable runnable = new Runnable() {

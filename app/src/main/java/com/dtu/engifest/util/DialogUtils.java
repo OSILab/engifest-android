@@ -3,14 +3,19 @@ package com.dtu.engifest.util;
 /**
  * Created by naman on 18/12/14.
  */
-import com.dtu.engifest.R;
-
-
-import android.app.*;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.widget.LinearLayout;
+import android.widget.ScrollView;
+
+import com.dtu.engifest.R;
 
 
 public class DialogUtils {
@@ -39,7 +44,7 @@ public class DialogUtils {
 
             LayoutInflater layoutInflater = (LayoutInflater) getActivity().getSystemService(
                     Context.LAYOUT_INFLATER_SERVICE);
-            LinearLayout aboutBodyView = (LinearLayout) layoutInflater.inflate(R.layout.dialog_about_dtu, null);
+            ScrollView aboutBodyView = (ScrollView) layoutInflater.inflate(R.layout.dialog_about_dtu, null);
 
             return new AlertDialog.Builder(getActivity())
 
@@ -71,7 +76,7 @@ public class DialogUtils {
 
             LayoutInflater layoutInflater = (LayoutInflater) getActivity().getSystemService(
                     Context.LAYOUT_INFLATER_SERVICE);
-            LinearLayout aboutBodyView = (LinearLayout) layoutInflater.inflate(R.layout.dialog_about_engifest, null);
+            ScrollView aboutBodyView = (ScrollView) layoutInflater.inflate(R.layout.dialog_about_engifest, null);
 
             return new AlertDialog.Builder(getActivity())
 

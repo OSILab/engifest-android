@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.android.volley.Cache;
@@ -39,6 +40,7 @@ public class NewsFeedActivity extends ActionBarActivity {
     private ListView listView;
     private FeedListAdapter listAdapter;
     private SmoothProgressBar progressBar;
+   private LinearLayout errorLayout;
     private List<FeedItem> feedItems,updatedFeedItems;
 
     private String URL_FEED = "http://engifesttest.comlu.com/news";
@@ -51,6 +53,7 @@ public class NewsFeedActivity extends ActionBarActivity {
 
         listView = (ListView) findViewById(R.id.list);
         progressBar = (SmoothProgressBar) findViewById(R.id.google_now);
+        errorLayout=(LinearLayout) findViewById(R.id.error);
         feedItems = new ArrayList<FeedItem>();
         updatedFeedItems = new ArrayList<FeedItem>();
         listAdapter = new FeedListAdapter(this, feedItems);
@@ -58,7 +61,7 @@ public class NewsFeedActivity extends ActionBarActivity {
 
 
         Cache cache = AppController.getInstance().getRequestQueue().getCache();
-        Entry entry = cache.get(URL_FEED);
+        final Entry entry = cache.get(URL_FEED);
         if (entry != null) {
             // fetch the data from cache
             try {
@@ -90,13 +93,19 @@ public class NewsFeedActivity extends ActionBarActivity {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     VolleyLog.d(TAG, "Error: " + error.getMessage());
+                    progressBar.setVisibility(View.GONE);
+                    if (entry==null)
+                        errorLayout.setVisibility(View.VISIBLE);
                 }
             });
 
 
             AppController.getInstance().addToRequestQueue(jsonReq);
         }
-
+if (entry==null&&!NetworkUtil.isNetworkConnected(this)){
+progressBar.setVisibility(View.GONE);
+    errorLayout.setVisibility(View.VISIBLE);
+}
     }
 
 

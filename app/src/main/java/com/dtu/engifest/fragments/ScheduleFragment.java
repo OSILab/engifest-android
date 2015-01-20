@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.android.volley.Cache;
@@ -38,6 +39,7 @@ public class ScheduleFragment extends Fragment{
     private ScheduleAdapter listAdapter;
     private List<ScheduleItem> feedItems,updatedFeedItems;
     private SmoothProgressBar progressBar;
+    LinearLayout errorLayout;
     private String URL_SCHEDULE = "http://engifesttest.comlu.com/schedule";
 
     @Override
@@ -53,6 +55,7 @@ public class ScheduleFragment extends Fragment{
 
         listView = (ListView) v.findViewById(R.id.list);
         progressBar=(SmoothProgressBar) v.findViewById(R.id.google_now);
+        errorLayout=(LinearLayout) v.findViewById(R.id.error);
         feedItems = new ArrayList<ScheduleItem>();
         updatedFeedItems= new ArrayList<ScheduleItem>();
         listAdapter = new ScheduleAdapter(getActivity(), feedItems);
@@ -60,7 +63,7 @@ public class ScheduleFragment extends Fragment{
 
 
         Cache cache = AppController.getInstance().getRequestQueue().getCache();
-        Cache.Entry entry = cache.get(URL_SCHEDULE);
+        final Cache.Entry entry = cache.get(URL_SCHEDULE);
         if (entry != null) {
             // fetch the data from cache
             try {
@@ -90,12 +93,20 @@ public class ScheduleFragment extends Fragment{
 
                 @Override
                 public void onErrorResponse(VolleyError error) {
+                    progressBar.setVisibility(View.GONE);
+                    if (entry==null)
+                        errorLayout.setVisibility(View.VISIBLE);
 
                 }
             });
 
 
             AppController.getInstance().addToRequestQueue(jsonReq);
+        }
+        if (entry==null&&!NetworkUtil.isNetworkConnected(getActivity())){
+            progressBar.setVisibility(View.GONE);
+            errorLayout.setVisibility(View.VISIBLE);
+
         }
 return v;
 

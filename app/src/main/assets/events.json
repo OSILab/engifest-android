@@ -1,96 +1,125 @@
 {
-    "anusthaan":
+
+"events":
+[
+"Anusthaan",
+"Spandan",
+"Natya",
+"Nukkad",
+"Arpeggio",
+"Soundtrack",
+"Switch the Funk Up",
+"Livewire",
+"Paridhan",
+"Sahitya",
+"Yo"
+
+],
+
+"content":
+[
+
     {
-        "title": "Anusthaan",
-        "subtitle": "Classical and Folk dance competition",
+        "title": "Yo",
+       "image": "null",
+        "subtitle": "Classical Dance Competition",
         "description": "Dance in India comprises of varied styles of dances.Classical Indian dance manages to evoke a rasa by invoking a particular bhava (emotion).Classical dancer acts out a story alost exclusively through gestures.Folk dances are numerous in number and styles,and vary according to the local tradition of the respective state,ethnic or geographic regions.\nAnusthaan houses two categories:\n1.Solo\n2.Group",
-        "contactname": "Naman Dwivedi",
+        "contactname": "",
          "contactnumber": "9953778004",
           "contactemail": "namandwivedi14@gmail.com"
     },
-    "spandan":
-        {
-            "title": "GB",
-            "subtitle": 1381107633,
-            "description": 1381149604,
-            "contactname": "GB",
-             "contactnumber": "GB",
-              "contactemail": "GB"
-        },
 
-    "paridhan":
-    {
-        "title": "GB",
-        "subtitle": 1381107633,
-        "description": 1381149604,
-        "contactname": "GB",
-         "contactnumber": "GB",
-          "contactemail": "GB"
-    },
-    "natya":
         {
-            "title": "GB",
-            "subtitle": 1381107633,
-            "description": 1381149604,
-            "contactname": "GB",
-             "contactnumber": "GB",
-              "contactemail": "GB"
+            "title": "Spandan",
+            "subtitle": "The Western dance competition",
+            "image":"https://raw.githubusercontent.com/naman14/Engifest/master/app/src/main/res/drawable-hdpi/spandan.jpg",
+            "description": "Dance is the hidden language of soul.Dance is performed in many cultures as a form of emotional expression,social interaction or exercise,in a spritual or performance setting,and is sometimes used to express ideas or tell a story.\nSpandan is a western dance competition and houses three categories.\n1.Solo\n2.Duet\n3.Group",
+            "contactname": "Naman Dwivedi",
+             "contactnumber": "9953778004",
+              "contactemail": "namandwivedi14@gmail.com"
         },
-
-    "livewire":
-    {
-        "title": "GB",
-        "subtitle": 1381107633,
-        "description": 1381149604,
-        "contactname": "GB",
-         "contactnumber": "GB",
-          "contactemail": "GB"
-    },
-    "nukkad":
-        {
-            "title": "GB",
-            "subtitle": 1381107633,
-            "description": 1381149604,
-            "contactname": "GB",
-             "contactnumber": "GB",
-              "contactemail": "GB"
+   {
+            "title": "Spandan",
+            "subtitle": "The Western dance competition",
+            "image":"https://raw.githubusercontent.com/naman14/Engifest/master/app/src/main/res/drawable-hdpi/anusthaan.jpg",
+            "description": "Dance is the hidden language of soul.Dance is performed in many cultures as a form of emotional expression,social interaction or exercise,in a spritual or performance setting,and is sometimes used to express ideas or tell a story.\nSpandan is a western dance competition and houses three categories.\n1.Solo\n2.Duet\n3.Group",
+            "contactname": "Naman Dwivedi",
+             "contactnumber": "9953778004",
+              "contactemail": "namandwivedi14@gmail.com"
         },
-  "arpeggio":
-        {
-            "title": "GB",
-            "subtitle": 1381107633,
-            "description": 1381149604,
-            "contactname": "GB",
-             "contactnumber": "GB",
-              "contactemail": "GB"
+  {
+            "title": "Spandan",
+            "subtitle": "The Western dance competition",
+            "image":"https://raw.githubusercontent.com/naman14/Engifest/master/app/src/main/res/drawable-hdpi/spandan.jpg",
+            "description": "Dance is the hidden language of soul.Dance is performed in many cultures as a form of emotional expression,social interaction or exercise,in a spritual or performance setting,and is sometimes used to express ideas or tell a story.\nSpandan is a western dance competition and houses three categories.\n1.Solo\n2.Duet\n3.Group",
+            "contactname": "Naman Dwivedi",
+             "contactnumber": "9953778004",
+              "contactemail": "namandwivedi14@gmail.com"
         },
-  "soundtrack":
-        {
-            "title": "GB",
-            "subtitle": 1381107633,
-            "description": 1381149604,
-            "contactname": "GB",
-             "contactnumber": "GB",
-              "contactemail": "GB"
+  {
+            "title": "Spandan",
+            "subtitle": "The Western dance competition",
+            "image":"https://raw.githubusercontent.com/naman14/Engifest/master/app/src/main/res/drawable-hdpi/spandan.jpg",
+            "description": "Dance is the hidden language of soul.Dance is performed in many cultures as a form of emotional expression,social interaction or exercise,in a spritual or performance setting,and is sometimes used to express ideas or tell a story.\nSpandan is a western dance competition and houses three categories.\n1.Solo\n2.Duet\n3.Group",
+            "contactname": "Naman Dwivedi",
+             "contactnumber": "9953778004",
+              "contactemail": "namandwivedi14@gmail.com"
         },
-  "switchthefunkup":
-        {
-            "title": "GB",
-            "subtitle": 1381107633,
-            "description": 1381149604,
-            "contactname": "GB",
-             "contactnumber": "GB",
-              "contactemail": "GB"
+  {
+            "title": "Spandan",
+            "subtitle": "The Western dance competition",
+            "image":"https://raw.githubusercontent.com/naman14/Engifest/master/app/src/main/res/drawable-hdpi/spandan.jpg",
+            "description": "Dance is the hidden language of soul.Dance is performed in many cultures as a form of emotional expression,social interaction or exercise,in a spritual or performance setting,and is sometimes used to express ideas or tell a story.\nSpandan is a western dance competition and houses three categories.\n1.Solo\n2.Duet\n3.Group",
+            "contactname": "Naman Dwivedi",
+             "contactnumber": "9953778004",
+              "contactemail": "namandwivedi14@gmail.com"
         },
- "sahitya":
-         {
-             "title": "GB",
-             "subtitle": 1381107633,
-             "description": 1381149604,
-             "contactname": "GB",
-              "contactnumber": "GB",
-               "contactemail": "GB"
-         }
-
-
+  {
+            "title": "Spandan",
+            "subtitle": "The Western dance competition",
+            "image":"https://raw.githubusercontent.com/naman14/Engifest/master/app/src/main/res/drawable-hdpi/spandan.jpg",
+            "description": "Dance is the hidden language of soul.Dance is performed in many cultures as a form of emotional expression,social interaction or exercise,in a spritual or performance setting,and is sometimes used to express ideas or tell a story.\nSpandan is a western dance competition and houses three categories.\n1.Solo\n2.Duet\n3.Group",
+            "contactname": "Naman Dwivedi",
+             "contactnumber": "9953778004",
+              "contactemail": "namandwivedi14@gmail.com"
+        },
+  {
+            "title": "Spandan",
+            "subtitle": "The Western dance competition",
+            "image":"https://raw.githubusercontent.com/naman14/Engifest/master/app/src/main/res/drawable-hdpi/spandan.jpg",
+            "description": "Dance is the hidden language of soul.Dance is performed in many cultures as a form of emotional expression,social interaction or exercise,in a spritual or performance setting,and is sometimes used to express ideas or tell a story.\nSpandan is a western dance competition and houses three categories.\n1.Solo\n2.Duet\n3.Group",
+            "contactname": "Naman Dwivedi",
+             "contactnumber": "9953778004",
+              "contactemail": "namandwivedi14@gmail.com"
+        },
+  {
+            "title": "Spandan",
+            "subtitle": "The Western dance competition",
+            "image":"https://raw.githubusercontent.com/naman14/Engifest/master/app/src/main/res/drawable-hdpi/spandan.jpg",
+            "description": "Dance is the hidden language of soul.Dance is performed in many cultures as a form of emotional expression,social interaction or exercise,in a spritual or performance setting,and is sometimes used to express ideas or tell a story.\nSpandan is a western dance competition and houses three categories.\n1.Solo\n2.Duet\n3.Group",
+            "contactname": "Naman Dwivedi",
+             "contactnumber": "9953778004",
+              "contactemail": "namandwivedi14@gmail.com"
+        },
+  {
+            "title": "Spandan",
+            "subtitle": "The Western dance competition",
+            "image":"https://raw.githubusercontent.com/naman14/Engifest/master/app/src/main/res/drawable-hdpi/spandan.jpg",
+            "description": "Dance is the hidden language of soul.Dance is performed in many cultures as a form of emotional expression,social interaction or exercise,in a spritual or performance setting,and is sometimes used to express ideas or tell a story.\nSpandan is a western dance competition and houses three categories.\n1.Solo\n2.Duet\n3.Group",
+            "contactname": "Naman Dwivedi",
+             "contactnumber": "9953778004",
+              "contactemail": "namandwivedi14@gmail.com"
+        },
+  {
+            "title": "Spandan",
+            "subtitle": "The Western dance competition",
+            "image":"https://raw.githubusercontent.com/naman14/Engifest/master/app/src/main/res/drawable-hdpi/spandan.jpg",
+            "description": "Dance is the hidden language of soul.Dance is performed in many cultures as a form of emotional expression,social interaction or exercise,in a spritual or performance setting,and is sometimes used to express ideas or tell a story.\nSpandan is a western dance competition and houses three categories.\n1.Solo\n2.Duet\n3.Group",
+            "contactname": "Naman Dwivedi",
+             "contactnumber": "9953778004",
+              "contactemail": "namandwivedi14@gmail.com"
+        }
+]
 }
+
+

@@ -18,5 +18,32 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:divider="@null" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="40dp"
+        android:id="@+id/error"
+        android:visibility="gone"
+        android:paddingBottom="20dp"
+        android:layout_gravity="bottom"
+        android:gravity="center">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/errorcloud"
+            android:src="@drawable/error_view_cloud"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingTop="10dp"
+            android:id="@+id/errortext"
+            android:text="No Internet Connection"
+            android:textSize="20sp"
+            android:paddingBottom="15dp"
+            android:textColor="#CC000000"/>
+    </LinearLayout>
 
 </LinearLayout>

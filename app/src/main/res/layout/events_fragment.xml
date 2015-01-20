@@ -73,6 +73,7 @@
                             android:scaleType="centerCrop"
                              />
 
+
                     </FrameLayout>
 
                 </LinearLayout>
