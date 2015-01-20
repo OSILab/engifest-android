@@ -15,10 +15,10 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.android.volley.Cache;
+import com.android.volley.toolbox.NetworkImageView;
 import com.dtu.engifest.AppController;
 import com.dtu.engifest.R;
 import com.dtu.engifest.util.NetworkUtil;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -58,7 +58,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
 
 
 
-    ImageView eventImage;
+    NetworkImageView eventImage;
     private int mPosition;
     private CardView cardView;
     private CardView cardContact;
@@ -141,7 +141,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             }
         });
 
-        eventImage =(ImageView) v.findViewById(R.id.eventImage);
+        eventImage =(NetworkImageView) v.findViewById(R.id.eventImage);
         cardView =(CardView) v.findViewById(R.id.cardView);
         cardView.setPadding(30,30,30,30);
         
@@ -173,9 +173,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
                 e.printStackTrace();
             }
 
-            Picasso.with(getActivity())
-                    .load(image)
-                    .into(eventImage);
+            eventImage.setImageUrl(image,AppController.getInstance().getImageLoader());
             layout1.setBackgroundColor(getResources().getColor(R.color.pink_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.pink_transparent));
             eventDescription.setText(description);
@@ -184,6 +182,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
+            if (textContact.getText().equals(""))
+                cardContact.setVisibility(View.GONE);
 
            }
         if (mPosition==1) {
@@ -202,9 +202,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            Picasso.with(getActivity())
-                    .load(image)
-                    .into(eventImage);
+            eventImage.setImageUrl(image,AppController.getInstance().getImageLoader());
             layout1.setBackgroundColor(getResources().getColor(R.color.green_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.green_transparent));
             eventDescription.setText(description);
@@ -213,7 +211,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-
+            if (textContact.getText().equals(""))
+                cardContact.setVisibility(View.GONE);
 
 
         }
@@ -233,9 +232,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            Picasso.with(getActivity())
-                    .load(image)
-                    .into(eventImage);
+            eventImage.setImageUrl(image,AppController.getInstance().getImageLoader());
             layout1.setBackgroundColor(getResources().getColor(R.color.red_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.red_transparent));
             eventDescription.setText(description);
@@ -244,7 +241,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-
+            if (textContact.getText().equals(""))
+                cardContact.setVisibility(View.GONE);
 
 
         }
@@ -264,9 +262,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            Picasso.with(getActivity())
-                    .load(image)
-                    .into(eventImage);
+            eventImage.setImageUrl(image,AppController.getInstance().getImageLoader());
             layout1.setBackgroundColor(getResources().getColor(R.color.blue_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.blue_transparent));
             eventDescription.setText(description);
@@ -275,7 +271,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-
+            if (textContact.getText().equals(""))
+                cardContact.setVisibility(View.GONE);
 
         }
         if (mPosition==4) {
@@ -293,9 +290,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            Picasso.with(getActivity())
-                    .load(image)
-                    .into(eventImage);
+            eventImage.setImageUrl(image,AppController.getInstance().getImageLoader());
             layout1.setBackgroundColor(getResources().getColor(R.color.pink_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.pink_transparent));
             eventDescription.setText(description);
@@ -304,7 +299,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-
+            if (textContact.getText().equals(""))
+                cardContact.setVisibility(View.GONE);
 
 
         }
@@ -324,9 +320,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            Picasso.with(getActivity())
-                    .load(image)
-                    .into(eventImage);
+            eventImage.setImageUrl(image,AppController.getInstance().getImageLoader());
             layout1.setBackgroundColor(getResources().getColor(R.color.purple_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.purple_transparent));
             eventDescription.setText(description);
@@ -335,7 +329,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-
+            if (textContact.getText().equals(""))
+                cardContact.setVisibility(View.GONE);
 
 
         }
@@ -356,9 +351,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            Picasso.with(getActivity())
-                    .load(image)
-                    .into(eventImage);
+            eventImage.setImageUrl(image,AppController.getInstance().getImageLoader());
             layout1.setBackgroundColor(getResources().getColor(R.color.green_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.green_transparent));
             eventDescription.setText(description);
@@ -367,7 +360,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-
+            if (textContact.getText().equals(""))
+                cardContact.setVisibility(View.GONE);
 
 
         }
@@ -387,9 +381,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            Picasso.with(getActivity())
-                    .load(image)
-                    .into(eventImage);
+            eventImage.setImageUrl(image,AppController.getInstance().getImageLoader());
             layout1.setBackgroundColor(getResources().getColor(R.color.red_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.red_transparent));
             eventDescription.setText(description);
@@ -398,7 +390,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-
+            if (textContact.getText().equals(""))
+                cardContact.setVisibility(View.GONE);
 
 
         }
@@ -419,9 +412,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            Picasso.with(getActivity())
-                    .load(image)
-                    .into(eventImage);
+            eventImage.setImageUrl(image,AppController.getInstance().getImageLoader());
             layout1.setBackgroundColor(getResources().getColor(R.color.pink_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.pink_transparent));
             eventDescription.setText(description);
@@ -430,7 +421,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-
+            if (textContact.getText().equals(""))
+                cardContact.setVisibility(View.GONE);
 
 
         }
@@ -450,9 +442,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            Picasso.with(getActivity())
-                    .load(image)
-                    .into(eventImage);
+            eventImage.setImageUrl(image,AppController.getInstance().getImageLoader());
             layout1.setBackgroundColor(getResources().getColor(R.color.blue_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.blue_transparent));
             eventDescription.setText(description);
@@ -461,7 +451,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-
+            if (textContact.getText().equals(""))
+                cardContact.setVisibility(View.GONE);
 
 
         }
@@ -482,9 +473,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            Picasso.with(getActivity())
-                    .load(image)
-                    .into(eventImage);
+            eventImage.setImageUrl(image,AppController.getInstance().getImageLoader());
             layout1.setBackgroundColor(getResources().getColor(R.color.green_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.green_transparent));
             eventDescription.setText(description);
@@ -493,7 +482,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-
+            if (textContact.getText().equals(""))
+                cardContact.setVisibility(View.GONE);
 
 
         }
@@ -513,9 +503,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            Picasso.with(getActivity())
-                    .load(image)
-                    .into(eventImage);
+            eventImage.setImageUrl(image,AppController.getInstance().getImageLoader());
             layout1.setBackgroundColor(getResources().getColor(R.color.green_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.green_transparent));
             eventDescription.setText(description);
@@ -524,7 +512,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-
+            if (textContact.getText().equals(""))
+                cardContact.setVisibility(View.GONE);
 
 
         }
@@ -544,9 +533,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            Picasso.with(getActivity())
-                    .load(image)
-                    .into(eventImage);
+            eventImage.setImageUrl(image,AppController.getInstance().getImageLoader());
             layout1.setBackgroundColor(getResources().getColor(R.color.green_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.green_transparent));
             eventDescription.setText(description);
@@ -555,7 +542,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-
+            if (textContact.getText().equals(""))
+                cardContact.setVisibility(View.GONE);
 
 
         }
@@ -575,9 +563,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            Picasso.with(getActivity())
-                    .load(image)
-                    .into(eventImage);
+            eventImage.setImageUrl(image,AppController.getInstance().getImageLoader());
             layout1.setBackgroundColor(getResources().getColor(R.color.green_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.green_transparent));
             eventDescription.setText(description);
@@ -586,7 +572,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-
+            if (textContact.getText().equals(""))
+                cardContact.setVisibility(View.GONE);
 
 
         }
