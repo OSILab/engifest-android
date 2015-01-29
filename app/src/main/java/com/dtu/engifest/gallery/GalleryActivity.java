@@ -271,7 +271,7 @@ public class GalleryActivity extends ActionBarActivity  {
             }
             adapter.notifyDataSetChanged();
 
-            displayView(0);
+            
 
 
         } catch (JSONException e) {
