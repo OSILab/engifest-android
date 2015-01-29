@@ -175,7 +175,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            eventImage.setImageUrl(image, AppController.getInstance().getImageLoader());
+
+            eventImage.setDefaultImageResId(R.drawable.anusthaan);
             layout1.setBackgroundColor(getResources().getColor(R.color.pink_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.pink_transparent));
             eventDescription.setText(description);

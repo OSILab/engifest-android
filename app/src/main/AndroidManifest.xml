@@ -118,6 +118,22 @@
             android:label="Feedback" >
 
         </activity>
+        <activity
+            android:name=".gallery.GalleryActivity"
+            android:theme="@style/AppThemeNoToolbar"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:parentActivityName=".MainActivity"
+            android:label="Gallery" >
+
+        </activity>
+        <activity
+            android:name=".gallery.DetailGallery"
+            android:theme="@style/AppThemeNoToolbar"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:parentActivityName=".MainActivity"
+            android:label="Gallery" >
+
+        </activity>
 
 
         <meta-data

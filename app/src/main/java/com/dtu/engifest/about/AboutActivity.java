@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 
 import com.dtu.engifest.R;
 import com.dtu.engifest.util.DialogUtils;
@@ -15,6 +16,7 @@ public class AboutActivity extends ActionBarActivity {
 
 
     private SvgAnimator mSvgAnimator;
+    private ScrollView rootLayout;
 
 
     @Override
@@ -24,7 +26,7 @@ public class AboutActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mSvgAnimator = (SvgAnimator) findViewById(R.id.oat);
         mSvgAnimator.setSvgResource(R.drawable.oat);
-
+        rootLayout = (ScrollView) findViewById(R.id.root_layout);
         LinearLayout aboutDtu = (LinearLayout) findViewById(R.id.aboutDtuLayout);
         aboutDtu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,4 +43,17 @@ public class AboutActivity extends ActionBarActivity {
         });
 
 
-    }}
+    }
+
+    @Override
+    protected void onResume() {
+        System.gc();
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        System.gc();
+    }
+}

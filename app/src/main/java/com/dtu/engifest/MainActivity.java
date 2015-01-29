@@ -1,5 +1,7 @@
 package com.dtu.engifest;
 
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -47,7 +49,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-
+        if (isGooglePlaySericesInstalled())
         GCMIntentService.registerAtGCM(this);
 
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this)
@@ -127,7 +129,18 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
-
+    public boolean isGooglePlaySericesInstalled()
+    {
+        try
+        {
+            ApplicationInfo info = getPackageManager().getApplicationInfo("com.google.android.gsf", 0);
+            return true;
+        }
+        catch(PackageManager.NameNotFoundException e)
+        {
+            return false;
+        }
+    }
 
     private class SlideMenuClickListener implements
             ListView.OnItemClickListener {

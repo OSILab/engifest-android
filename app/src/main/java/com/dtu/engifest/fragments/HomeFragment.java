@@ -1,6 +1,7 @@
 package com.dtu.engifest.fragments;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import com.dtu.engifest.FeedbackActivity;
 import com.dtu.engifest.R;
 import com.dtu.engifest.about.AboutActivity;
 import com.dtu.engifest.events.EventsActivity;
+import com.dtu.engifest.gallery.GalleryActivity;
 import com.dtu.engifest.newsfeed.NewsFeedActivity;
 import com.dtu.engifest.sponsors.SponsorsActivity;
 import com.flaviofaria.kenburnsview.KenBurnsView;
@@ -57,8 +59,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 // change images randomly
                 Random ran=new Random();
                 int i=ran.nextInt(photos.length);
+
+
                 //set image resources
                 imageView.setImageResource(photos[i]);
+                Drawable oriDrawable = imageView.getDrawable();
+
+                // set callback to null
+                oriDrawable.setCallback(null);
+                System.gc();
+
                 i++;
                 if(i>photos.length-1)
                 {
@@ -91,7 +101,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 startActivity(k);
                 break;
             case R.id.btn_gallery:
-
+                Intent m =new Intent(getActivity(), GalleryActivity.class);
+                startActivity(m);
                 break;
             case R.id.btn_sponsors:
                 Intent l =new Intent(getActivity(), SponsorsActivity.class);

@@ -4,6 +4,7 @@ package com.dtu.engifest.events;
 
 import android.annotation.TargetApi;
 import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -25,6 +26,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.android.volley.Cache;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -135,6 +137,7 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
             JsonObjectRequest jsonReq = new JsonObjectRequest(Request.Method.GET,
                     URL_EVENTS, null, new Response.Listener<JSONObject>() {
 
+
                 @Override
                 public void onResponse(JSONObject response) {
                     VolleyLog.d(TAG, "Response: " + response.toString());
@@ -150,12 +153,15 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
                 public void onErrorResponse(VolleyError error) {
                     VolleyLog.d(TAG, "Error: " + error.getMessage());
                     progressBar.setVisibility(View.GONE);
-                    if (entry==null)
+                     if (entry==null)
                     errorLayout.setVisibility(View.VISIBLE);
 
                 }
             });
-
+                    jsonReq.setRetryPolicy(new DefaultRetryPolicy(
+                            11000,
+                            2,
+                            2));
 
             AppController.getInstance().addToRequestQueue(jsonReq);
 
@@ -175,6 +181,11 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
                 int i=ran.nextInt(photos.length);
                 //set image resources
                 imageView.setImageResource(photos[i]);
+                Drawable oriDrawable = imageView.getDrawable();
+
+                // set callback to null
+                oriDrawable.setCallback(null);
+                System.gc();
                 i++;
                 if(i>photos.length-1)
                 {

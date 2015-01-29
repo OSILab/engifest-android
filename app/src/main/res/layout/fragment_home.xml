@@ -18,7 +18,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="bottom|center_horizontal"
             android:scaleType="center"
-            android:src="@drawable/photo1"
+            android:src="@drawable/photo6"
             />
 
         <include layout="@layout/fragment_layout">

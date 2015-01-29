@@ -49,7 +49,7 @@
                 android:layout_alignParentTop="true"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/photo1" />
+                android:src="@drawable/photo6" />
 
             <ImageView
                 android:id="@+id/logo"
