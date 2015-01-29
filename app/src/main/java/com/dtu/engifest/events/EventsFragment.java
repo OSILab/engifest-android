@@ -62,7 +62,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
     private int mPosition;
     private CardView cardView;
     private CardView cardContact;
-    private String URL_EVENTS = "http://engifesttest.comlu.com/events";
+    private String URL_EVENTS = "http://engifest.dce.edu/api/events.php";
 
     public String loadJSONFRomCache() {
 
@@ -185,7 +185,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-            if (textContact.getText().equals(""))
+            if (textContact.getText().equals("null"))
                 cardContact.setVisibility(View.GONE);
 
            }
@@ -216,7 +216,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-            if (textContact.getText().equals(""))
+            if (textContact.getText().equals("null"))
                 cardContact.setVisibility(View.GONE);
 
 
@@ -248,7 +248,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-            if (textContact.getText().equals(""))
+            if (textContact.getText().equals("null"))
                 cardContact.setVisibility(View.GONE);
 
 
@@ -280,7 +280,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-            if (textContact.getText().equals(""))
+            if (textContact.getText().equals("null"))
                 cardContact.setVisibility(View.GONE);
 
         }
@@ -310,7 +310,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-            if (textContact.getText().equals(""))
+            if (textContact.getText().equals("null"))
                 cardContact.setVisibility(View.GONE);
 
 
@@ -342,7 +342,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-            if (textContact.getText().equals(""))
+            if (textContact.getText().equals("null"))
                 cardContact.setVisibility(View.GONE);
 
 
@@ -375,7 +375,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-            if (textContact.getText().equals(""))
+            if (textContact.getText().equals("null"))
                 cardContact.setVisibility(View.GONE);
 
 
@@ -407,7 +407,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-            if (textContact.getText().equals(""))
+            if (textContact.getText().equals("null"))
                 cardContact.setVisibility(View.GONE);
 
 
@@ -440,7 +440,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-            if (textContact.getText().equals(""))
+            if (textContact.getText().equals("null"))
                 cardContact.setVisibility(View.GONE);
 
 
@@ -472,7 +472,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-            if (textContact.getText().equals(""))
+            if (textContact.getText().equals("null"))
                 cardContact.setVisibility(View.GONE);
 
 
@@ -505,7 +505,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-            if (textContact.getText().equals(""))
+            if (textContact.getText().equals("null"))
                 cardContact.setVisibility(View.GONE);
 
 
@@ -537,7 +537,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-            if (textContact.getText().equals(""))
+            if (textContact.getText().equals("null"))
                 cardContact.setVisibility(View.GONE);
 
 
@@ -569,7 +569,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-            if (textContact.getText().equals(""))
+            if (textContact.getText().equals("null"))
                 cardContact.setVisibility(View.GONE);
 
 
@@ -601,7 +601,70 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
-            if (textContact.getText().equals(""))
+            if (textContact.getText().equals("null"))
+                cardContact.setVisibility(View.GONE);
+
+
+        }
+        if (mPosition==14) {
+            try {
+
+                obj = new JSONObject(loadJSONFRomCache());
+
+                JSONArray array  = obj.getJSONArray("content");
+                JSONObject obj2 = array.getJSONObject(14);
+                image = obj2.getString("image");
+                title = obj2.getString("title");
+                description = obj2.getString("description");
+                subdescription = obj2.getString("subtitle");
+                contact = obj2.getString("contactname");
+                number = obj2.getString("contactnumber");
+                email = obj2.getString("contactemail");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            eventImage.setImageUrl(image,AppController.getInstance().getImageLoader());
+            layout1.setBackgroundColor(getResources().getColor(R.color.green_transparent));
+            layout2.setBackgroundColor(getResources().getColor(R.color.green_transparent));
+            eventDescription.setText(description);
+            eventTitle.setText(title);
+            eventShortDescription.setText(subdescription);
+            textContact.setText(contact);
+            textNumber.setText(number);
+            textEmail.setText(email);
+            if (textContact.getText().equals("null"))
+                cardContact.setVisibility(View.GONE);
+
+
+        }
+        if (mPosition==15) {
+            try {
+
+                obj = new JSONObject(loadJSONFRomCache());
+
+                JSONArray array  = obj.getJSONArray("content");
+                JSONObject obj2 = array.getJSONObject(15);
+                image = obj2.getString("image");
+                title = obj2.getString("title");
+                description = obj2.getString("description");
+                subdescription = obj2.getString("subtitle");
+                contact = obj2.getString("contactname");
+                number = obj2.getString("contactnumber");
+                email = obj2.getString("contactemail");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            eventImage.setImageUrl(image,AppController.getInstance().getImageLoader());
+            layout1.setBackgroundColor(getResources().getColor(R.color.blue_transparent));
+            layout2.setBackgroundColor(getResources().getColor(R.color.blue_transparent));
+            eventDescription.setText(description);
+            eventTitle.setText(title);
+            eventShortDescription.setText(subdescription);
+            textContact.setText(contact);
+            textNumber.setText(number);
+            textEmail.setText(email);
+            if (textContact.getText().equals("null"))
                 cardContact.setVisibility(View.GONE);
 
 

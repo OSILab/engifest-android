@@ -48,7 +48,33 @@
             android:indeterminate="true"/>
 
     </FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/error"
+        android:visibility="gone"
+        android:paddingBottom="20dp"
+        android:paddingTop="320dp"
 
+        android:gravity="center">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/errorcloud"
+            android:src="@drawable/error_view_cloud"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingTop="10dp"
+            android:id="@+id/errortext"
+            android:text="No Internet Connection"
+            android:textSize="20sp"
+            android:paddingBottom="15dp"
+            android:textColor="#CC000000"/>
+    </LinearLayout>
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"

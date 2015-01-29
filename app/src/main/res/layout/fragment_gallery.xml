@@ -2,10 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="48dip"
-        />
 
 
     <GridView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -14,13 +10,13 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:horizontalSpacing="6dip"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
         android:numColumns="2"
         android:stretchMode="columnWidth"
         android:verticalSpacing="15dip"
 
-        android:padding="6dip" />
+       />
 
     <LinearLayout
         android:layout_width="match_parent"

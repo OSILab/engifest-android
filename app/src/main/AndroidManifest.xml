@@ -120,7 +120,7 @@
         </activity>
         <activity
             android:name=".gallery.GalleryActivity"
-            android:theme="@style/AppThemeNoToolbar"
+            android:theme="@style/AppTheme"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:parentActivityName=".MainActivity"
             android:label="Gallery" >

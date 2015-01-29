@@ -1,34 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
 
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/pager"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_light"
+        android:minHeight="?attr/actionBarSize"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <fr.castorflex.android.smoothprogressbar.SmoothProgressBar
         android:id="@+id/google_now"
         android:layout_gravity="top"
+        android:layout_below="@id/toolbar"
         android:layout_width="match_parent"
+
         android:layout_height="4dp"
         style="@style/GNowProgressBar"
-        android:indeterminate="true"/>
 
-    <com.astuetz.PagerSlidingTabStrip
-        android:id="@+id/tabs"
-        android:layout_width="match_parent"
-        android:layout_height="48dip"
-        android:layout_gravity="top"
-        android:textColor="#ffffff"
-        app:pstsIndicatorColor="#4caf50"
-        app:pstsIndicatorHeight="3dp"
-        app:pstsDividerColor="@android:color/transparent"
-        android:background="@android:color/holo_blue_light" />
+        android:indeterminate="true"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,7 +30,7 @@
         android:id="@+id/error"
         android:visibility="gone"
         android:paddingBottom="20dp"
-        android:paddingTop="50dp"
+        android:paddingTop="100dp"
 
         android:gravity="center">
         <ImageView
@@ -58,4 +52,42 @@
     </LinearLayout>
 
 
-</FrameLayout>
+    <android.support.v4.widget.DrawerLayout
+
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+       >
+
+
+        <FrameLayout
+            android:id="@+id/frame_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+        <!--DRAWER -->
+        <LinearLayout
+            android:id="@+id/drawer_view"
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="start">
+
+
+
+            <ListView
+                android:id="@+id/list_slidermenu"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:choiceMode="singleChoice"
+                android:divider="@color/list_divider"
+                android:dividerHeight="1dp"
+                android:listSelector="@drawable/list_selector"
+                android:background="@color/list_background"/>
+        </LinearLayout>
+    </android.support.v4.widget.DrawerLayout>
+
+</RelativeLayout>

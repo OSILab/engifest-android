@@ -82,7 +82,7 @@ public class GalleryFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fragment_gallery, null);
+        v = inflater.inflate(R.layout.fragment_gallery,container,false);
         listView = (GridView) v.findViewById(R.id.grid);
 
 
