@@ -40,7 +40,7 @@ public class ScheduleFragment extends Fragment{
     private List<ScheduleItem> feedItems,updatedFeedItems;
     private SmoothProgressBar progressBar;
     LinearLayout errorLayout;
-    private String URL_SCHEDULE = "http://engifesttest.comlu.com/schedule";
+    private String URL_SCHEDULE = "http://engifest.dce.edu/api/schedule.php";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

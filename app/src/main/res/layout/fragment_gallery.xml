@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_marginTop="7dp"
     android:layout_height="match_parent">
 
 
@@ -14,7 +15,7 @@
         android:paddingRight="5dp"
         android:numColumns="2"
         android:stretchMode="columnWidth"
-        android:verticalSpacing="15dip"
+        android:verticalSpacing="7dip"
 
        />
 

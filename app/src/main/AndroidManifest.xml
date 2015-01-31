@@ -29,6 +29,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
 
 
+
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true"/>
@@ -132,6 +133,14 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:parentActivityName=".MainActivity"
             android:label="Gallery" >
+
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:theme="@style/AppThemeNoToolbar"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:parentActivityName=".MainActivity"
+            android:label="Settings" >
 
         </activity>
 

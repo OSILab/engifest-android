@@ -469,7 +469,7 @@ public class GalleryFragment extends Fragment {
             final ViewHolder holder;
             View view = convertView;
             if (view == null) {
-                view = inflater.inflate(R.layout.grid_image, parent, false);
+                view = inflater.inflate(R.layout.grid_image_gallery, parent, false);
                 holder = new ViewHolder();
                 assert view != null;
                 holder.imageView = (ImageView) view.findViewById(R.id.image);

@@ -1,5 +1,6 @@
 package com.dtu.engifest;
 
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
@@ -158,6 +159,11 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -172,6 +178,10 @@ public class MainActivity extends ActionBarActivity {
 
             case android.R.id.home:
                 this.finish();
+                return true;
+            case R.id.action_settings:
+                Intent i = new Intent(MainActivity.this,SettingsActivity.class);
+                startActivity(i);
                 return true;
 
 

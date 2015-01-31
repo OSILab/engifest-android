@@ -62,7 +62,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
     private int mPosition;
     private CardView cardView;
     private CardView cardContact;
-    private String URL_EVENTS = "http://engifest.dce.edu/api/events.php";
+    private String URL_EVENTS = "http://engifesttest.comlu.com/events";
 
     public String loadJSONFRomCache() {
 
@@ -175,8 +175,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
-            eventImage.setDefaultImageResId(R.drawable.anusthaan);
+            eventImage.setImageUrl(image,AppController.getInstance().getImageLoader());
             layout1.setBackgroundColor(getResources().getColor(R.color.pink_transparent));
             layout2.setBackgroundColor(getResources().getColor(R.color.pink_transparent));
             eventDescription.setText(description);

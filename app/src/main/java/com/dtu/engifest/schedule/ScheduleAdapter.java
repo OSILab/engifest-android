@@ -85,7 +85,7 @@ public class ScheduleAdapter extends BaseAdapter {
         }
 
 
-        if (item.getTime() != null) {
+        if (item.getTime() != "null") {
             time.setText(item.getTime());
             time.setVisibility(View.VISIBLE);
         } else {

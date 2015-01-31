@@ -76,7 +76,7 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
     private AlphaForegroundColorSpan mAlphaForegroundColorSpan;
 
     private static final String TAG = EventsActivity.class.getSimpleName();
-    private String URL_EVENTS = "http://engifest.dce.edu/api/events.php";
+    private String URL_EVENTS = "http://engifesttest.comlu.com/events";
 
     public String events[],updatedEvents[];
     private LinearLayout errorLayout;
@@ -108,7 +108,7 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
         mHeader = findViewById(R.id.header);
         mPagerSlidingTabStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
         mViewPager = (ViewPager) findViewById(R.id.pager);
-        mViewPager.setOffscreenPageLimit(9);
+        mViewPager.setOffscreenPageLimit(8);
 
         mPagerSlidingTabStrip.setOnPageChangeListener(this);
         mAlphaForegroundColorSpan = new AlphaForegroundColorSpan(0xffffffff);
