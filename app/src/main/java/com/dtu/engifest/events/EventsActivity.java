@@ -81,6 +81,8 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
     public String events[],updatedEvents[];
     private LinearLayout errorLayout;
 
+    private boolean isInFront;
+
     int[] photos={R.drawable.photo6, R.drawable.switchthefunkup,R.drawable.photo2,R.drawable.photo3,R.drawable.photo4,R.drawable.photo5};
     KenBurnsView imageView;
     private SmoothProgressBar progressBar;
@@ -180,9 +182,11 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
                 Random ran=new Random();
                 int i=ran.nextInt(photos.length);
                 //set image resources
+                //only when activity is in foreground to avoid out of memory errors
+                if (isInFront)
                 imageView.setImageResource(photos[i]);
-                Drawable oriDrawable = imageView.getDrawable();
 
+                Drawable oriDrawable = imageView.getDrawable();
                 // set callback to null
                 oriDrawable.setCallback(null);
                 System.gc();
@@ -383,5 +387,17 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
             return mScrollTabHolders;
         }
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        isInFront = true;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        isInFront = false;
     }
 }

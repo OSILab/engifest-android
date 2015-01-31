@@ -26,11 +26,10 @@ import java.util.Random;
  */
 public class HomeFragment extends Fragment implements View.OnClickListener{
 
-    Button buttonEvents;
-
     int[] photos={R.drawable.photo6, R.drawable.switchthefunkup,R.drawable.photo2,R.drawable.photo3,R.drawable.photo4,R.drawable.photo5};
     KenBurnsView imageView;
     Button newsfeed, events, about, gallery, sponsors, contactus;
+    private boolean isInFront;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,7 +60,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 int i=ran.nextInt(photos.length);
 
 
-                //set image resources
+                //to avoid out of memory errors
+                if (isInFront)
                 imageView.setImageResource(photos[i]);
                 Drawable oriDrawable = imageView.getDrawable();
 
@@ -114,7 +114,17 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 break;
         }
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+        isInFront = true;
+    }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        isInFront = false;
+    }
 }
 
 
