@@ -61,7 +61,7 @@ public class GalleryActivity extends ActionBarActivity  {
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
 
-
+    private boolean isInFront;
 
     private GalleryListAdapter adapter;
 
@@ -128,7 +128,7 @@ public class GalleryActivity extends ActionBarActivity  {
         }
 
         if (NetworkUtil.isNetworkConnected(this)){
-
+            progressBar.setVisibility(View.VISIBLE);
             JsonObjectRequest jsonReq = new JsonObjectRequest(Request.Method.GET,
                     URL_GALLERY, null, new Response.Listener<JSONObject>() {
 
@@ -247,6 +247,7 @@ public class GalleryActivity extends ActionBarActivity  {
             adapter = new GalleryListAdapter(getApplicationContext(),
                     gallery);
             mDrawerList.setAdapter(adapter);
+            progressBar.setVisibility(View.GONE);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -271,8 +272,10 @@ public class GalleryActivity extends ActionBarActivity  {
             }
             adapter.notifyDataSetChanged();
 
-            
-
+            //checking if activity is visible
+            //displayView() may result in IllegalStateException is activity is not visible
+            if (isInFront)
+            displayView(0);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -331,6 +334,19 @@ public class GalleryActivity extends ActionBarActivity  {
     public void onBackPressed() {
         super.onBackPressed();
         this.finish();
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        isInFront = true;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        isInFront = false;
     }
 
 }
