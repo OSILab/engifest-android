@@ -427,9 +427,9 @@ public class GalleryFragment extends Fragment {
 
 
         options = new DisplayImageOptions.Builder()
-                .showImageOnLoading(R.drawable.ic_launcher)
-                .showImageForEmptyUri(R.drawable.ic_launcher)
-                .showImageOnFail(R.drawable.error_view_cloud)
+                .showImageOnLoading(R.drawable.gallery_loading)
+                .showImageForEmptyUri(R.drawable.gallery_error)
+                .showImageOnFail(R.drawable.gallery_error)
                 .cacheInMemory(true)
                 .cacheOnDisk(true)
                 .considerExifParams(true)

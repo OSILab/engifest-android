@@ -63,7 +63,9 @@ public class DetailImage extends SponsorsActivity {
 
 
         switch (item.getItemId()) {
-
+            case android.R.id.home:
+                this.finish();
+                return true;
             case R.id.item_clear_memory_cache:
                 ImageLoader.getInstance().clearMemoryCache();
                 return true;

@@ -119,9 +119,9 @@ public  class SponsorsActivity extends ActionBarActivity {
             }
         });
         options = new DisplayImageOptions.Builder()
-                .showImageOnLoading(R.drawable.ic_launcher)
-                .showImageForEmptyUri(R.drawable.ic_launcher)
-                .showImageOnFail(R.drawable.error_view_cloud)
+                .showImageOnLoading(R.drawable.gallery_loading)
+                .showImageForEmptyUri(R.drawable.gallery_error)
+                .showImageOnFail(R.drawable.gallery_error)
                 .cacheInMemory(true)
                 .cacheOnDisk(true)
                 .considerExifParams(true)
@@ -178,7 +178,9 @@ public  class SponsorsActivity extends ActionBarActivity {
 
 
         switch (item.getItemId()) {
-
+            case android.R.id.home:
+                this.finish();
+                return true;
             case R.id.item_clear_memory_cache:
                 ImageLoader.getInstance().clearMemoryCache();
                 return true;
@@ -257,6 +259,7 @@ public  class SponsorsActivity extends ActionBarActivity {
             return view;
         }
     }
+
     protected void startImagePagerActivity(int position) {
         Intent intent = new Intent(this, DetailImage.class);
         intent.putExtra(Extra.IMAGE_POSITION, position);

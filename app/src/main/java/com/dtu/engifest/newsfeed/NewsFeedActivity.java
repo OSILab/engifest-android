@@ -7,6 +7,7 @@ package com.dtu.engifest.newsfeed;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -49,7 +50,7 @@ public class NewsFeedActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newsfeed);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         listView = (ListView) findViewById(R.id.list);
         progressBar = (SmoothProgressBar) findViewById(R.id.google_now);
         errorLayout=(LinearLayout) findViewById(R.id.error);
@@ -177,6 +178,19 @@ progressBar.setVisibility(View.GONE);
 
         } catch (JSONException e) {
             e.printStackTrace();
+        }
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+
+            case android.R.id.home:
+                this.finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 
