@@ -62,7 +62,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
     private int mPosition;
     private CardView cardView;
     private CardView cardContact;
-    private String URL_EVENTS = "http://engifesttest.comlu.com/events";
+    private String URL_EVENTS = "http://engifest.dce.edu/api/events.php";
 
     public String loadJSONFRomCache() {
 

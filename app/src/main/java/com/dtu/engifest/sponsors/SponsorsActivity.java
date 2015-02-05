@@ -5,6 +5,7 @@ package com.dtu.engifest.sponsors;
  */
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
@@ -51,9 +52,10 @@ public  class SponsorsActivity extends ActionBarActivity {
     DisplayImageOptions options;
     private ImageAdapter mImageAdapter;
     public String imageUrls[],updatedImageUrls[];
+    public String urls[],updatedUrls[];
     private SmoothProgressBar progressBar;
     private LinearLayout errorLayout;
-    private String URL_SPONSORS = "http://engifesttest.comlu.com/sponsors";
+    private String URL_SPONSORS = "http://engifest.dce.edu/api/sponsor.php";
 
 
 
@@ -115,7 +117,9 @@ public  class SponsorsActivity extends ActionBarActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                startImagePagerActivity(position);
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(urls[position]));
+                startActivity(i);
             }
         });
         options = new DisplayImageOptions.Builder()
@@ -135,10 +139,18 @@ public  class SponsorsActivity extends ActionBarActivity {
     private void parseJsonFeed(JSONObject response) {
         try {
             JSONArray feedArray = response.getJSONArray("images");
+            JSONArray urlsarray = response.getJSONArray("urls");
+
             imageUrls = new String[feedArray.length()];
             for (int i = 0; i < feedArray.length(); i++) {
 
                 imageUrls[i]=feedArray.getString(i);
+
+            }
+            urls = new String[urlsarray.length()];
+            for (int i = 0; i < urlsarray.length(); i++) {
+
+                urls[i]=urlsarray.getString(i);
 
             }
             mImageAdapter = new ImageAdapter();
@@ -151,13 +163,21 @@ public  class SponsorsActivity extends ActionBarActivity {
     private void updateJsonFeed(JSONObject response) {
         try {
             JSONArray feedArray = response.getJSONArray("images");
+            JSONArray urlsarray = response.getJSONArray("urls");
             updatedImageUrls = new String[feedArray.length()];
             for (int i = 0; i < feedArray.length(); i++) {
 
                 updatedImageUrls[i]=feedArray.getString(i);
 
             }
+            updatedUrls = new String[urlsarray.length()];
+            for (int i = 0; i < urlsarray.length(); i++) {
+
+                updatedUrls[i]=urlsarray.getString(i);
+
+            }
             imageUrls=updatedImageUrls;
+            urls=updatedUrls;
             progressBar.setVisibility(View.GONE);
 
             //for first time when cache will be null(entry==null),adapter will be null so
@@ -260,11 +280,7 @@ public  class SponsorsActivity extends ActionBarActivity {
         }
     }
 
-    protected void startImagePagerActivity(int position) {
-        Intent intent = new Intent(this, DetailImage.class);
-        intent.putExtra(Extra.IMAGE_POSITION, position);
-        startActivity(intent);
-    }
+
     static class ViewHolder {
         ImageView imageView;
         ProgressBar progressBar;

@@ -42,10 +42,10 @@ public class FeedbackActivity extends ActionBarActivity {
             @Override
             public void onClick(View view) {
 
-                String finalFeedback = "RainggApp="+numberRatingBar1.getProgress()+"\n"+"RatingEngifest="+numberRatingBar2.getProgress()+"\n"+"Feedback="+feedback.getText();
+                String finalFeedback = "RatingApp="+numberRatingBar1.getProgress()+"\n"+"RatingEngifest="+numberRatingBar2.getProgress()+"\n"+"Feedback-"+feedback.getText();
                 Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
                 emailIntent.setType("text/plain");
-                emailIntent.setData(Uri.parse("mailto:" + "namandwivedi14@gmail.com"));
+                emailIntent.setData(Uri.parse("mailto:" + "engifest2k15@gmail.com"));
                 emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Feedback-Engifest");
                 emailIntent.putExtra(Intent.EXTRA_TEXT, finalFeedback);
                 emailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

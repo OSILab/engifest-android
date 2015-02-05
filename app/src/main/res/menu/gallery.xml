@@ -6,5 +6,5 @@
         android:title="Clear memory cache"/>
     <item
         android:id="@+id/item_clear_disc_cache"
-        android:title="clear disc cache"/>
+        android:title="Clear disc cache"/>
 </menu>

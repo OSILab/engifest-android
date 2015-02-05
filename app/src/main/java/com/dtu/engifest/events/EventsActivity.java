@@ -76,7 +76,7 @@ public class EventsActivity extends ActionBarActivity implements ScrollTabHolder
     private AlphaForegroundColorSpan mAlphaForegroundColorSpan;
 
     private static final String TAG = EventsActivity.class.getSimpleName();
-    private String URL_EVENTS = "http://engifesttest.comlu.com/events";
+    private String URL_EVENTS = "http://engifest.dce.edu/api/events.php";
 
     public String events[],updatedEvents[];
     private LinearLayout errorLayout;
