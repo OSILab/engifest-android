@@ -17,7 +17,7 @@ public class SettingsActivity extends ActionBarActivity {
     String Urlwebsite="http://engifest.dce.edu";
     String Urlfacebook="https://www.facebook.com/engifest";
     String Urltwitter="https://twitter.com/engifest";
-    String Urlgoogleplus="https://www.facebook.com/engifest";
+    String Urlgoogleplus="https://plus.google.com/u/0/102972026150009287408/posts";
 
     ImageView github,website,share,facebook,googleplus,twitter;
 

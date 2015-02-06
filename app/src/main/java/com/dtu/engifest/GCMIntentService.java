@@ -64,7 +64,8 @@ public class GCMIntentService extends GCMBaseIntentService {
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.ic_launcher).setContentTitle(title)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
-                .setContentText(message);
+                .setContentText(message)
+                .setAutoCancel(true);
         // Creates an explicit intent for an Activity in your app
         Intent resultIntent = new Intent(this, MainActivity.class);
         resultIntent.putExtra("title", title);
