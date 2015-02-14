@@ -71,7 +71,7 @@ public class FeedListAdapter extends BaseAdapter {
         TextView url = (TextView) convertView.findViewById(R.id.txtUrl);
         NetworkImageView profilePic = (NetworkImageView) convertView
                 .findViewById(R.id.profilePic);
-        FeedImageView feedImageView = (FeedImageView) convertView
+        final FeedImageView feedImageView = (FeedImageView) convertView
                 .findViewById(R.id.feedImage1);
 
         FeedItem item = feedItems.get(position);
@@ -114,6 +114,7 @@ public class FeedListAdapter extends BaseAdapter {
                     .setResponseObserver(new FeedImageView.ResponseObserver() {
                         @Override
                         public void onError() {
+
                         }
 
                         @Override

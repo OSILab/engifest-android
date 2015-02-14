@@ -107,7 +107,7 @@ public class GCMIntentService extends GCMBaseIntentService {
      * @param senderId
      */
     private void registerGCMClient(String registrationId, String senderId) {
-        String url = "http://gcm4public.appspot.com/registergcmclient?senderId=" + senderId
+        String url = "http://engifest.dce.edu/_gcmserver/registerGCM.php?senderId=" + senderId
                 + "&registrationId=" + registrationId;
         Log.d(TAG, url);
         DefaultHttpClient httpclient = new DefaultHttpClient();

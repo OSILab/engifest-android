@@ -4,13 +4,13 @@ package com.dtu.engifest.newsfeed.data;
  * Created by sikkavayu2013 on 15-01-2015.
  */
 public class FeedItem {
-    private int id;
+    private String id;
     private String name, status, image, profilePic, timeStamp, url;
 
     public FeedItem() {
     }
 
-    public FeedItem(int id, String name, String image, String status,
+    public FeedItem(String id, String name, String image, String status,
                     String profilePic, String timeStamp, String url) {
         super();
         this.id = id;
@@ -22,11 +22,11 @@ public class FeedItem {
         this.url = url;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

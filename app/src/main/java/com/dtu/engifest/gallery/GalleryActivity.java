@@ -49,7 +49,7 @@ public class GalleryActivity extends ActionBarActivity  {
 
     private static final String TAG = GalleryActivity.class.getSimpleName();
 
-    private String URL_GALLERY = "http://engifesttest.comlu.com/gallery";
+    private String URL_GALLERY = "http://engifest.dce.edu/api/gallery.php";
     public String gallery[],updatedGallery[];
 
     private SmoothProgressBar progressBar;

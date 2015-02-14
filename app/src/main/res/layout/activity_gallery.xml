@@ -87,7 +87,10 @@
                 android:dividerHeight="1dp"
                 android:listSelector="@drawable/list_selector"
                 android:background="@color/list_background"/>
+
         </LinearLayout>
+
+
     </android.support.v4.widget.DrawerLayout>
 
 </RelativeLayout>
