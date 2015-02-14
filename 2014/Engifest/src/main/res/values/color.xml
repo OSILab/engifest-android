@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="drawer_background">#ff3a3a3a</color>
+    <color name="drawer_list_divider">#afafaf</color>
+    <color name="background_window">#FFE5E5E5</color>
+    <color name="register_item">#ffff1e91</color>
+</resources>

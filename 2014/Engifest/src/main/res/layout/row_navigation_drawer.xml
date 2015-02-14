@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp" >
+
+    <TextView
+        android:id="@+id/title_navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:gravity="left"
+        android:textSize="@dimen/abc_action_bar_title_text_size"
+        android:textColor="#ffd8d8d8"
+        android:layout_marginLeft="40dp"/>
+
+</RelativeLayout>

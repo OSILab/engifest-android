@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" style="@style/card_outer">
+
+    <RelativeLayout android:id="@+id/inner_frame" style="@style/card_inner">
+
+        <ImageView android:id="@+id/image_event"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/ic_launcher"/>
+
+        <RelativeLayout android:id="@+id/titleFrame" style="@style/card_title_frame"
+            android:layout_below="@id/image_event">
+
+            <TextView android:id="@android:id/title" style="@style/card_title"/>
+
+            <ImageButton android:id="@android:id/button1" style="@style/card_popup_anchor"/>
+
+        </RelativeLayout>
+
+        <com.afollestad.silk.views.text.SilkTextView android:id="@android:id/content" style="@style/card_content"/>
+
+    </RelativeLayout>
+
+    <ImageView style="@style/card_shadow"/>
+
+</LinearLayout>

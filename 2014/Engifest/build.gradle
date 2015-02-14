@@ -1,0 +1,39 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.7.+'
+    }
+}
+apply plugin: 'android'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19"
+
+    defaultConfig {
+        minSdkVersion 8
+        targetSdkVersion 19
+    }
+    buildTypes {
+        release {
+            runProguard false
+            proguardFile getDefaultProguardFile('proguard-android.txt')
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:19.0.0'
+    compile 'com.android.support:appcompat-v7:19.0.0'
+    compile 'com.afollestad.cardsui:library:1.0-SNAPSHOT@aar'
+    compile 'com.afollestad.silk:library:1.0-SNAPSHOT@aar'
+    compile 'com.google.android.gms:play-services:3.2.+'
+    compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
+}

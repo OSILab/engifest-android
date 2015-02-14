@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/card_outer">
+
+    <RelativeLayout
+        android:id="@+id/inner_frame"
+        style="@style/card_inner">
+
+        <ImageView android:id="@android:id/icon"
+            style="@style/card_thumbnail"/>
+
+        <RelativeLayout
+            android:id="@+id/titleFrame"
+            style="@style/card_title_frame">
+
+            <TextView
+                android:id="@android:id/title"
+                style="@style/card_title"
+                android:singleLine="false"
+                android:textSize="15sp"/>
+
+            <ImageButton
+                android:id="@android:id/button1"
+                style="@style/card_popup_anchor"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <ImageView style="@style/card_shadow"/>
+
+</LinearLayout>
