@@ -164,6 +164,14 @@ private void addJsonToCache(JSONObject response){
             for (int i = 0; i < feedArray.length(); i++) {
                 JSONObject feedObj = (JSONObject) feedArray.get(i);
 
+                String message =feedObj.optString("message");
+
+		//Facebook also returns objects if page likes a photo in which case 
+		//there is no message, so we leave that particular item
+
+                if (message.equals(""))
+                    continue;
+
                 FeedItem item = new FeedItem();
                 item.setId(feedObj.optString("object_id"));
                 item.setName("Engifest,DTU");
@@ -171,9 +179,16 @@ private void addJsonToCache(JSONObject response){
                 String objectId=feedObj.optString("object_id");
                 String imageUrl="http://graph.facebook.com/"+objectId+"/picture";
                 item.setImge(imageUrl);
-                item.setStatus(feedObj.optString("message"));
+                item.setStatus(message);
                 item.setProfilePic("https://graph.facebook.com/Engifest/picture?type=normal");
-                item.setTimeStamp(feedObj.getString("created_time"));
+
+                String timeResponse=feedObj.optString("created_time");
+                String time=timeResponse;
+
+                if (timeResponse.length()>=10) {
+                    time = timeResponse.substring(0, 10);
+                }
+                item.setTimeStamp(time);
 
 
                 String feedUrl = feedObj.isNull("url") ? null : feedObj
@@ -199,6 +214,12 @@ private void addJsonToCache(JSONObject response){
             for (int i = 0; i < feedArray.length(); i++) {
                 JSONObject feedObj = (JSONObject) feedArray.get(i);
 
+
+                String message =feedObj.optString("message");
+
+                if (message.equals(""))
+                    continue;
+
                 FeedItem item = new FeedItem();
                 item.setId(feedObj.optString("object_id"));
                 item.setName("Engifest,DTU");
@@ -207,7 +228,7 @@ private void addJsonToCache(JSONObject response){
 
                 String imageUrl="http://graph.facebook.com/"+objectId+"/picture";
                 item.setImge(imageUrl);
-                item.setStatus(feedObj.optString("message"));
+                item.setStatus(message);
                 item.setProfilePic("https://graph.facebook.com/Engifest/picture?type=normal");
 
                 String timeResponse=feedObj.optString("created_time");

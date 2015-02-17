@@ -140,7 +140,7 @@
             android:theme="@style/AppThemeNoToolbar"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:parentActivityName=".MainActivity"
-            android:label="Settings" >
+            android:label="About Us" >
 
         </activity>
 
