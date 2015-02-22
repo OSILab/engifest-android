@@ -165,7 +165,7 @@
 
             android:textAllCaps="true"
             android:textColor="#fff"
-            android:textSize="14sp"
-            android:text="Submit Feedback" />
+            android:textSize="16sp"
+            android:text="Submit" />
     </FrameLayout>
 </RelativeLayout>

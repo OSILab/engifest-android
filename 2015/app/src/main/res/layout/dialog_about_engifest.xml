@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="The annual cultural festival of Delhi Technological University, Engifest is a four day cultural extravaganza held in the month of February. Engifest comes as a breath of fresh air, bridging the gap between technical education and creativity. It is a much-needed wave, rich in cultural diversity, which rejuvenates, refreshes and titillates the soul and gives creativity a chance to flourish. Engifest is a symbol of achievement and pride. It is a product of dreams, ambition and tireless hardwork, a true testimony to the indomitable spirit, liveliness and sheer energy of youth. "
+        android:text="The annual cultural festival of Delhi Technological University, Engifest is a three day cultural extravaganza held in the month of February. Engifest comes as a breath of fresh air, bridging the gap between technical education and creativity. It is a much-needed wave, rich in cultural diversity, which rejuvenates, refreshes and titillates the soul and gives creativity a chance to flourish. Engifest is a symbol of achievement and pride. It is a product of dreams, ambition and tireless hardwork, a true testimony to the indomitable spirit, liveliness and sheer energy of youth. "
 
         android:textColor="#ffffff"
         android:padding="10dp"

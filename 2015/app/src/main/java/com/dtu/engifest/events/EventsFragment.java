@@ -528,8 +528,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
                 e.printStackTrace();
             }
             eventImage.setImageUrl(image,AppController.getInstance().getImageLoader());
-            layout1.setBackgroundColor(getResources().getColor(R.color.green_transparent));
-            layout2.setBackgroundColor(getResources().getColor(R.color.green_transparent));
+            layout1.setBackgroundColor(getResources().getColor(R.color.pink_transparent));
+            layout2.setBackgroundColor(getResources().getColor(R.color.pink_transparent));
             eventDescription.setText(description);
             eventTitle.setText(title);
             eventShortDescription.setText(subdescription);
@@ -560,8 +560,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
                 e.printStackTrace();
             }
             eventImage.setImageUrl(image,AppController.getInstance().getImageLoader());
-            layout1.setBackgroundColor(getResources().getColor(R.color.green_transparent));
-            layout2.setBackgroundColor(getResources().getColor(R.color.green_transparent));
+            layout1.setBackgroundColor(getResources().getColor(R.color.blue_transparent));
+            layout2.setBackgroundColor(getResources().getColor(R.color.blue_transparent));
             eventDescription.setText(description);
             eventTitle.setText(title);
             eventShortDescription.setText(subdescription);
@@ -624,8 +624,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
                 e.printStackTrace();
             }
             eventImage.setImageUrl(image,AppController.getInstance().getImageLoader());
-            layout1.setBackgroundColor(getResources().getColor(R.color.green_transparent));
-            layout2.setBackgroundColor(getResources().getColor(R.color.green_transparent));
+            layout1.setBackgroundColor(getResources().getColor(R.color.red_transparent));
+            layout2.setBackgroundColor(getResources().getColor(R.color.red_transparent));
             eventDescription.setText(description);
             eventTitle.setText(title);
             eventShortDescription.setText(subdescription);

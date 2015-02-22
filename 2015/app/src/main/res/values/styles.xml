@@ -4,8 +4,8 @@
 
 
     <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
-    <item name="colorPrimary">@android:color/holo_blue_light</item>
-    <item name="colorPrimaryDark">@android:color/holo_blue_dark</item>
+    <item name="colorPrimary">#1976D2</item>
+    <item name="colorPrimaryDark">#1565c0</item>
         <item name="windowActionBar">false</item>
 
         
@@ -17,9 +17,9 @@
 
         <item name="android:homeAsUpIndicator">@drawable/ic_back</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
-        <item name="colorPrimary">@android:color/holo_blue_light</item>
+        <item name="colorPrimary">#1976D2</item>
 
-        <item name="colorPrimaryDark">@android:color/holo_blue_dark</item>
+        <item name="colorPrimaryDark">#1565c0</item>
         <item name="colorAccent">#009688</item>
 
     </style>
