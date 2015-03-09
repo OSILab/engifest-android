@@ -1,7 +1,9 @@
 package com.dtu.engifest.events;
 
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -39,6 +41,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
     private String title ;
     private String description ;
     private String subdescription ;
+    private String links;
     private String contact ;
     private String number ;
     private String email ;
@@ -52,6 +55,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
     TextView textContact;
     TextView textEmail;
     TextView textNumber;
+    TextView registerLink;
     LinearLayout layout1;
     LinearLayout layout2;
     View v;
@@ -111,6 +115,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
         layout2=(LinearLayout) v.findViewById(R.id.layout2);
         eventDescription =(TextView) v.findViewById(R.id.eventDescription);
         eventShortDescription = (TextView) v.findViewById(R.id.eventShortDescription);
+        registerLink=(TextView) v.findViewById(R.id.registerLink);
+        registerLink.setPaintFlags(registerLink.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         eventTitle = (TextView) v.findViewById(R.id.eventTitle);
         textCall =(TextView) v.findViewById(R.id.textCall);
         textContact = (TextView) v.findViewById(R.id.textContact);
@@ -119,6 +125,20 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
         textSendEmail = (TextView) v.findViewById(R.id.textSendEmail);
         cardContact = (CardView) v.findViewById(R.id.cardContact);
 
+        registerLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    i.setData(Uri.parse(links));
+                    startActivity(i);
+
+                } catch (ActivityNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
 
         textCall.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -168,6 +188,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
                 image = obj2.getString("image");
                 description = obj2.getString("description");
                 subdescription = obj2.getString("subtitle");
+                links=obj2.getString("links");
                 contact = obj2.getString("contactname");
                 number = obj2.getString("contactnumber");
                 email = obj2.getString("contactemail");
@@ -184,6 +205,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
+            if (links.equals("null"))
+                registerLink.setVisibility(View.GONE);
             if (textContact.getText().equals("null"))
                 cardContact.setVisibility(View.GONE);
 
@@ -197,6 +220,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
                 JSONObject obj2 = array.getJSONObject(1);
                 image = obj2.getString("image");
                 title = obj2.getString("title");
+                links=obj2.getString("links");
                 description = obj2.getString("description");
                 subdescription = obj2.getString("subtitle");
                 contact = obj2.getString("contactname");
@@ -215,6 +239,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
+            if (links.equals("null"))
+                registerLink.setVisibility(View.GONE);
             if (textContact.getText().equals("null"))
                 cardContact.setVisibility(View.GONE);
 
@@ -230,6 +256,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
                 image = obj2.getString("image");
                 title = obj2.getString("title");
                 description = obj2.getString("description");
+                links=obj2.getString("links");
                 subdescription = obj2.getString("subtitle");
                 contact = obj2.getString("contactname");
                 number = obj2.getString("contactnumber");
@@ -247,6 +274,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
+            if (links.equals("null"))
+                registerLink.setVisibility(View.GONE);
             if (textContact.getText().equals("null"))
                 cardContact.setVisibility(View.GONE);
 
@@ -261,6 +290,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
                 JSONObject obj2 = array.getJSONObject(3);
                 image = obj2.getString("image");
                 title = obj2.getString("title");
+                links=obj2.getString("links");
                 description = obj2.getString("description");
                 subdescription = obj2.getString("subtitle");
                 contact = obj2.getString("contactname");
@@ -279,6 +309,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
+            if (links.equals("null"))
+                registerLink.setVisibility(View.GONE);
             if (textContact.getText().equals("null"))
                 cardContact.setVisibility(View.GONE);
 
@@ -292,6 +324,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
                 JSONObject obj2 = array.getJSONObject(4);
                 image = obj2.getString("image");
                 title = obj2.getString("title");
+                links=obj2.getString("links");
                 description = obj2.getString("description");
                 subdescription = obj2.getString("subtitle");
                 contact = obj2.getString("contactname");
@@ -309,6 +342,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
+            if (links.equals("null"))
+                registerLink.setVisibility(View.GONE);
             if (textContact.getText().equals("null"))
                 cardContact.setVisibility(View.GONE);
 
@@ -323,6 +358,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
                 JSONObject obj2 = array.getJSONObject(5);
                 image = obj2.getString("image");
                 title = obj2.getString("title");
+                links=obj2.getString("links");
                 description = obj2.getString("description");
                 subdescription = obj2.getString("subtitle");
                 contact = obj2.getString("contactname");
@@ -341,6 +377,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
+            if (links.equals("null"))
+                registerLink.setVisibility(View.GONE);
             if (textContact.getText().equals("null"))
                 cardContact.setVisibility(View.GONE);
 
@@ -356,6 +394,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
                 JSONObject obj2 = array.getJSONObject(6);
                 image = obj2.getString("image");
                 title = obj2.getString("title");
+                links=obj2.getString("links");
                 description = obj2.getString("description");
                 subdescription = obj2.getString("subtitle");
                 contact = obj2.getString("contactname");
@@ -374,6 +413,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
+            if (links.equals("null"))
+                registerLink.setVisibility(View.GONE);
             if (textContact.getText().equals("null"))
                 cardContact.setVisibility(View.GONE);
 
@@ -389,6 +430,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
                 JSONObject obj2 = array.getJSONObject(7);
                 image = obj2.getString("image");
                 title = obj2.getString("title");
+                links=obj2.getString("links");
                 description = obj2.getString("description");
                 subdescription = obj2.getString("subtitle");
                 contact = obj2.getString("contactname");
@@ -406,6 +448,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
+            if (links.equals("null"))
+                registerLink.setVisibility(View.GONE);
             if (textContact.getText().equals("null"))
                 cardContact.setVisibility(View.GONE);
 
@@ -421,6 +465,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
                 JSONObject obj2 = array.getJSONObject(8);
                 image = obj2.getString("image");
                 title = obj2.getString("title");
+                links=obj2.getString("links");
                 description = obj2.getString("description");
                 subdescription = obj2.getString("subtitle");
                 contact = obj2.getString("contactname");
@@ -439,6 +484,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
+            if (links.equals("null"))
+                registerLink.setVisibility(View.GONE);
             if (textContact.getText().equals("null"))
                 cardContact.setVisibility(View.GONE);
 
@@ -454,6 +501,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
                 JSONObject obj2 = array.getJSONObject(9);
                 image = obj2.getString("image");
                 title = obj2.getString("title");
+                links=obj2.getString("links");
                 description = obj2.getString("description");
                 subdescription = obj2.getString("subtitle");
                 contact = obj2.getString("contactname");
@@ -471,6 +519,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
+            if (links.equals("null"))
+                registerLink.setVisibility(View.GONE);
             if (textContact.getText().equals("null"))
                 cardContact.setVisibility(View.GONE);
 
@@ -486,6 +536,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
                 JSONObject obj2 = array.getJSONObject(10);
                 image = obj2.getString("image");
                 title = obj2.getString("title");
+                links=obj2.getString("links");
                 description = obj2.getString("description");
                 subdescription = obj2.getString("subtitle");
                 contact = obj2.getString("contactname");
@@ -504,6 +555,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
+            if (links.equals("null"))
+                registerLink.setVisibility(View.GONE);
             if (textContact.getText().equals("null"))
                 cardContact.setVisibility(View.GONE);
 
@@ -518,6 +571,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
                 JSONObject obj2 = array.getJSONObject(11);
                 image = obj2.getString("image");
                 title = obj2.getString("title");
+                links=obj2.getString("links");
                 description = obj2.getString("description");
                 subdescription = obj2.getString("subtitle");
                 contact = obj2.getString("contactname");
@@ -536,6 +590,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
+            if (links.equals("null"))
+                registerLink.setVisibility(View.GONE);
             if (textContact.getText().equals("null"))
                 cardContact.setVisibility(View.GONE);
 
@@ -550,6 +606,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
                 JSONObject obj2 = array.getJSONObject(12);
                 image = obj2.getString("image");
                 title = obj2.getString("title");
+                links=obj2.getString("links");
                 description = obj2.getString("description");
                 subdescription = obj2.getString("subtitle");
                 contact = obj2.getString("contactname");
@@ -568,6 +625,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
+            if (links.equals("null"))
+                registerLink.setVisibility(View.GONE);
             if (textContact.getText().equals("null"))
                 cardContact.setVisibility(View.GONE);
 
@@ -582,6 +641,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
                 JSONObject obj2 = array.getJSONObject(13);
                 image = obj2.getString("image");
                 title = obj2.getString("title");
+                links=obj2.getString("links");
                 description = obj2.getString("description");
                 subdescription = obj2.getString("subtitle");
                 contact = obj2.getString("contactname");
@@ -600,6 +660,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
+            if (links.equals("null"))
+                registerLink.setVisibility(View.GONE);
             if (textContact.getText().equals("null"))
                 cardContact.setVisibility(View.GONE);
 
@@ -614,6 +676,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
                 JSONObject obj2 = array.getJSONObject(14);
                 image = obj2.getString("image");
                 title = obj2.getString("title");
+                links=obj2.getString("links");
                 description = obj2.getString("description");
                 subdescription = obj2.getString("subtitle");
                 contact = obj2.getString("contactname");
@@ -632,6 +695,8 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
+            if (links.equals("null"))
+                registerLink.setVisibility(View.GONE);
             if (textContact.getText().equals("null"))
                 cardContact.setVisibility(View.GONE);
 
@@ -646,6 +711,7 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
                 JSONObject obj2 = array.getJSONObject(15);
                 image = obj2.getString("image");
                 title = obj2.getString("title");
+                links=obj2.getString("links");
                 description = obj2.getString("description");
                 subdescription = obj2.getString("subtitle");
                 contact = obj2.getString("contactname");
@@ -663,6 +729,110 @@ public class EventsFragment extends ScrollTabHolderFragment implements Notifying
             textContact.setText(contact);
             textNumber.setText(number);
             textEmail.setText(email);
+            if (links.equals("null"))
+                registerLink.setVisibility(View.GONE);
+            if (textContact.getText().equals("null"))
+                cardContact.setVisibility(View.GONE);
+
+
+        }
+        if (mPosition==16) {
+            try {
+
+                obj = new JSONObject(loadJSONFRomCache());
+
+                JSONArray array  = obj.getJSONArray("content");
+                JSONObject obj2 = array.getJSONObject(16);
+                image = obj2.getString("image");
+                title = obj2.getString("title");
+                links=obj2.getString("links");
+                description = obj2.getString("description");
+                subdescription = obj2.getString("subtitle");
+                contact = obj2.getString("contactname");
+                number = obj2.getString("contactnumber");
+                email = obj2.getString("contactemail");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            eventImage.setImageUrl(image,AppController.getInstance().getImageLoader());
+            layout1.setBackgroundColor(getResources().getColor(R.color.red_transparent));
+            layout2.setBackgroundColor(getResources().getColor(R.color.red_transparent));
+            eventDescription.setText(description);
+            eventTitle.setText(title);
+            eventShortDescription.setText(subdescription);
+            textContact.setText(contact);
+            textNumber.setText(number);
+            textEmail.setText(email);
+            if (links.equals("null"))
+                registerLink.setVisibility(View.GONE);
+            if (textContact.getText().equals("null"))
+                cardContact.setVisibility(View.GONE);
+
+
+        }
+        if (mPosition==17) {
+            try {
+
+                obj = new JSONObject(loadJSONFRomCache());
+
+                JSONArray array  = obj.getJSONArray("content");
+                JSONObject obj2 = array.getJSONObject(17);
+                image = obj2.getString("image");
+                title = obj2.getString("title");
+                links=obj2.getString("links");
+                description = obj2.getString("description");
+                subdescription = obj2.getString("subtitle");
+                contact = obj2.getString("contactname");
+                number = obj2.getString("contactnumber");
+                email = obj2.getString("contactemail");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            eventImage.setImageUrl(image,AppController.getInstance().getImageLoader());
+            layout1.setBackgroundColor(getResources().getColor(R.color.green_transparent));
+            layout2.setBackgroundColor(getResources().getColor(R.color.green_transparent));
+            eventDescription.setText(description);
+            eventTitle.setText(title);
+            eventShortDescription.setText(subdescription);
+            textContact.setText(contact);
+            textNumber.setText(number);
+            textEmail.setText(email);
+            if (links.equals("null"))
+                registerLink.setVisibility(View.GONE);
+            if (textContact.getText().equals("null"))
+                cardContact.setVisibility(View.GONE);
+
+
+        }
+        if (mPosition==18) {
+            try {
+
+                obj = new JSONObject(loadJSONFRomCache());
+
+                JSONArray array  = obj.getJSONArray("content");
+                JSONObject obj2 = array.getJSONObject(18);
+                image = obj2.getString("image");
+                title = obj2.getString("title");
+                links=obj2.getString("links");
+                description = obj2.getString("description");
+                subdescription = obj2.getString("subtitle");
+                contact = obj2.getString("contactname");
+                number = obj2.getString("contactnumber");
+                email = obj2.getString("contactemail");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            eventImage.setImageUrl(image,AppController.getInstance().getImageLoader());
+            layout1.setBackgroundColor(getResources().getColor(R.color.blue_transparent));
+            layout2.setBackgroundColor(getResources().getColor(R.color.blue_transparent));
+            eventDescription.setText(description);
+            eventTitle.setText(title);
+            eventShortDescription.setText(subdescription);
+            textContact.setText(contact);
+            textNumber.setText(number);
+            textEmail.setText(email);
+            if (links.equals("null"))
+                registerLink.setVisibility(View.GONE);
             if (textContact.getText().equals("null"))
                 cardContact.setVisibility(View.GONE);
 

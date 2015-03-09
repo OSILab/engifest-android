@@ -79,6 +79,7 @@
                 </LinearLayout>
 
 
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -86,6 +87,20 @@
                     android:textColor="#000000"
                     android:padding="10dp"
                     android:textSize="17sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/registerLink"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Register"
+                    android:autoLink="web"
+                    android:textStyle="italic"
+                    android:clickable="true"
+                    android:textColor="#009688"
+                    android:padding="10dp"
+                    android:textSize="19sp" />
 
             </LinearLayout>
 
